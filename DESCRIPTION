@@ -8,7 +8,9 @@ Authors@R: c(person("Leonardo", "Collado-Torres", role = c("aut", "cre"),
 Depends:
     R (>= 3.3.0)
 Imports:
-    limma
+    limma,
+    methods,
+    stats
 Suggests:
     BiocStyle,
     derfinderHelper,
