@@ -34,6 +34,7 @@ bibs <- c(
     jaffelab = citation('jaffelab'),
     knitcitations = citation('knitcitations'),
     knitr = citation('knitr')[3],
+    limma = citation('limma'),
     R = citation(),
     rmarkdown = citation('rmarkdown'),
     testthat = citation('testthat')
@@ -91,6 +92,7 @@ The `r Githubpkg('LieberInstitute/jaffelab')` package `r citep(bib[['jaffelab']]
 * `r CRANpkg('devtools')` `r citep(bib[['devtools']])`
 * `r CRANpkg('knitcitations')` `r citep(bib[['knitcitations']])`
 * `r CRANpkg('knitr')` `r citep(bib[['knitr']])`
+* `r Biocpkg('limma')` `r citep(bib[['limma']])`
 * `r CRANpkg('rmarkdown')` `r citep(bib[['rmarkdown']])`
 * `r CRANpkg('testthat')` `r citep(bib[['testthat']])`
 
