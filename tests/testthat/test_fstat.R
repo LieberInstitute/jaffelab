@@ -14,6 +14,7 @@ mod <- model.matrix(~ pheno$group + pheno$RIN)
 mod0 <- model.matrix(~ pheno$RIN)
 
 ## Fit the models
+library('limma')
 fit <- lmFit(y, mod)
 fit0 <- lmFit(y, mod0)
 
