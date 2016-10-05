@@ -25,6 +25,16 @@ run this yourself to check for any updates on how to cite __jaffelab__.
 
 To cite the __jaffelab__ package in publications use:
 
+Leonardo Collado-Torres and Andrew E. Jaffe (2016). jaffelab: Commonly used functions by the Jaffe lab. R package version 0.99.0. https://github.com/LieberInstitute/jaffelab
+
+@Manual{,
+    title = {jaffelab: Commonly used functions by the Jaffe lab},
+    author = {Leonardo Collado-Torres and Andrew E. Jaffe},
+    year = {2016},
+    note = {R package version 0.99.0},
+    url = {https://github.com/LieberInstitute/jaffelab},
+}
+
 # Testing
 
 Testing on Bioc-devel is feasible thanks to [R Travis](http://docs.travis-ci.com/user/languages/r/).
