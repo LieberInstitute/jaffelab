@@ -4,4 +4,6 @@ CHANGES IN VERSION 0.99.0
 NEW FEATURES
 
     o Added ss() as a wrapper for string split and sapply.
+    o Added splitit() and split0() that split a vector into a list and return
+        the integer indexes of the elements.
     
