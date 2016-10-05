@@ -10,6 +10,7 @@
 #' principal components in decreasing order.
 #'
 #' @export
+#' @importFrom methods is
 #' @author Andrew E Jaffe
 #'
 #' @examples

@@ -17,6 +17,7 @@
 #' @export
 #' @author Andrew E Jaffe
 #' @import limma
+#' @importFrom stats fitted pf
 #'
 #' @examples
 #'
@@ -49,7 +50,7 @@
 getF <- function(fit, fit0, theData) {
     ## Check inputs
     stopifnot(is.matrix(theData))
-    stopifnot(ncol(fit$design) > ncol(fit0$design))
+    stopifnot(ncol(fit$coefficients) > ncol(fit0$coefficients))
     
     
 	rss1 <- rowSums((fitted(fit) - theData)^2)
