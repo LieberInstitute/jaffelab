@@ -53,7 +53,7 @@ getF <- function(fit, fit0, theData) {
     ## Check inputs
     stopifnot(identical(class(theData), class(fitted(fit))))
     stopifnot(identical(class(theData), class(fitted(fit0))))
-    
+
     ## Extract the number of columns, or the length if it's a vector
     ncol2 <- function(x) {
         res <- ncol(x)
@@ -61,12 +61,12 @@ getF <- function(fit, fit0, theData) {
         if(is.null(res)) res <- NROW(x)
         return(res)
     }
-    
+
     df1 <- ncol2(fit$coefficients)
     df0 <- ncol2(fit0$coefficients)
     stopifnot(df1 > df0)
-    
-    
+
+
     ## Get sums: rows if it's a matrix
     rsum <- function(x) {
         if(is.matrix(x)) {
@@ -75,13 +75,13 @@ getF <- function(fit, fit0, theData) {
             res <- sum(x)
         }
     }
-        
-	rss1 <- rsum((fitted(fit) - theData)^2)
-	rss0 <- rsum((fitted(fit0) - theData)^2)
-	fstat <- ((rss0 - rss1) / (df1 - df0)) / (rss1 / (ncol2(theData) - df1))
-	f_pval <- pf(fstat, df1 - df0, ncol2(theData) - df1, lower.tail = FALSE)
-	fout <- cbind(fstat, df1 - df0, ncol2(theData) - df1, f_pval)
-	colnames(fout)[2:3] <- c('df1', 'df0')
-	fout <- data.frame(fout)
-	return(fout)
+
+    rss1 <- rsum((fitted(fit) - theData)^2)
+    rss0 <- rsum((fitted(fit0) - theData)^2)
+    fstat <- ((rss0 - rss1) / (df1 - df0)) / (rss1 / (ncol2(theData) - df1))
+    f_pval <- pf(fstat, df1 - df0, ncol2(theData) - df1, lower.tail = FALSE)
+    fout <- cbind(fstat, df1 - df0, ncol2(theData) - df1, f_pval)
+    colnames(fout)[2:3] <- c('df1', 'df0')
+    fout <- data.frame(fout)
+    return(fout)
 }
