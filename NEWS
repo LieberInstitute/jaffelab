@@ -8,4 +8,5 @@ NEW FEATURES
         the integer indexes of the elements.
     o Added getPcaVars() which computes the percent of variance explained
         for the principal components of prcomp object.
+    o Added getF().
     

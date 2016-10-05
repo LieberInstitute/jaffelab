@@ -11,6 +11,7 @@ Imports:
     limma
 Suggests:
     BiocStyle,
+    derfinderHelper,
     devtools (>= 1.6),
     knitcitations,
     knitr (>= 1.6),
