@@ -7,15 +7,17 @@
 #' model (the larger model).
 #' @param fit0 An object created with \link[limma]{lmFit} using the null
 #' model (the smaller model, nested in the larger one).
-#' @param theData A matrix with the data used in the \link[limma]{lmFit} call.
+#' @param theData The data used in the \link[limma]{lmFit} call.
 #' 
 #'
 #' @return A data.frame with the F-statistics (\code{fstat}), the degrees of
 #' freedom for the nallternative model (\code{df1}), the null model
 #' (\code{df0}), and the p-value given the F-distribution (\code{f_pval}).
 #'
+#' @details This function can also work with outputs from \link[stats]{lm}.
+#'
 #' @export
-#' @author Andrew E Jaffe
+#' @author Leonardo Collado-Torres, Andrew E Jaffe
 #' @import limma
 #' @importFrom stats fitted pf
 #'
@@ -49,17 +51,36 @@
 
 getF <- function(fit, fit0, theData) {
     ## Check inputs
-    stopifnot(is.matrix(theData))
-    stopifnot(ncol(fit$coefficients) > ncol(fit0$coefficients))
+    stopifnot(identical(class(theData), class(fitted(fit))))
+    stopifnot(identical(class(theData), class(fitted(fit0))))
+    
+    ## Extract the number of columns, or the length if it's a vector
+    ncol2 <- function(x) {
+        res <- ncol(x)
+        ## For when x is not a matrix
+        if(is.null(res)) res <- NROW(x)
+        return(res)
+    }
+    
+    df1 <- ncol2(fit$coefficients)
+    df0 <- ncol2(fit0$coefficients)
+    stopifnot(df1 > df0)
     
     
-	rss1 <- rowSums((fitted(fit) - theData)^2)
-	df1 <- ncol(fit$coef) 
-	rss0 <- rowSums((fitted(fit0) - theData)^2)
-	df0 <- ncol(fit0$coef)
-	fstat <- ((rss0 - rss1) / (df1 - df0)) / (rss1 / (ncol(theData) - df1))
-	f_pval <- pf(fstat, df1 - df0, ncol(theData) - df1, lower.tail = FALSE)
-	fout <- cbind(fstat, df1 - df0, ncol(theData) - df1, f_pval)
+    ## Get sums: rows if it's a matrix
+    rsum <- function(x) {
+        if(is.matrix(x)) {
+            res <- rowSums(x)
+        } else {
+            res <- sum(x)
+        }
+    }
+        
+	rss1 <- rsum((fitted(fit) - theData)^2)
+	rss0 <- rsum((fitted(fit0) - theData)^2)
+	fstat <- ((rss0 - rss1) / (df1 - df0)) / (rss1 / (ncol2(theData) - df1))
+	f_pval <- pf(fstat, df1 - df0, ncol2(theData) - df1, lower.tail = FALSE)
+	fout <- cbind(fstat, df1 - df0, ncol2(theData) - df1, f_pval)
 	colnames(fout)[2:3] <- c('df1', 'df0')
 	fout <- data.frame(fout)
 	return(fout)

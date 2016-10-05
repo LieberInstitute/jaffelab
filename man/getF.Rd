@@ -13,7 +13,7 @@ model (the larger model).}
 \item{fit0}{An object created with \link[limma]{lmFit} using the null
 model (the smaller model, nested in the larger one).}
 
-\item{theData}{A matrix with the data used in the \link[limma]{lmFit} call.}
+\item{theData}{The data used in the \link[limma]{lmFit} call.}
 }
 \value{
 A data.frame with the F-statistics (\code{fstat}), the degrees of
@@ -23,6 +23,9 @@ freedom for the nallternative model (\code{df1}), the null model
 \description{
 For some data Y organized in a matrix, calculate a F-statitic per row
 comparing two nested models.
+}
+\details{
+This function can also work with outputs from \link[stats]{lm}.
 }
 \examples{
 
@@ -53,6 +56,6 @@ summary(qvals)
 
 }
 \author{
-Andrew E Jaffe
+Leonardo Collado-Torres, Andrew E Jaffe
 }
 
