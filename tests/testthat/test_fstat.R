@@ -23,7 +23,9 @@ finfo <- getF(fit, fit0, y)
 ## Compute F-stats with derfinderHelper to double check
 library('derfinderHelper')
 fstat <- as.numeric(fstats.apply(data = y, mod = mod, mod0 = mod0, method = 'regular'))
+fpval <- pf(fstat, ncol(mod) - ncol(mod0), ncol(y) - ncol(mod), lower.tail = FALSE)
 
 test_that('getF', {
     expect_equivalent(finfo$fstat, fstat)
+    expect_equivalent(finfo$f_pval, fpval)
 })
