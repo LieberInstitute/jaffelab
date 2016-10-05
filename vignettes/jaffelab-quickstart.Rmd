@@ -2,7 +2,7 @@
 title: "jaffelab quick start guide"
 author: "L Collado-Torres"
 date: "`r doc_date()`"
-package: "`r pkg_ver('recount')`"
+package: "`r pkg_ver('jaffelab')`"
 output: 
   BiocStyle::html_document
 vignette: >
@@ -53,12 +53,14 @@ names(bib) <- names(bibs)
 
 ## Install `r Githubpkg('LieberInstitute/jaffelab')`
 
-`R` is an open-source statistical environment which can be easily modified to enhance its functionality via packages. `r Biocpkg('recount')` is a `R` package available via the [Bioconductor](http://bioconductor/packages/derfinder) repository for packages. `R` can be installed on any operating system from [CRAN](https://cran.r-project.org/) after which you can install `r Biocpkg('recount')` by using the following commands in your `R` session:
+`R` is an open-source statistical environment which can be easily modified to enhance its functionality via packages. `r Githubpkg('LieberInstitute/jaffelab')` is a `R` package available via GitHub. `R` can be installed on any operating system from [CRAN](https://cran.r-project.org/) after which you can install `r Githubpkg('LieberInstitute/jaffelab')` by using the following commands in your `R` session:
 
-```{r 'installDer', eval = FALSE}
-## try http:// if https:// URLs are not supported
-source("https://bioconductor.org/biocLite.R")
-biocLite("recount")
+```{r 'installpkg', eval = FALSE}
+## If needed:
+# install.packages('devtools')
+
+library('devtools')
+install_github('LieberInstitute/jaffelab')
 ```
 
 ## Required knowledge
