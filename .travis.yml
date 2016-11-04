@@ -19,6 +19,7 @@ r_packages:
   - rcmdcheck
   - rematch
   - whoami
+  - knitr
   
 r_github_packages:
   - r-hub/rhub
