@@ -1,7 +1,5 @@
 language: r
 
-os: osx
-
 r: bioc-devel
 warnings_are_errors: false
 sudo: false
@@ -17,7 +15,7 @@ r_build_args: "--no-manual --no-resave-data"
 r_check_args: "--no-build-vignettes --no-manual --timings"
 
 after_success:
-  - Rscript -e "library(covr); codecov(); library(rhub); validate_email('leo.collado@libd.org', 'e4717b56dde7421e8806e7b16777fa22'); check(Sys.getenv('PKG_TARBALL'), 'windows-x86_64-devel', check_args = '--no-build-vignettes --no-manual --timings'); check(Sys.getenv('PKG_TARBALL'), 'debian-gcc-devel', check_args = '--no-build-vignettes --no-manual --timings'); check(Sys.getenv('PKG_TARBALL'), 'ubuntu-gcc-devel', check_args = '--no-build-vignettes --no-manual --timings')"
+  - Rscript -e "library(covr); codecov(); library(rhub); validate_email('leo.collado@libd.org', 'e4717b56dde7421e8806e7b16777fa22'); check(Sys.getenv('PKG_TARBALL'), c('windows-x86_64-devel', 'debian-gcc-devel'))"
 
 notifications:
   email:
