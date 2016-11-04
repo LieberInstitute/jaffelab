@@ -20,6 +20,7 @@ r_packages:
   - rematch
   - whoami
   - knitr
+  - rmarkdown
   
 r_github_packages:
   - r-hub/rhub
