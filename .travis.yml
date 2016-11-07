@@ -21,6 +21,7 @@ r_packages:
   - whoami
   - knitr
   - rmarkdown
+  - knitcitations
   
 r_github_packages:
   - r-hub/rhub
