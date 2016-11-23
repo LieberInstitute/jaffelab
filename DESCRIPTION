@@ -1,7 +1,7 @@
 Package: jaffelab
 Title: Commonly used functions by the Jaffe lab
-Version: 0.99.0
-Date: 2016-10-05
+Version: 0.99.1
+Date: 2016-11-23
 Authors@R: c(person("Leonardo", "Collado-Torres", role = c("aut", "cre"),
     email = "leo.collado@libd.org"), person(c("Andrew", "E."), "Jaffe",
     role = "aut", email = "andrew.jaffe@libd.org"))
@@ -12,7 +12,7 @@ Imports:
     methods,
     stats
 Suggests:
-    BiocStyle,
+    BiocStyle (>= 2.3.12),
     derfinderHelper,
     devtools (>= 1.6),
     knitcitations,
