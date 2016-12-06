@@ -16,7 +16,7 @@ objects with the junction count information.}
 \item{sampleNames}{A character vector of the same length as `junctionsFiles`
 to use as the sample names.}
 
-\item{output}{Either `Count` (TopHat2) or `Rail` (Rail-RNA).}
+\item{output}{Either `Count` (TopHat2, HISAT2) or `Rail` (Rail-RNA).}
 
 \item{minOverhang}{minimum overhang.}
 
@@ -36,7 +36,7 @@ A two element list with a `DataFrame` and a
 annotation used.
 }
 \description{
-Count junctions from either TopHat2 or Rail-RNA output
+Count junctions from either TopHat2, HISAT2 or Rail-RNA output
 }
 \examples{
 

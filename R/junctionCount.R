@@ -1,13 +1,13 @@
 #' Count junctions
 #'
-#' Count junctions from either TopHat2 or Rail-RNA output
+#' Count junctions from either TopHat2, HISAT2 or Rail-RNA output
 #'
 #' @param junctionFiles A character vector with the full paths to the junction
 #' files. Can alternatively be a list of \link[GenomicRanges]{GRanges-class} 
 #' objects with the junction count information.
 #' @param sampleNames A character vector of the same length as `junctionsFiles`
 #' to use as the sample names.
-#' @param output Either `Count` (TopHat2) or `Rail` (Rail-RNA).
+#' @param output Either `Count` (TopHat2, HISAT2) or `Rail` (Rail-RNA).
 #' @param minOverhang minimum overhang.
 #' @param strandSpecific a logical specifying whether the library is strand
 #' specific or not.
@@ -57,6 +57,8 @@ junctionCount<- function(junctionFiles, sampleNames = names(junctionFiles),
                 colClasses = c("character", "integer", "integer",
                 "character","integer"))
                 y <- y[y$count >= minCount, ] # filter based on min number
+                weird <- which(y$strand=="?")
+                if(length(weird) > 0) y <- y[-weird, ]
             }
             
             gr <- GRanges(y$chr, IRanges(y$start, y$end), strand = y$strand,
