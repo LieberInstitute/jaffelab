@@ -1,3 +1,12 @@
+CHANGES IN VERSION 0.99.2
+-------------------------
+
+SIGNIFICANT USER-VISIBLE CHANGES
+
+    o Dropped splitit() since it's available in rafalib.
+    o Now depending on rafalib making those functions available to the user.
+
+
 CHANGES IN VERSION 0.99.0
 -------------------------
 
