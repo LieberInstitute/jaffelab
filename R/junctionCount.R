@@ -24,6 +24,8 @@
 #' @author Andrew E Jaffe
 #' @import GenomicRanges
 #' @import parallel
+#' @importFrom utils read.delim
+#' @importFrom IRanges IRanges
 #'
 #' @examples
 #'

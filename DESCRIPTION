@@ -1,6 +1,6 @@
 Package: jaffelab
 Title: Commonly used functions by the Jaffe lab
-Version: 0.99.6
+Version: 0.99.7
 Date: 2016-12-06
 Authors@R: c(person("Leonardo", "Collado-Torres", role = c("aut", "cre"),
     email = "leo.collado@libd.org"), person(c("Andrew", "E."), "Jaffe",
@@ -10,10 +10,13 @@ Depends:
     rafalib
 Imports:
     GenomicRanges,
+    IRanges,
     limma,
     methods,
     parallel,
-    stats
+    RColorBrewer,
+    stats,
+    utils
 Suggests:
     BiocStyle (>= 2.3.12),
     derfinderHelper,

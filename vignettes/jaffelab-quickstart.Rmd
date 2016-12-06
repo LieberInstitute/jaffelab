@@ -32,6 +32,7 @@ bibs <- c(
     BiocStyle = citation('BiocStyle'),
     devtools = citation('devtools'),
     GenomicRanges = citation('GenomicRanges'),
+    IRanges = citation('IRanges'),
     jaffelab = citation('jaffelab'),
     knitcitations = citation('knitcitations'),
     knitr = citation('knitr')[3],
@@ -39,6 +40,7 @@ bibs <- c(
     parallel = citation('parallel'),
     R = citation(),
     rafalib = citation('rafalib'),
+    RColorBrewer = citation('RColorBrewer'),
     rmarkdown = citation('rmarkdown'),
     testthat = citation('testthat')
 )
@@ -94,11 +96,13 @@ The `r Githubpkg('LieberInstitute/jaffelab')` package `r citep(bib[['jaffelab']]
 * `r Biocpkg('BiocStyle')` `r citep(bib[['BiocStyle']])`
 * `r CRANpkg('devtools')` `r citep(bib[['devtools']])`
 * `r Biocpkg('GenomicRanges')` `r citep(bib[['GenomicRanges']])`
+* `r Biocpkg('IRanges')` `r citep(bib[['IRanges']])`
 * `r CRANpkg('knitcitations')` `r citep(bib[['knitcitations']])`
 * `r CRANpkg('knitr')` `r citep(bib[['knitr']])`
 * `r Biocpkg('limma')` `r citep(bib[['limma']])`
 * `r CRANpkg('parallel')` `r citep(bib[['parallel']])`
 * `r CRANpkg('rafalib')` `r citep(bib[['rafalib']])`
+* `r CRANpkg('RColorBrewer')` `r citep(bib[['RColorBrewer']])`
 * `r CRANpkg('rmarkdown')` `r citep(bib[['rmarkdown']])`
 * `r CRANpkg('testthat')` `r citep(bib[['testthat']])`
 
