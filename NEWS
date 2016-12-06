@@ -1,3 +1,8 @@
+CHANGES IN VERSION 0.99.6
+-------------------------
+
+    o Added junctionCount() -- missing examples and tests
+
 CHANGES IN VERSION 0.99.5
 -------------------------
 
