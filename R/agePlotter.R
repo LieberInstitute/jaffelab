@@ -29,6 +29,9 @@
 #'
 #' @import RColorBrewer
 #' @import rafalib
+#' @importFrom grDevices palette
+#' @importFrom graphics axis layout lines mtext par plot text
+#' @importFrom stats lm quantile
 #'
 #' @examples
 #'
@@ -54,7 +57,7 @@ agePlotter <- function(y, age, mod = matrix(rep(1, length(y)), ncol=1),
     fetal <- cut(age, breaks = ageBreaks, lab = FALSE)
     fIndex <- splitit(fetal)    
     
-    layout(matrix(rep(1:4, c(5, 2, 2, 4)), nr = 1, byrow = TRUE))
+    layout(matrix(rep(1:4, c(5, 2, 2, 4)), nrow = 1, byrow = TRUE))
     palette(brewer.pal(8, "Set1"))
     
     par(mar = c(4, 5, 3, 0.45))
