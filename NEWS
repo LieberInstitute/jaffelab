@@ -6,7 +6,6 @@ BUG FIXES
     o Added code by Emily Burke that makes junctionCount() work for single-end
         libraries. Still need to trace why ? are being added as the strand.
 
-
 CHANGES IN VERSION 0.99.7
 -------------------------
 
