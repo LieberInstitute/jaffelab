@@ -11,7 +11,8 @@
 #' @export
 #' @author Andrew E Jaffe
 #'
-#' @seealso \link{splitit}
+#' @seealso \link[rafalib]{splitit}
+#' @import rafalib
 #'
 #' @examples
 #'

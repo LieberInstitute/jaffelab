@@ -31,6 +31,6 @@ split0(abc)
 Andrew E Jaffe
 }
 \seealso{
-\link{splitit}
+\link[rafalib]{splitit}
 }
 

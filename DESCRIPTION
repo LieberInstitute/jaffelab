@@ -1,12 +1,13 @@
 Package: jaffelab
 Title: Commonly used functions by the Jaffe lab
-Version: 0.99.1
-Date: 2016-11-23
+Version: 0.99.2
+Date: 2016-12-06
 Authors@R: c(person("Leonardo", "Collado-Torres", role = c("aut", "cre"),
     email = "leo.collado@libd.org"), person(c("Andrew", "E."), "Jaffe",
     role = "aut", email = "andrew.jaffe@libd.org"))
 Depends:
-    R (>= 3.3.0)
+    R (>= 3.3.0),
+    rafalib
 Imports:
     limma,
     methods,

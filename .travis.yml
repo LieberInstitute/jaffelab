@@ -23,6 +23,7 @@ r_packages:
   - rmarkdown
   - knitcitations
   - testthat
+  - rafalib
   
 r_github_packages:
   - r-hub/rhub
