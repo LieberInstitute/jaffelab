@@ -1,7 +1,5 @@
 language: r
 
-os: osx
-
 r: bioc-devel
 warnings_are_errors: false
 sudo: false
@@ -9,21 +7,6 @@ cache: packages
 
 r_packages:
   - covr
-  - assertthat
-  - callr
-  - clisymbols
-  - desc
-  - parsedate
-  - prettyunits
-  - rappdirs
-  - rcmdcheck
-  - rematch
-  - whoami
-  - knitr
-  - rmarkdown
-  - knitcitations
-  - testthat
-  - rafalib
   
 r_github_packages:
   - r-hub/rhub
