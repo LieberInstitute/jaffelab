@@ -1,0 +1,37 @@
+#' Calculate R squared from a matrix
+#'
+#' Using limma, calculate the R squared from a matrix using nested models
+#'
+#' @param p A matrix that will be passed to \link[limma]{lmFit} `object`.
+#' @param mod A model matrix for the alternative model (the larger one).
+#' @param mod0 A model matrix for the null model (the smaller one). If `NULL`
+#' then `p` will be used to calculate the residual sum of squares of the
+#' null model.
+#'
+#' @return A data.frame with the R squared and the adjusted R squared.
+#'
+#' @export
+#' @author Andrew E Jaffe
+#' @import limma
+#'
+#' @examples
+#'
+
+getR2 <- function(p, mod, mod0 = NULL) {
+    fit1 <- lmFit(p, mod)
+    rss1 <- rowSums((p - fitted(fit1))^2)
+    n <- ncol(p)
+    k <- ncol(mod) - 1
+    
+    if(is.null(mod0)) {
+        rss0 <- rowSums((p-rowMeans(p))^2)
+    } else {
+        fit0 <- lmFit(p, mod0)
+        rss0 <- rowSums((p - fitted(fit0))^2)
+    }
+    
+    r2 <- 1 - (rss1/rss0)
+    r2adj <- 1 - ((1 - r2) * (n - 1)) / (n - k - 1)
+    out <- data.frame(R2 = r2, Adjusted_R2 = r2adj)
+    return(out)    
+}

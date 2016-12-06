@@ -1,7 +1,12 @@
+CHANGES IN VERSION 0.99.5
+-------------------------
+
+    o Added getR2() -- missing examples and tests
+
 CHANGES IN VERSION 0.99.4
 -------------------------
 
-    o Added cleaningY() -- missing examples
+    o Added cleaningY() -- missing examples and tests
 
 CHANGES IN VERSION 0.99.3
 -------------------------
