@@ -1,8 +1,12 @@
+CHANGES IN VERSION 0.99.4
+-------------------------
+
+    o Added cleaningY() -- missing examples
+
 CHANGES IN VERSION 0.99.3
 -------------------------
 
     o Added getOR()
-
 
 CHANGES IN VERSION 0.99.2
 -------------------------
