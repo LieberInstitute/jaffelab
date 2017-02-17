@@ -27,4 +27,3 @@ Using limma, calculate the R squared from a matrix using nested models
 \author{
 Andrew E Jaffe
 }
-

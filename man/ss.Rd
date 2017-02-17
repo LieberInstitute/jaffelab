@@ -36,4 +36,3 @@ ss('a.b.c', '.', slot = 1, fixed = TRUE)
 \author{
 Andrew E Jaffe
 }
-

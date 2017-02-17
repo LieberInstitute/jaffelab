@@ -44,4 +44,3 @@ Count junctions from either TopHat2, HISAT2 or Rail-RNA output
 \author{
 Andrew E Jaffe
 }
-

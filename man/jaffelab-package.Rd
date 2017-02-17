@@ -12,4 +12,3 @@ Jaffe lab \url{http://aejaffe.com/}.
 Leonardo Collado-Torres <leo.collado@libd.org>
 }
 \keyword{package}
-

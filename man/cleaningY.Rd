@@ -26,4 +26,3 @@ Regress out surrogate variables or principal components
 \author{
 Andrew E Jaffe
 }
-

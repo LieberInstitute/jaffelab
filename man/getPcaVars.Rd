@@ -28,4 +28,3 @@ getPcaVars(pca)
 \author{
 Andrew E Jaffe
 }
-

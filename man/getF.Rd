@@ -58,4 +58,3 @@ summary(qvals)
 \author{
 Leonardo Collado-Torres, Andrew E Jaffe
 }
-

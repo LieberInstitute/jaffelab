@@ -57,4 +57,3 @@ Plots a Y output by age
 \author{
 Andrew E Jaffe
 }
-

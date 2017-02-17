@@ -27,10 +27,9 @@ abc <- sample(letters[1:3], 9, replace = TRUE)
 split0(abc)
 
 }
-\author{
-Andrew E Jaffe
-}
 \seealso{
 \link[rafalib]{splitit}
 }
-
+\author{
+Andrew E Jaffe
+}
