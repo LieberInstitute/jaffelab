@@ -13,6 +13,10 @@ Get R 3.3.x from [CRAN](http://cran.r-project.org/).
 ## If needed:
 # install.packages('devtools')
 
+## Add the GITHUB_PAT environment variable
+## The process is described in the help page for devtools::install_github
+
+## Once you have GITHUB_PAT configured, run:
 library('devtools')
 install_github('LieberInstitute/jaffelab')
 ```
