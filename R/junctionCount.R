@@ -114,7 +114,7 @@ junctionCount<- function(junctionFiles, sampleNames = names(junctionFiles),
         cc[mList[[i]]] <- theData[[i]]$count
         countList[[i]] <- Rle(cc)
     }
-    countDF <- DataFrame(countList, row.names = jNames)
+    countDF <- DataFrame(countList, row.names = jNames, check.names = FALSE)
     
     names(fullGR) <- jNames
     ## return matrix and GRanges object
