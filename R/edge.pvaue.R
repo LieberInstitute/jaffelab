@@ -30,13 +30,11 @@ edge.pvalue <- function(stat, stat0, pool=TRUE) {
     p <- pmax(p,1/m0)
   } else {
     if(is.vector(stat0)) {
-      err.msg(err.func,"stat0 must be a matrix.")
-      return(invisible(1))
+        stop('stat0 must be a matrix.')
     }
     if(ncol(stat0)==m) {stat0 <- t(stat0)}
     if(nrow(stat0)!=m){
-      err.msg(err.func,"Number of rows of stat0 must equal length of stat.")
-      return(invisible(1))
+        stop("Number of rows of stat0 must equal length of stat.")
     }
     stat0 <- (stat0 - matrix(rep(stat,ncol(stat0)),byrow=FALSE,nrow=m)) >= 0
     p <- apply(stat0,1,mean)

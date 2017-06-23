@@ -8,8 +8,7 @@ using \code{bwtool} and build a
 \usage{
 coverage_bwtool(bws, regions, strand = "*", pheno = NULL,
   bwtool = "/dcl01/leek/data/bwtool/bwtool-1.0/bwtool", bpparam = NULL,
-  outdir = NULL, verbose = TRUE, sumsdir = tempdir(),
-  commands_only = FALSE)
+  verbose = TRUE, sumsdir = tempdir(), commands_only = FALSE)
 }
 \arguments{
 \item{bws}{A named vector with the paths to the bigWig files. The names

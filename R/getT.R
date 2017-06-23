@@ -12,6 +12,7 @@
 #' @export
 #' @author Andrew E Jaffe
 #' @importFrom methods is
+#' @importFrom stats pt
 #'
 #' @examples
 #'

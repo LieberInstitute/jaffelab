@@ -63,7 +63,7 @@
 
 coverage_bwtool <- function(bws, regions, strand = '*', pheno = NULL,
     bwtool = '/dcl01/leek/data/bwtool/bwtool-1.0/bwtool',
-    bpparam = NULL, outdir = NULL, verbose = TRUE, sumsdir = tempdir(),
+    bpparam = NULL, verbose = TRUE, sumsdir = tempdir(),
     commands_only = FALSE) {
         
     ## Check inputs
@@ -78,7 +78,7 @@ coverage_bwtool <- function(bws, regions, strand = '*', pheno = NULL,
     } else {
         stopifnot(nrow(pheno) != length(bws))
     }
-    dir.create(sumsdir, recursive = TRUE, showWarnigns = FALSE)
+    dir.create(sumsdir, recursive = TRUE, showWarnings = FALSE)
     
     ##  Subset regions by strand if needed
     if(strand != '*') {
