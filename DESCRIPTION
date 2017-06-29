@@ -1,7 +1,7 @@
 Package: jaffelab
 Title: Commonly used functions by the Jaffe lab
-Version: 0.99.12
-Date: 2016-06-23
+Version: 0.99.13
+Date: 2016-06-29
 Authors@R: c(person("Leonardo", "Collado-Torres", role = c("aut", "cre"),
     email = "leo.collado@libd.org"), person(c("Andrew", "E."), "Jaffe",
     role = "aut", email = "andrew.jaffe@libd.org"))
@@ -9,7 +9,6 @@ Depends:
     R (>= 3.3.0),
     rafalib
 Imports:
-    BiocParallel,
     GenomicRanges,
     graphics,
     grDevices,
@@ -18,10 +17,6 @@ Imports:
     methods,
     parallel,
     RColorBrewer,
-    recount.bwtool,
-    rtracklayer,
-    S4Vectors,
-    SummarizedExperiment,
     stats,
     utils
 Suggests:

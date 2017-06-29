@@ -19,9 +19,6 @@ Get R 3.3.x from [CRAN](http://cran.r-project.org/).
 ## Once you have GITHUB_PAT configured, run:
 library('devtools')
 install_github('LieberInstitute/jaffelab')
-
-## You might need to install recount.bwtool manually:
-install_github('LieberInstitute/recount.bwtool')
 ```
 
 
