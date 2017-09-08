@@ -1,3 +1,13 @@
+CHANGES IN VERSION 0.99.14
+--------------------------
+
+BUG FIXES
+
+    o Corrected the documentation of cleaningY(). This is after Stephen
+        Semick and Emily Burke reported issues with the function.
+
+
+
 CHANGES IN VERSION 0.99.13
 --------------------------
 

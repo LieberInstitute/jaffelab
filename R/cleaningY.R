@@ -4,7 +4,9 @@
 #'
 #' @param y The outcome
 #' @param mod A model matrix
-#' @param P The number of SVs or PCs to regress out.
+#' @param P The number of SVs or PCs to protect based on the column order.
+#' For example, \code{P=2} would keep the intercept term and a case vs diagnosis
+#' term in a model that is ~ Dx + more covariates.
 #'
 #' @return An object of the same type as `y` with the SVs/PCs regressed out.
 #'
