@@ -1,3 +1,12 @@
+CHANGES IN VERSION 0.99.15
+--------------------------
+
+NEW FEATURES
+
+    o Added the function expression_cutoff() which finds suggested expression
+        cutoffs for an RPKM matrix.
+
+
 CHANGES IN VERSION 0.99.14
 --------------------------
 

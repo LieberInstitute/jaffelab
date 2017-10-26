@@ -1,7 +1,7 @@
 Package: jaffelab
 Title: Commonly used functions by the Jaffe lab
-Version: 0.99.14
-Date: 2017-09-08
+Version: 0.99.15
+Date: 2017-10-26
 Authors@R: c(person("Leonardo", "Collado-Torres", role = c("aut", "cre"),
     email = "leo.collado@libd.org"), person(c("Andrew", "E."), "Jaffe",
     role = "aut", email = "andrew.jaffe@libd.org"))
@@ -17,6 +17,7 @@ Imports:
     methods,
     parallel,
     RColorBrewer,
+    segmented,
     stats,
     utils
 Suggests:
