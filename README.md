@@ -7,16 +7,13 @@ This package contains custom functions that are frequently used by the Jaffe lab
 
 # Installation instructions
 
-Get R 3.3.x from [CRAN](http://cran.r-project.org/).
+Get R 3.4.x from [CRAN](http://cran.r-project.org/).
 
 ```R
 ## If needed:
 # install.packages('devtools')
 
-## Add the GITHUB_PAT environment variable
-## The process is described in the help page for devtools::install_github
-
-## Once you have GITHUB_PAT configured, run:
+## Install with:
 library('devtools')
 install_github('LieberInstitute/jaffelab')
 ```
@@ -29,13 +26,13 @@ run this yourself to check for any updates on how to cite __jaffelab__.
 
 To cite the __jaffelab__ package in publications use:
 
-Leonardo Collado-Torres and Andrew E. Jaffe (2016). jaffelab: Commonly used functions by the Jaffe lab. R package version 0.99.0. https://github.com/LieberInstitute/jaffelab
+Leonardo Collado-Torres and Andrew E. Jaffe (2017). jaffelab: Commonly used functions by the Jaffe lab. R package version 0.99.16. https://github.com/LieberInstitute/jaffelab
 
 @Manual{,
     title = {jaffelab: Commonly used functions by the Jaffe lab},
     author = {Leonardo Collado-Torres and Andrew E. Jaffe},
-    year = {2016},
-    note = {R package version 0.99.0},
+    year = {2017},
+    note = {R package version 0.99.16},
     url = {https://github.com/LieberInstitute/jaffelab},
 }
 
