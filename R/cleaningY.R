@@ -11,7 +11,7 @@
 #' @return An object of the same type as `y` with the SVs/PCs regressed out.
 #'
 #' @export
-#' @author Andrew E Jaffe
+#' @author Rafael Irizarry
 #'
 #' @examples
 #'
