@@ -1,3 +1,12 @@
+CHANGES IN VERSION 0.99.18
+--------------------------
+
+SIGNIFICANT USER-VISIBLE CHANGES
+
+    o agePlotter() is now more flexible and can handle up a vector of
+        \code{pointColor} and \code{lineColor}. Also, the breaks
+        are now flexible and support more scenarios (you need at least 3 groups).
+
 CHANGES IN VERSION 0.99.16
 --------------------------
 
@@ -120,4 +129,3 @@ NEW FEATURES
     o Added getPcaVars() which computes the percent of variance explained
         for the principal components of prcomp object.
     o Added getF().
-    

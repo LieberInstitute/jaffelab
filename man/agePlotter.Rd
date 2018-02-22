@@ -51,6 +51,12 @@ A nice plot =)
 \description{
 Plots a Y output by age
 }
+\details{
+\code{pointColor} can be a vector of length equal to \code{age} and have
+multiple values in which case \code{lineColor} has to have a length
+equal to the number of unique \code{pointColor} values. Specifying
+this will draw a line for each unique \code{pointColor}.
+}
 \examples{
 
 }
