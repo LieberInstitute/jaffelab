@@ -11,3 +11,7 @@ test_that('splitit and split0', {
     expect_equal(splitit(letters[1:2]), list(a = 1, b = 2))
     expect_equal(splitit(letters), split0(letters))
 })
+
+test_that('ucsc_to_grances', {
+    expect_equal(ucsc_to_granges(c('chr1:1000-2000', 'chrY:1-100')), GRanges(c('chr1', 'chrY'), IRanges(c(1000, 1), c(2000, 100))))
+})

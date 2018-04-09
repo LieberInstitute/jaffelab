@@ -1,3 +1,12 @@
+CHANGES IN VERSION 0.99.19
+--------------------------
+
+NEW FEATURES
+
+    o Introduced the ucsc_to_granges() function that converts a character vector
+        of coordinates from the UCSC genome browser to a GRanges object.
+
+
 CHANGES IN VERSION 0.99.18
 --------------------------
 
