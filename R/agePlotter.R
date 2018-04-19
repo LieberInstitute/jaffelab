@@ -116,13 +116,17 @@ agePlotter <- function(y, age, mod = matrix(rep(1, length(y)), ncol=1),
         subset = fIndex[[1]],
         main = "", ylab = ylab, xlab = "",
         ylim = ylims, cex.axis = 1.5, cex.lab = 1.75,
-        pch = 21, cex = 1.4, xaxt = "n", bg = pointColor,
-        xlim = c(range(age[fIndex[[1]]]) + c(-0.01, 0.07)), ...)
+        pch = 21, cex = 1.4, bg = pointColor, xaxt = 'n',
+        xlim = c(range(age[fIndex[[1]]]) + c(-0.01, 0.01)), ...)
 
     if(smoothIt) make_line(1)
 
-    axis(1, at = unique(age[fIndex[[1]]]),
-        labels = 40 + 52 * signif(unique(age[fIndex[[1]]]), 1), cex.axis = 1.5)
+
+    fetal_rang <- round(range(age[fIndex[[1]]]) * 52 + 40, 0)
+    fetal_ax <- seq(fetal_rang[1], fetal_rang[2], round(diff(fetal_rang) / 4, 0))
+
+    axis(1, at = (fetal_ax - 40) / 52,
+        labels = fetal_ax, 1, cex.axis = 1.5)
 
     if(ageLabel == "bottom") {
         text(x = quantile(age[fIndex[[1]]], 0.33), y = min(ylims), "PCW",

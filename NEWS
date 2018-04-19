@@ -1,3 +1,11 @@
+CHANGES IN VERSION 0.99.20
+--------------------------
+
+SIGNIFICANT USER-VISIBLE CHANGES
+
+    o agePlotter(): changed how the X-axis ticks and range are made for the
+        prenatal samples.
+
 CHANGES IN VERSION 0.99.19
 --------------------------
 
