@@ -2,6 +2,7 @@
 
 export(agePlotter)
 export(cleaningY)
+export(corner)
 export(edge.pvalue)
 export(expression_cutoff)
 export(getF)

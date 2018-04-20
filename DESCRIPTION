@@ -1,10 +1,11 @@
 Package: jaffelab
 Title: Commonly used functions by the Jaffe lab
-Version: 0.99.20
-Date: 2018-04-19
-Authors@R: c(person("Leonardo", "Collado-Torres", role = c("aut", "cre"),
-    email = "leo.collado@libd.org"), person(c("Andrew", "E."), "Jaffe",
-    role = "aut", email = "andrew.jaffe@libd.org"))
+Version: 0.99.21
+Date: 2018-04-20
+Authors@R: c(person("Leonardo", "Collado-Torres", 
+	role = c("aut", "cre"), email = "leo.collado@libd.org"), 
+	person(c("Andrew", "E."), "Jaffe", role = "aut", email = "andrew.jaffe@libd.org"), 
+	person(c("Emily", "E."), "Burke", role = "aut", email = "emily.burke@libd.org"))
 Depends:
     R (>= 3.3.0),
     rafalib
