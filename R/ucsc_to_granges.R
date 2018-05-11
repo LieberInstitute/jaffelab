@@ -35,7 +35,7 @@ ucsc_to_granges <- function(coords) {
 #'
 #' @return A character vector of UCSC genome browser coordinates.
 #' @seealso \link{ucsc_to_granges}
-#' @author Leonardo Collado-Torres, Andrew E Jaffe
+#' @author Leonardo Collado-Torres
 #' @export
 #' @importFrom GenomicRanges GRanges
 #'
