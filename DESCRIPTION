@@ -1,7 +1,7 @@
 Package: jaffelab
 Title: Commonly used functions by the Jaffe lab
-Version: 0.99.21
-Date: 2018-04-20
+Version: 0.99.22
+Date: 2018-05-11
 Authors@R: c(person("Leonardo", "Collado-Torres", 
 	role = c("aut", "cre"), email = "leo.collado@libd.org"), 
 	person(c("Andrew", "E."), "Jaffe", role = "aut", email = "andrew.jaffe@libd.org"), 

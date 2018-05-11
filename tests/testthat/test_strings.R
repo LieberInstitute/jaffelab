@@ -14,4 +14,5 @@ test_that('splitit and split0', {
 
 test_that('ucsc_to_grances', {
     expect_equal(ucsc_to_granges(c('chr1:1000-2000', 'chrY:1-100')), GRanges(c('chr1', 'chrY'), IRanges(c(1000, 1), c(2000, 100))))
+    expect_equal(c('chr1:1000-2000', 'chrY:1-100'), granges_to_ucsc(ucsc_to_granges(c('chr1:1000-2000', 'chrY:1-100'))))
 })

@@ -1,10 +1,19 @@
+CHANGES IN VERSION 0.99.22
+--------------------------
+
+NEW FEATURES
+
+    o Added the granges_to_ucsc() function, which is the reverse of
+        ucsc_to_granges().
+
+
 CHANGES IN VERSION 0.99.21
 --------------------------
 
 NEW FEATURES
 
     o Added the function corner() which takes head of rows and columns of objects
-		
+
 CHANGES IN VERSION 0.99.20
 --------------------------
 

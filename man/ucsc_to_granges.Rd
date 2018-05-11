@@ -22,6 +22,9 @@ ucsc_to_granges(ucsc_coords)
 
 
 }
+\seealso{
+\link{granges_to_ucsc}
+}
 \author{
 Leonardo Collado-Torres, Andrew E Jaffe
 }

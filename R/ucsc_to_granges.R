@@ -6,6 +6,7 @@
 #' @param coords A character vector of UCSC genome browser coordinates.
 #'
 #' @return A GRanges object.
+#' @seealso \link{granges_to_ucsc}
 #' @author Leonardo Collado-Torres, Andrew E Jaffe
 #' @export
 #' @importFrom GenomicRanges GRanges
@@ -22,4 +23,33 @@ ucsc_to_granges <- function(coords) {
     end <- as.numeric(ss(ss(coords, ":", 2), "-", 2))
 
     GRanges(chr, IRanges(start, end))
+}
+
+
+#' Convert a GRanges object to UCSC coordinates
+#'
+#' This function takes a GRanges objects and returns a string of UCSC genome
+#' browser coordinates.
+#'
+#' @param gr A GRanges object.
+#'
+#' @return A character vector of UCSC genome browser coordinates.
+#' @seealso \link{ucsc_to_granges}
+#' @author Leonardo Collado-Torres, Andrew E Jaffe
+#' @export
+#' @importFrom GenomicRanges GRanges
+#'
+#' @examples
+#' ucsc_coords <- c('chr1:1000-2000')
+#' granges_to_ucsc(ucsc_to_granges(ucsc_coords))
+#'
+#'
+granges_to_ucsc <- function(gr) {
+    stopifnot(is(gr, 'GRanges'))
+
+    chr <- as.character(seqnames(gr))
+    start <- start(gr)
+    end <- end(gr)
+
+    paste0(chr, ':', start, '-', end)
 }
