@@ -4,7 +4,7 @@
 \alias{cleaningY}
 \title{Regress out SVs or PCs}
 \usage{
-cleaningY(y, mod, P = ncol(mod))
+cleaningY(y, mod, P)
 }
 \arguments{
 \item{y}{The outcome}
