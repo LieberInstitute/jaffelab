@@ -17,7 +17,7 @@
 #'
 #' 
 
-cleaningY <- function(y, mod, P = ncol(mod)) {
+cleaningY <- function(y, mod, P) {
     stopifnot(P <= ncol(mod))
     Hat <- solve(t(mod) %*% mod) %*% t(mod)
     beta <- (Hat %*% t(y))
