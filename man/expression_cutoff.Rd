@@ -4,13 +4,14 @@
 \alias{expression_cutoff}
 \title{Find expression cutoffs}
 \usage{
-expression_cutoff(expr, max_cut = 1, seed = NULL, n.boot = 2000, k = 2)
+expression_cutoff(expr, max_cut = 1, seed = NULL, n.boot = 2000,
+  k = 2)
 }
 \arguments{
 \item{expr}{A matrix with the expression values with features in the rows and
 samples in the columns in RPKM format.}
 
-\item{max_cut}{Maximum expression cutoff to consider. Increasing this value 
+\item{max_cut}{Maximum expression cutoff to consider. Increasing this value
 does then to increase the suggested cutoffs. If set to \code{NULL}, this
 will be chosen automatically from 1 to 5.}
 

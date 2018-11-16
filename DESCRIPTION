@@ -1,7 +1,7 @@
 Package: jaffelab
 Title: Commonly used functions by the Jaffe lab
-Version: 0.99.22
-Date: 2018-05-11
+Version: 0.99.23
+Date: 2018-11-16
 Authors@R: c(person("Leonardo", "Collado-Torres", 
 	role = c("aut", "cre"), email = "leo.collado@libd.org"), 
 	person(c("Andrew", "E."), "Jaffe", role = "aut", email = "andrew.jaffe@libd.org"), 
@@ -18,8 +18,10 @@ Imports:
     methods,
     parallel,
     RColorBrewer,
+    S4Vectors,
     segmented,
     stats,
+    SummarizedExperiment,
     utils
 Suggests:
     BiocStyle (>= 2.3.12),
@@ -37,4 +39,4 @@ Encoding: UTF-8
 LazyData: true
 URL: https://github.com/LieberInstitute/jaffelab
 BugReports: https://github.com/LieberInstitute/jaffelab/issues
-RoxygenNote: 6.0.1
+RoxygenNote: 6.1.1

@@ -12,7 +12,7 @@
 #'
 #' @param expr A matrix with the expression values with features in the rows and
 #' samples in the columns in RPKM format.
-#' @param max_cut Maximum expression cutoff to consider. Increasing this value 
+#' @param max_cut Maximum expression cutoff to consider. Increasing this value
 #' does then to increase the suggested cutoffs. If set to \code{NULL}, this
 #' will be chosen automatically from 1 to 5.
 #' @param seed Set this argument for increased reproducibility of the results.
@@ -32,6 +32,8 @@
 #' @export
 #' @author Leonardo Collado-Torres
 #' @import segmented
+#' @importFrom graphics abline boxplot legend
+#' @importFrom stats median
 #'
 #' @examples
 #'
@@ -56,15 +58,15 @@
 
 expression_cutoff <- function(expr, max_cut = 1, seed = NULL, n.boot = 2000,
     k = 2) {
-    
+
     meanExpr <- rowMeans(expr)
-    
-    
+
+
     if(is.null(max_cut)) {
         cuts <- seq_len(500)/100
-    
-        
-    
+
+
+
         cuts_m <- which(sapply(cuts, function(cut) {
             mean(meanExpr > cut) <= 0.25
         }))[1]
@@ -72,17 +74,17 @@ expression_cutoff <- function(expr, max_cut = 1, seed = NULL, n.boot = 2000,
     } else {
         cuts <- c(-0.01, 0, seq_len(round(max_cut * 100)) /100)
     }
-   
-    
-    cuts_df <- data.frame(do.call(rbind, lapply(cuts, function(cut) { 
-        
+
+
+    cuts_df <- data.frame(do.call(rbind, lapply(cuts, function(cut) {
+
         c(
             'cut' = cut,
             'features_n' = sum(meanExpr > cut),
             'features_percent' = mean(meanExpr > cut)
         )
     })))
-    
+
     cutl <- seq_len(length(cuts))
     f <- lm(features_percent ~ cutl, data = cuts_df)
     t.l <- cutl[length(cutl)]
@@ -93,29 +95,29 @@ expression_cutoff <- function(expr, max_cut = 1, seed = NULL, n.boot = 2000,
     #round(seg$psi[, 2])
     #cuts[round(seg$psi[, 2])]
     #plot(seg)
-    
+
     plot(cuts_df$cut, cuts_df$features_n, type = 'o', col = 'purple',
         ylab = 'Number of features > cutoff', xlab = 'mean expression cutoff',
         pch = 20)
     abline(v = cuts[round(seg$psi[, 2])], col = 'grey80')
 
-    
+
     plot(cuts_df$cut, cuts_df$features_percent * 100, type = 'o',
         col = 'purple', ylab = 'Percent of features > cutoff',
         xlab = 'mean expression cutoff', pch = 20)
     abline(v = cuts[round(seg$psi[, 2])], col = 'grey80')
     abline(h = 25, col = 'grey80')
-    
-    
+
+
     nonzero <- rowSums(expr > 0)
-    
+
     nonzero_samples <- lapply(cuts, function(cut) {
         nonzero[meanExpr > cut]
     })
     names(nonzero_samples) <- cuts
-    
-    
-    
+
+
+
     df2 <- data.frame(nonzeromean = sapply(nonzero_samples, mean))
     f2 <- lm(nonzeromean ~ cutl, data = df2)
     seg2 <- segmented(f2, seg.Z = ~ cutl,
@@ -124,11 +126,11 @@ expression_cutoff <- function(expr, max_cut = 1, seed = NULL, n.boot = 2000,
     #plot(seg2)
     #round(seg2$psi[, 2])
     #cuts[round(seg2$psi[, 2])]
-    
+
     boxplot(nonzero_samples, xlab = 'mean expression cutoff',
         ylab = 'Number of expressed samples among features > cutoff',
         outline = FALSE)
-    
+
     lines(seq_len(length(cuts)), sapply(nonzero_samples, mean), type = 'o',
         col = 'purple')
     lines(seq_len(length(cuts)), sapply(nonzero_samples, median), type = 'l',
@@ -136,11 +138,11 @@ expression_cutoff <- function(expr, max_cut = 1, seed = NULL, n.boot = 2000,
     abline(v = round(seg2$psi[, 2]), col = 'grey80')
     legend('bottomright', c('mean', 'median'), col = c('purple', 'orange'),
         lwd = 2, bty = 'n')
-    
+
     suggested <- c(
         'percent_features_cut' = cuts[round(seg$psi[, 2])][2],
         'samples_nonzero_cut' = cuts[round(seg2$psi[, 2])][2])
-    
+
     message(paste(Sys.time(), 'the suggested expression cutoff is',
         round(mean(suggested), 2)))
     return(suggested)

@@ -5,12 +5,13 @@
 \title{Count junctions}
 \usage{
 junctionCount(junctionFiles, sampleNames = names(junctionFiles),
-  output = c("Count", "Rail"), minOverhang = 0, strandSpecific = FALSE,
-  illuminaStranded = FALSE, minCount = 1, maxCores = 1)
+  output = c("Count", "Rail"), minOverhang = 0,
+  strandSpecific = FALSE, illuminaStranded = FALSE, minCount = 1,
+  maxCores = 1)
 }
 \arguments{
 \item{junctionFiles}{A character vector with the full paths to the junction
-files. Can alternatively be a list of \link[GenomicRanges]{GRanges-class} 
+files. Can alternatively be a list of \link[GenomicRanges]{GRanges-class}
 objects with the junction count information.}
 
 \item{sampleNames}{A character vector of the same length as `junctionsFiles`
@@ -31,7 +32,7 @@ is stranded or not.}
 \item{maxCores}{The maximum number of cores to use. By default one.}
 }
 \value{
-A two element list with a `DataFrame` and a 
+A two element list with a `DataFrame` and a
 \link[GenomicRanges]{GRanges-class} object with the counts and the
 annotation used.
 }

@@ -1,3 +1,13 @@
+CHANGES IN VERSION 0.99.23
+--------------------------
+
+NEW FEATURES
+
+    o Added the function merge_rse_metrics() that merges some of the
+        sample metadata metrics for samples that were sequenced in more than
+        one lane. Useful for the RangedSummarizedExperiment objects we
+        typically produce for RNA-seq experiments at the Jaffe lab.
+
 CHANGES IN VERSION 0.99.22
 --------------------------
 
