@@ -9,6 +9,6 @@ The jaffelab contains miscellaneous functions that are commonly used in the
 Jaffe lab \url{http://aejaffe.com/}.
 }
 \author{
-Leonardo Collado-Torres <leo.collado@libd.org>
+Leonardo Collado-Torres <lcolladotor@gmail.com>
 }
 \keyword{package}

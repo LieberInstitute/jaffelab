@@ -3,7 +3,7 @@ Title: Commonly used functions by the Jaffe lab
 Version: 0.99.23
 Date: 2018-11-16
 Authors@R: c(person("Leonardo", "Collado-Torres", 
-	role = c("aut", "cre"), email = "leo.collado@libd.org"), 
+	role = c("aut", "cre"), email = "lcolladotor@gmail.com"), 
 	person(c("Andrew", "E."), "Jaffe", role = "aut", email = "andrew.jaffe@libd.org"), 
 	person(c("Emily", "E."), "Burke", role = "aut", email = "emily.burke@libd.org"))
 Depends:
