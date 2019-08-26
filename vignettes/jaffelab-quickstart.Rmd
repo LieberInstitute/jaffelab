@@ -73,7 +73,7 @@ install_github('LieberInstitute/jaffelab')
 
 `r Githubpkg('LieberInstitute/jaffelab')` is based on many other packages and in particular in those that have implemented the infrastructure needed for dealing with RNA-seq data. TODO
 
-If you are asking yourself the question "Where do I start using Bioconductor?" you might be interested in [this blog post](http://lcolladotor.github.io/2014/10/16/startBioC/#.VkOKbq6rRuU).
+If you are asking yourself the question "Where do I start using Bioconductor?" you might be interested in [this blog post](http://lcolladotor.github.io/2014/10/16/startbioc/#.VkOKbq6rRuU).
 
 ## Asking for help
 
