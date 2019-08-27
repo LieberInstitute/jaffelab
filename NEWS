@@ -1,3 +1,11 @@
+CHANGES IN VERSION 0.99.25
+--------------------------
+
+NEW FEATURES
+
+    o Added the functions n_max() and n_min() which return the top n maximum
+        or minimum values of a vector.
+
 CHANGES IN VERSION 0.99.23
 --------------------------
 
