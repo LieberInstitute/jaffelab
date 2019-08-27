@@ -1,9 +1,9 @@
-#' Regress out SVs or PCs
+#' Regress out covariates
 #'
-#' Regress out surrogate variables or principal components
+#' Regress out covaraites such assurrogate variables or principal components.
 #'
-#' @param y The outcome
-#' @param mod A model matrix
+#' @param y The outcome matrix from sva. Could be a gene expression matrix.
+#' @param mod A full rank model matrix.
 #' @param P The number of SVs or PCs to protect based on the column order.
 #' For example, `P=2` would keep the intercept term and a case vs diagnosis
 #' term in a model that is ~ Dx + more covariates.
@@ -11,11 +11,47 @@
 #' @return An object of the same type as `y` with the SVs/PCs regressed out.
 #'
 #' @export
-#' @author Rafael Irizarry
+#' @author Rafael Irizarry, Leonardo Collado-Torres (examples)
 #'
 #' @examples
 #'
-#' 
+#' ## Define a model generating function for 30 'samples'
+#' set.seed(20190827)
+#' model_fun <- function(x) {
+#'     ## Baseline + a group effect (2 groups) + a second covariate effect
+#'     rnorm(30) +
+#'     c(rnorm(15, mean = 3), rnorm(15, mean = 1)) +
+#'     c(rnorm(5, sd = 0.5), rnorm(5, sd = 0.2, mean = 0.5),
+#'         rnorm(5, sd = 0.2, mean = 0.9))
+#' }
+#'
+#' ## Generate the data for 20 'genes'
+#' y <- t(sapply(1:20, model_fun))
+#'
+#' ## Define the phenotype data for these 30 'samples'
+#' pheno <- data.frame(
+#'     group = rep(c('A', 'B'), each = 15),
+#'     batch = rep(1:3, each = 5)
+#' )
+#'
+#' ## Define a full model
+#' mod <- with(pheno, model.matrix(~ group + batch))
+#'
+#' ## Check the raw data for gene 1
+#' boxplot(y[1, ] ~ pheno$group, ylab = 'Gene 1 Raw Expr')
+#'
+#' ## Now regress out the batch covariate from the gene expression matrix
+#' y_clean_p2 <- cleaningY(y, mod, P = 2)
+#'
+#' ## Check the cleaned data for gene 1 (with P = 2)
+#' boxplot(y_clean_p2[1, ] ~ pheno$group, ylab = 'Gene 1 Clean Expr (P = 2)')
+#'
+#' ## Or regress out the group and batch effects
+#' y_clean_p3 <- cleaningY(y, mod, P = 1)
+#'
+#' ## Check the cleaned data for gene 1 (with P = 3)
+#' boxplot(y_clean_p3[1, ] ~ pheno$group, ylab = 'Gene 1 Clean Expr (P = 3)')
+#'
 
 cleaningY <- function(y, mod, P) {
     stopifnot(P <= ncol(mod))

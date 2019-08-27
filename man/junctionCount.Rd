@@ -41,6 +41,10 @@ Count junctions from either TopHat2, HISAT2 or Rail-RNA output
 }
 \examples{
 
+## TODO (need some data)
+## See https://github.com/LieberInstitute/RNAseq-pipeline/blob/ab71dedb36bcc3dad57233e645fabd5deb96d446/sh/create_count_objects-human.R#L633-L643
+## for an example of how it's being using the the RNA-seq pipeline code
+
 }
 \author{
 Andrew E Jaffe

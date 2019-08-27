@@ -1,6 +1,6 @@
 #' Age plotter
 #'
-#' Plots a Y output by age
+#' Plots a Y output by age.
 #'
 #' @param y A vector with the Y outcome.
 #' @param age A vector with the age information.
@@ -30,7 +30,7 @@
 #' @return A nice plot =)
 #'
 #' @export
-#' @author Andrew E Jaffe
+#' @author Andrew E Jaffe, Leonardo Collado-Torres (examples)
 #'
 #' @import RColorBrewer
 #' @import rafalib
@@ -39,6 +39,47 @@
 #' @importFrom stats lm quantile
 #'
 #' @examples
+#'
+#'
+#' def.par <- par(no.readonly = TRUE) # save default, for resetting...
+#'
+#' ## Generate some Ys
+#' set.seed(20190827)
+#' y <- as.vector(vapply(0:5, function(x) rnorm(20, mean = x), numeric(20)))
+#'
+#' ## Generate some ages
+#' age <- as.vector(
+#'     mapply(runif,
+#'         c(-1, 0, 1, 10, 20, 50), c(0, 1, 10, 20, 50, 90), n = 20
+#'     )
+#' )
+#'
+#' ## Make the age plot with a regression line across age vs Y
+#' agePlotter(y, age,
+#'     mainText = "agePlotter example",
+#'     ylab = "Random Ys",
+#'     mod = model.matrix(~ age),
+#'     ageBreaks = c(-1, 0, 1, 10, 20, 50, 100)
+#' )
+#'
+#' ## Define line and point colors
+#' p_cols <- rep(rep(c('skyblue3', 'dark orange'), each = 10), 6)
+#' l_cols <- c('lightgoldenrod', 'light blue')
+#'
+#' ## Make the plot with the above colors
+#' agePlotter(y, age,
+#'     mainText = "agePlotter example",
+#'     ylab = "Random Ys",
+#'     mod = model.matrix(~ age),
+#'     ageBreaks = c(-1, 0, 1, 10, 20, 50, 100),
+#'     pointColor = p_cols,
+#'     lineColor = l_cols
+#' )
+#' legend('bottom', c('DLPFC', 'HIPPO'), col = l_cols, lwd = 3, bty = 'n',
+#'     ncol = 2)
+#'
+#'
+#' par(def.par)  #- reset to default
 #'
 
 agePlotter <- function(y, age, mod = matrix(rep(1, length(y)), ncol=1),

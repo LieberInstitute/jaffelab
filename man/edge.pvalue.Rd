@@ -7,13 +7,12 @@
 edge.pvalue(stat, stat0, pool = TRUE)
 }
 \arguments{
-\item{stat}{vector of observed statistics}
+\item{stat}{vector of observed statistics.}
 
-\item{stat0}{matrix of null statistics, where rows are features and columns are iterations}
+\item{stat0}{matrix of null statistics, where rows are features and columns
+are iterations.}
 
-\item{pool}{features are interchangeable, e.g. unlist all null statistics}
-
-\item{...}{Additional arguments passed to \link[base:strsplit]{strsplit}.}
+\item{pool}{features are interchangeable, e.g. unlist all null statistics.}
 }
 \value{
 A vector of empirical p-values.
@@ -23,8 +22,20 @@ Given a pattern, it splits and returns the slot of interest.
 }
 \examples{
 
+## Vector of statistics
+z <- rnorm(100, mean = 2)
+
+## Matrix with one row per element in the vector of statistics
+## and one column per permutation (here 100)
+z0 <- matrix(rnorm(1e5), nrow = 100)
+
+## Pool all the permutations (default)
+edge.pvalue(z, z0, pool = TRUE)
+
+## Or don't pull them
+edge.pvalue(z, z0, pool = FALSE)
 
 }
 \author{
-Jeffrey T Leek
+Jeffrey T Leek, Leonardo Collado-Torres (examples)
 }
