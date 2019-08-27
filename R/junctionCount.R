@@ -3,7 +3,7 @@
 #' Count junctions from either TopHat2, HISAT2 or Rail-RNA output
 #'
 #' @param junctionFiles A character vector with the full paths to the junction
-#' files. Can alternatively be a list of \link[GenomicRanges]{GRanges-class}
+#' files. Can alternatively be a list of [GRanges-class][GenomicRanges::GRanges-class]
 #' objects with the junction count information.
 #' @param sampleNames A character vector of the same length as `junctionsFiles`
 #' to use as the sample names.
@@ -17,7 +17,7 @@
 #' @param maxCores The maximum number of cores to use. By default one.
 #'
 #' @return A two element list with a `DataFrame` and a
-#' \link[GenomicRanges]{GRanges-class} object with the counts and the
+#' [GRanges-class][GenomicRanges::GRanges-class] object with the counts and the
 #' annotation used.
 #'
 #' @export

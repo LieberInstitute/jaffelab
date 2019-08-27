@@ -6,7 +6,7 @@
 #' @param coords A character vector of UCSC genome browser coordinates.
 #'
 #' @return A GRanges object.
-#' @seealso \link{granges_to_ucsc}
+#' @seealso [granges_to_ucsc]
 #' @author Leonardo Collado-Torres, Andrew E Jaffe
 #' @export
 #' @importFrom GenomicRanges GRanges
@@ -34,7 +34,7 @@ ucsc_to_granges <- function(coords) {
 #' @param gr A GRanges object.
 #'
 #' @return A character vector of UCSC genome browser coordinates.
-#' @seealso \link{ucsc_to_granges}
+#' @seealso [ucsc_to_granges]
 #' @author Leonardo Collado-Torres
 #' @export
 #' @importFrom GenomicRanges GRanges

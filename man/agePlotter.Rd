@@ -40,10 +40,10 @@ the points.}
 \item{lineColor}{An integer indicating the paletter color to use for the
 lines.}
 
-\item{alreadyFitted}{The output of \link[stats]{fitted} on a linear model
-if you already calculated it. If so, `y` will be ignored.}
+\item{alreadyFitted}{The output of \link[stats:fitted]{fitted} on a linear model
+if you already calculated it. If so, \code{y} will be ignored.}
 
-\item{...}{Additional parameters to pass to \link[graphics]{plot}.}
+\item{...}{Additional parameters to pass to \link[graphics:plot]{plot}.}
 }
 \value{
 A nice plot =)

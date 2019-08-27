@@ -16,11 +16,11 @@ does then to increase the suggested cutoffs. If set to \code{NULL}, this
 will be chosen automatically from 1 to 5.}
 
 \item{seed}{Set this argument for increased reproducibility of the results.
-This is passed to \link[segmented]{seg.control}. We highly recommend
+This is passed to \link[segmented:seg.control]{seg.control}. We highly recommend
 specifiying this value.}
 
 \item{n.boot}{This argument controls the stability of the suggested cutoffs.
-It is passed to \link[segmented]{seg.control}.}
+It is passed to \link[segmented:seg.control]{seg.control}.}
 
 \item{k}{The number of breakpoints to consider. If you increase this value
 the estimated breakpoints are less stable.}
@@ -33,13 +33,13 @@ both curves and show the identified breakpoints as vertical grey lines.
 }
 \description{
 This function finds expression cutoffs based on estimating the second
-breakpoint using \link[segmented]{segmented} applied to two curves. The
+breakpoint using \link[segmented:segmented]{segmented} applied to two curves. The
 first curve is the number of features passing the cutoff assuming an initial
 large drop, an intermediate section with moderate drop, and then a stable
 tail. The second curve is the mean number of expressed samples (non-zero
 expression) for all genes at each given cutoff. This curve increases rapidly
 then has a section with a moderate increase, and finally a long tail. Using
-\link{segmented}[segmented] we find that second breakpoint. The suggested
+\link{segmented} we find that second breakpoint. The suggested
 expression cutoff returned is the average of the two suggested cutoffs.
 }
 \examples{

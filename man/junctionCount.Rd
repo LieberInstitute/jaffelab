@@ -11,13 +11,13 @@ junctionCount(junctionFiles, sampleNames = names(junctionFiles),
 }
 \arguments{
 \item{junctionFiles}{A character vector with the full paths to the junction
-files. Can alternatively be a list of \link[GenomicRanges]{GRanges-class}
+files. Can alternatively be a list of \link[GenomicRanges:GRanges-class]{GRanges-class}
 objects with the junction count information.}
 
-\item{sampleNames}{A character vector of the same length as `junctionsFiles`
+\item{sampleNames}{A character vector of the same length as \code{junctionsFiles}
 to use as the sample names.}
 
-\item{output}{Either `Count` (TopHat2, HISAT2) or `Rail` (Rail-RNA).}
+\item{output}{Either \code{Count} (TopHat2, HISAT2) or \code{Rail} (Rail-RNA).}
 
 \item{minOverhang}{minimum overhang.}
 
@@ -32,8 +32,8 @@ is stranded or not.}
 \item{maxCores}{The maximum number of cores to use. By default one.}
 }
 \value{
-A two element list with a `DataFrame` and a
-\link[GenomicRanges]{GRanges-class} object with the counts and the
+A two element list with a \code{DataFrame} and a
+\link[GenomicRanges:GRanges-class]{GRanges-class} object with the counts and the
 annotation used.
 }
 \description{

@@ -5,7 +5,7 @@
 #' @param stat vector of observed statistics
 #' @param stat0 matrix of null statistics, where rows are features and columns are iterations
 #' @param pool features are interchangeable, e.g. unlist all null statistics
-#' @param ... Additional arguments passed to \link[base]{strsplit}.
+#' @param ... Additional arguments passed to [strsplit][base::strsplit].
 #'
 #' @return A vector of empirical p-values.
 #'

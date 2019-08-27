@@ -2,13 +2,13 @@
 #'
 #' Given a pattern, it splits and returns the slot of interest.
 #'
-#' @param x Passed to argument \code{x} of \link[base]{strsplit}.
-#' @param pattern Passed to argument \code{split} of \link[base]{strsplit}.
+#' @param x Passed to argument `x` of [strsplit][base::strsplit].
+#' @param pattern Passed to argument `split` of [strsplit][base::strsplit].
 #' @param slot An integer specifying which element of the resulting list to
 #' return.
-#' @param ... Additional arguments passed to \link[base]{strsplit}.
+#' @param ... Additional arguments passed to [strsplit][base::strsplit].
 #'
-#' @return A vector with the information extracted from \code{x}.
+#' @return A vector with the information extracted from `x`.
 #'
 #' @export
 #' @author Andrew E Jaffe

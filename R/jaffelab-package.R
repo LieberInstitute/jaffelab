@@ -1,7 +1,7 @@
 #' Commonly used functions by the Jaffe lab
 #'
 #' The jaffelab contains miscellaneous functions that are commonly used in the
-#' Jaffe lab \url{http://aejaffe.com/}.
+#' Jaffe lab <http://aejaffe.com/>.
 #'
 #' @name jaffelab-package
 #' @aliases jaffelab-package

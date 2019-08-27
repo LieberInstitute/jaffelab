@@ -7,7 +7,7 @@
 getPcaVars(pca, digits = 3)
 }
 \arguments{
-\item{pca}{An object created with \link[stats]{prcomp}.}
+\item{pca}{An object created with \link[stats:prcomp]{prcomp}.}
 
 \item{digits}{The number of significant digits to round to.}
 }
@@ -16,7 +16,7 @@ A vector with the percent of variance explained for each of the
 principal components in decreasing order.
 }
 \description{
-Given a PCA object created with \link[stats]{prcomp}, this function computes 
+Given a PCA object created with \link[stats:prcomp]{prcomp}, this function computes
 the percent of variance explained by each of the principal components.
 }
 \examples{

@@ -7,12 +7,12 @@
 getR2(p, mod, mod0 = NULL)
 }
 \arguments{
-\item{p}{A matrix that will be passed to \link[limma]{lmFit} `object`.}
+\item{p}{A matrix that will be passed to \link[limma:lmFit]{lmFit} \code{object}.}
 
 \item{mod}{A model matrix for the alternative model (the larger one).}
 
-\item{mod0}{A model matrix for the null model (the smaller one). If `NULL`
-then `p` will be used to calculate the residual sum of squares of the
+\item{mod0}{A model matrix for the null model (the smaller one). If \code{NULL}
+then \code{p} will be used to calculate the residual sum of squares of the
 null model.}
 }
 \value{

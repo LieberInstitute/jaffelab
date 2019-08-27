@@ -13,7 +13,7 @@ edge.pvalue(stat, stat0, pool = TRUE)
 
 \item{pool}{features are interchangeable, e.g. unlist all null statistics}
 
-\item{...}{Additional arguments passed to \link[base]{strsplit}.}
+\item{...}{Additional arguments passed to \link[base:strsplit]{strsplit}.}
 }
 \value{
 A vector of empirical p-values.

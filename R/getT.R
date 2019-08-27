@@ -1,8 +1,8 @@
 #' Get t-statistics from limma objects
 #'
-#' Get the t-statistics from a \link[limma]{lmFit} object.
+#' Get the t-statistics from a [lmFit][limma::lmFit] object.
 #'
-#' @param lmFitObj A \link[limma]{lmFit} object.
+#' @param lmFitObj A [lmFit][limma::lmFit] object.
 #' @param coiIndex An integer specifying the coefficent of interest in the model
 #' for which to get the t-statistics for.
 #'

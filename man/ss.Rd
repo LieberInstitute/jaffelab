@@ -7,14 +7,14 @@
 ss(x, pattern, slot = 1, ...)
 }
 \arguments{
-\item{x}{Passed to argument \code{x} of \link[base]{strsplit}.}
+\item{x}{Passed to argument \code{x} of \link[base:strsplit]{strsplit}.}
 
-\item{pattern}{Passed to argument \code{split} of \link[base]{strsplit}.}
+\item{pattern}{Passed to argument \code{split} of \link[base:strsplit]{strsplit}.}
 
 \item{slot}{An integer specifying which element of the resulting list to
 return.}
 
-\item{...}{Additional arguments passed to \link[base]{strsplit}.}
+\item{...}{Additional arguments passed to \link[base:strsplit]{strsplit}.}
 }
 \value{
 A vector with the information extracted from \code{x}.

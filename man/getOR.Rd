@@ -10,7 +10,7 @@ getOR(x)
 \item{x}{A two by two matrix.}
 }
 \value{
-The odds ratio calculated from `x`.
+The odds ratio calculated from \code{x}.
 }
 \description{
 Calculate the odds ratio from a 2 by 2 table.

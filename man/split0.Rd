@@ -14,7 +14,7 @@ A named list according to the unique elements of \code{x} with the
 integer indices of those given elements.
 }
 \description{
-Splits a vector (which is casted as a factor) by its elements returning a 
+Splits a vector (which is casted as a factor) by its elements returning a
 named list with the indices for each unique element of the vector.
 }
 \examples{
@@ -28,7 +28,7 @@ split0(abc)
 
 }
 \seealso{
-\link[rafalib]{splitit}
+\link[rafalib:splitit]{splitit}
 }
 \author{
 Andrew E Jaffe

@@ -7,14 +7,14 @@
 merge_rse_metrics(rse)
 }
 \arguments{
-\item{rse}{A \link[SummarizedExperiment]{RangedSummarizedExperiment-class}
+\item{rse}{A \link[SummarizedExperiment:RangedSummarizedExperiment-class]{RangedSummarizedExperiment-class}
 object with 'concordMapRate', 'overallMapRate', 'mitoRate',
 'rRNA_rate', 'totalAssignedGene', 'numMapped', 'numReads', 'numUnmapped',
 'mitoMapped', 'totalMapped' as either NumericList() or IntegerList() objects
 in the colData() columns.}
 }
 \value{
-A \link[SummarizedExperiment]{RangedSummarizedExperiment-class}
+A \link[SummarizedExperiment:RangedSummarizedExperiment-class]{RangedSummarizedExperiment-class}
 with merged columns for 'concordMapRate', 'overallMapRate', 'mitoRate',
 'rRNA_rate', 'totalAssignedGene', 'numMapped', 'numReads', 'numUnmapped',
 'mitoMapped', 'totalMapped'.

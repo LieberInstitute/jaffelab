@@ -5,13 +5,13 @@
 #'
 #' @param x A vector to split.
 #'
-#' @return A named list according to the unique elements of \code{x} with the
+#' @return A named list according to the unique elements of `x` with the
 #' integer indices of those given elements.
 #'
 #' @export
 #' @author Andrew E Jaffe
 #'
-#' @seealso \link[rafalib]{splitit}
+#' @seealso [splitit][rafalib::splitit]
 #' @import rafalib
 #'
 #' @examples

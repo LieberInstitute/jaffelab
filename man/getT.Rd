@@ -7,7 +7,7 @@
 getT(lmFitObj, coiIndex = 2L)
 }
 \arguments{
-\item{lmFitObj}{A \link[limma]{lmFit} object.}
+\item{lmFitObj}{A \link[limma:lmFit]{lmFit} object.}
 
 \item{coiIndex}{An integer specifying the coefficent of interest in the model
 for which to get the t-statistics for.}
@@ -17,7 +17,7 @@ A two column matrix with the t-statistics and the p-values of the
 coefficient of interest.
 }
 \description{
-Get the t-statistics from a \link[limma]{lmFit} object.
+Get the t-statistics from a \link[limma:lmFit]{lmFit} object.
 }
 \examples{
 

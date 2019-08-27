@@ -16,7 +16,7 @@ For example, \code{P=2} would keep the intercept term and a case vs diagnosis
 term in a model that is ~ Dx + more covariates.}
 }
 \value{
-An object of the same type as `y` with the SVs/PCs regressed out.
+An object of the same type as \code{y} with the SVs/PCs regressed out.
 }
 \description{
 Regress out surrogate variables or principal components

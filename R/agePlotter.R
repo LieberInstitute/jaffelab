@@ -18,14 +18,14 @@
 #' the points.
 #' @param lineColor An integer indicating the paletter color to use for the
 #' lines.
-#' @param alreadyFitted The output of \link[stats]{fitted} on a linear model
+#' @param alreadyFitted The output of [fitted][stats::fitted] on a linear model
 #' if you already calculated it. If so, `y` will be ignored.
-#' @param ... Additional parameters to pass to \link[graphics]{plot}.
+#' @param ... Additional parameters to pass to [plot][graphics::plot].
 #' @details
-#' \code{pointColor} can be a vector of length equal to \code{age} and have
-#' multiple values in which case \code{lineColor} has to have a length
-#' equal to the number of unique \code{pointColor} values. Specifying
-#' this will draw a line for each unique \code{pointColor}.
+#' `pointColor` can be a vector of length equal to `age` and have
+#' multiple values in which case `lineColor` has to have a length
+#' equal to the number of unique `pointColor` values. Specifying
+#' this will draw a line for each unique `pointColor`.
 #'
 #' @return A nice plot =)
 #'

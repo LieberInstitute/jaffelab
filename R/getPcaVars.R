@@ -1,9 +1,9 @@
 #' Calculates the percent of variance explained for principal components
 #'
-#' Given a PCA object created with \link[stats]{prcomp}, this function computes 
+#' Given a PCA object created with [prcomp][stats::prcomp], this function computes 
 #' the percent of variance explained by each of the principal components.
 #'
-#' @param pca An object created with \link[stats]{prcomp}.
+#' @param pca An object created with [prcomp][stats::prcomp].
 #' @param digits The number of significant digits to round to.
 #'
 #' @return A vector with the percent of variance explained for each of the

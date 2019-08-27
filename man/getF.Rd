@@ -7,13 +7,13 @@
 getF(fit, fit0, theData)
 }
 \arguments{
-\item{fit}{An object created with \link[limma]{lmFit} using the alternative
+\item{fit}{An object created with \link[limma:lmFit]{lmFit} using the alternative
 model (the larger model).}
 
-\item{fit0}{An object created with \link[limma]{lmFit} using the null
+\item{fit0}{An object created with \link[limma:lmFit]{lmFit} using the null
 model (the smaller model, nested in the larger one).}
 
-\item{theData}{The data used in the \link[limma]{lmFit} call.}
+\item{theData}{The data used in the \link[limma:lmFit]{lmFit} call.}
 }
 \value{
 A data.frame with the F-statistics (\code{fstat}), the degrees of
@@ -25,7 +25,7 @@ For some data Y organized in a matrix, calculate a F-statitic per row
 comparing two nested models.
 }
 \details{
-This function can also work with outputs from \link[stats]{lm}.
+This function can also work with outputs from \link[stats:lm]{lm}.
 }
 \examples{
 

@@ -2,7 +2,7 @@
 #'
 #' Using limma, calculate the R squared from a matrix using nested models
 #'
-#' @param p A matrix that will be passed to \link[limma]{lmFit} `object`.
+#' @param p A matrix that will be passed to [lmFit][limma::lmFit] `object`.
 #' @param mod A model matrix for the alternative model (the larger one).
 #' @param mod0 A model matrix for the null model (the smaller one). If `NULL`
 #' then `p` will be used to calculate the residual sum of squares of the

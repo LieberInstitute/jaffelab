@@ -3,18 +3,18 @@
 #' For some data Y organized in a matrix, calculate a F-statitic per row
 #' comparing two nested models.
 #'
-#' @param fit An object created with \link[limma]{lmFit} using the alternative
+#' @param fit An object created with [lmFit][limma::lmFit] using the alternative
 #' model (the larger model).
-#' @param fit0 An object created with \link[limma]{lmFit} using the null
+#' @param fit0 An object created with [lmFit][limma::lmFit] using the null
 #' model (the smaller model, nested in the larger one).
-#' @param theData The data used in the \link[limma]{lmFit} call.
+#' @param theData The data used in the [lmFit][limma::lmFit] call.
 #' 
 #'
-#' @return A data.frame with the F-statistics (\code{fstat}), the degrees of
-#' freedom for the nallternative model (\code{df1}), the null model
-#' (\code{df0}), and the p-value given the F-distribution (\code{f_pval}).
+#' @return A data.frame with the F-statistics (`fstat`), the degrees of
+#' freedom for the nallternative model (`df1`), the null model
+#' (`df0`), and the p-value given the F-distribution (`f_pval`).
 #'
-#' @details This function can also work with outputs from \link[stats]{lm}.
+#' @details This function can also work with outputs from [lm][stats::lm].
 #'
 #' @export
 #' @author Leonardo Collado-Torres, Andrew E Jaffe

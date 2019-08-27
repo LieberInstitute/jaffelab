@@ -5,13 +5,13 @@
 #' with our RNA-seq processing pipeline for samples that are sequenced
 #' in more than one lane.
 #'
-#' @param rse A \link[SummarizedExperiment]{RangedSummarizedExperiment-class}
+#' @param rse A [RangedSummarizedExperiment-class][SummarizedExperiment::RangedSummarizedExperiment-class]
 #' object with 'concordMapRate', 'overallMapRate', 'mitoRate',
 #' 'rRNA_rate', 'totalAssignedGene', 'numMapped', 'numReads', 'numUnmapped',
 #' 'mitoMapped', 'totalMapped' as either NumericList() or IntegerList() objects
 #' in the colData() columns.
 #'
-#' @return A \link[SummarizedExperiment]{RangedSummarizedExperiment-class}
+#' @return A [RangedSummarizedExperiment-class][SummarizedExperiment::RangedSummarizedExperiment-class]
 #' with merged columns for 'concordMapRate', 'overallMapRate', 'mitoRate',
 #' 'rRNA_rate', 'totalAssignedGene', 'numMapped', 'numReads', 'numUnmapped',
 #' 'mitoMapped', 'totalMapped'.
