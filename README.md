@@ -12,7 +12,9 @@ coverage](https://codecov.io/gh/LieberInstitute/jaffelab/branch/master/graphs/ba
 [![DOI](https://zenodo.org/badge/70074284.svg)](https://zenodo.org/badge/latestdoi/70074284)
 
 This package contains custom functions that are frequently used by the
-Jaffe lab. This is a work in progress.
+Jaffe lab. Please check the package [documentation
+website](http://lieberinstitute.github.io/jaffelab) for more
+information.
 
 # Installation instructions
 

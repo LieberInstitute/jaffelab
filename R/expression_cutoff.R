@@ -51,11 +51,15 @@
 #' })
 #' summary(y2)
 #'
+#' expression_cutoff(y2)
+#'
+#' ## Or same the plots to a PDF file
+#'
 #' pdf('test_expression_cutoff.pdf', width = 12)
 #' expression_cutoff(y2)
 #' dev.off()
 #'
-#' ## View the pdf
+#' ## View the pdf with the following code
 #' utils::browseURL('test_expression_cutoff.pdf')
 #'
 
