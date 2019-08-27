@@ -62,6 +62,9 @@ pdf('test_expression_cutoff.pdf', width = 12)
 expression_cutoff(y2)
 dev.off()
 
+## View the pdf
+utils::browseURL('test_expression_cutoff.pdf')
+
 }
 \author{
 Leonardo Collado-Torres

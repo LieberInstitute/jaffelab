@@ -1,6 +1,6 @@
 Package: jaffelab
 Title: Commonly used functions by the Jaffe lab
-Version: 0.99.26
+Version: 0.99.27
 Date: 2019-08-27
 Authors@R: c(person("Leonardo", "Collado-Torres", 
 	role = c("aut", "cre"), email = "lcolladotor@gmail.com",
@@ -30,10 +30,11 @@ Imports:
 Suggests:
     BiocStyle (>= 2.3.12),
     derfinderHelper,
-    devtools (>= 1.6),
     knitcitations,
     knitr (>= 1.6),
+    remotes,
     rmarkdown (>= 0.9.5),
+    sessioninfo,
     testthat
 VignetteBuilder: knitr
 Description: The jaffelab contains miscellaneous functions that are commonly

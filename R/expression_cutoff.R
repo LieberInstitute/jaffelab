@@ -55,6 +55,9 @@
 #' expression_cutoff(y2)
 #' dev.off()
 #'
+#' ## View the pdf
+#' utils::browseURL('test_expression_cutoff.pdf')
+#'
 
 expression_cutoff <- function(expr, max_cut = 1, seed = NULL, n.boot = 2000,
     k = 2) {

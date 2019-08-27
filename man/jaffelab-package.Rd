@@ -2,13 +2,29 @@
 % Please edit documentation in R/jaffelab-package.R
 \docType{package}
 \name{jaffelab-package}
+\alias{jaffelab}
 \alias{jaffelab-package}
-\title{Commonly used functions by the Jaffe lab}
+\title{jaffelab: Commonly used functions by the Jaffe lab}
 \description{
-The jaffelab contains miscellaneous functions that are commonly used in the
-Jaffe lab \url{http://aejaffe.com/}.
+The jaffelab contains miscellaneous functions that are commonly
+    used in the Jaffe lab http://aejaffe.com/.
+}
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://github.com/LieberInstitute/jaffelab}
+  \item Report bugs at \url{https://github.com/LieberInstitute/jaffelab/issues}
+}
+
 }
 \author{
-Leonardo Collado-Torres \href{mailto:leo.collado@libd.org}{leo.collado@libd.org}
+\strong{Maintainer}: Leonardo Collado-Torres \email{lcolladotor@gmail.com} (0000-0003-2140-308X)
+
+Authors:
+\itemize{
+  \item Andrew E. Jaffe \email{andrew.jaffe@libd.org} (0000-0001-6886-1454)
+  \item Emily E. Burke \email{emily.burke@libd.org}
 }
-\keyword{package}
+
+}
+\keyword{internal}

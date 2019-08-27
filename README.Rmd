@@ -1,0 +1,50 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# jaffelab
+
+[![Travis-CI build status](https://travis-ci.org/LieberInstitute/jaffelab.svg?branch=master)](https://travis-ci.org/LieberInstitute/jaffelab)
+[![Lifecycle: maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
+[![Codecov test coverage](https://codecov.io/gh/LieberInstitute/jaffelab/branch/master/graphs/badge.svg)](https://codecov.io/gh/LieberInstitute/jaffelab?branch=master)
+[![DOI](https://zenodo.org/badge/70074284.svg)](https://zenodo.org/badge/latestdoi/70074284)
+
+This package contains custom functions that are frequently used by the Jaffe lab. This is a work in progress.
+
+# Installation instructions
+
+Get the latest stable `R` release from [CRAN](http://cran.r-project.org/). Then install `jaffelab` using the following code:
+
+```{r, eval = FALSE}
+## If needed:
+if (!requireNamespace("remotes", quietly = TRUE))
+   install.packages("remotes")
+
+## Install with:
+remotes::install_github('LieberInstitute/jaffelab')
+```
+
+
+# Citation
+
+Below is the citation output from using `citation('jaffelab')` in R. Please 
+run this yourself to check for any updates on how to cite __jaffelab__.
+
+```{r 'citation'}
+citation('jaffelab')
+```
+
+# Testing
+
+Testing on Bioc-devel is feasible thanks to [R Travis](http://docs.travis-ci.com/user/languages/r/).

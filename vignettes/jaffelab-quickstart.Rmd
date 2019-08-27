@@ -30,7 +30,6 @@ cite_options(hyperlink = 'to.doc', citation_format = 'text', style = 'html')
 ## Write bibliography information
 bibs <- c(
     BiocStyle = citation('BiocStyle'),
-    devtools = citation('devtools'),
     GenomicRanges = citation('GenomicRanges'),
     IRanges = citation('IRanges'),
     jaffelab = citation('jaffelab'),
@@ -41,7 +40,9 @@ bibs <- c(
     R = citation(),
     rafalib = citation('rafalib'),
     RColorBrewer = citation('RColorBrewer'),
+    remotes = citation('remotes'),
     rmarkdown = citation('rmarkdown'),
+    sessioninfo = citation('sessioninfo'),
     testthat = citation('testthat')
 )
 
@@ -62,16 +63,13 @@ names(bib) <- names(bibs)
 `R` is an open-source statistical environment which can be easily modified to enhance its functionality via packages. `r Githubpkg('LieberInstitute/jaffelab')` is a `R` package available via GitHub. `R` can be installed on any operating system from [CRAN](https://cran.r-project.org/) after which you can install `r Githubpkg('LieberInstitute/jaffelab')` by using the following commands in your `R` session:
 
 ```{r 'installpkg', eval = FALSE}
-## If needed:
-# install.packages('devtools')
+if (!requireNamespace("remotes", quietly = TRUE))
+   install.packages("remotes")
 
-library('devtools')
-install_github('LieberInstitute/jaffelab')
+remotes::install_github('LieberInstitute/jaffelab')
 ```
 
 ## Required knowledge
-
-`r Githubpkg('LieberInstitute/jaffelab')` is based on many other packages and in particular in those that have implemented the infrastructure needed for dealing with RNA-seq data. TODO
 
 If you are asking yourself the question "Where do I start using Bioconductor?" you might be interested in [this blog post](http://lcolladotor.github.io/2014/10/16/startbioc/#.VkOKbq6rRuU).
 
@@ -88,13 +86,16 @@ We hope that `r Githubpkg('LieberInstitute/jaffelab')` will be useful for your r
 citation('jaffelab')
 ```
 
+# Overview
+
+`r Githubpkg('LieberInstitute/jaffelab')` is based on many other packages and in particular in those that have implemented the infrastructure needed for dealing with RNA-seq data. We use it extensively at the [Andrew Jaffe Data Science team](http://aejaffe.com/) from the [Lieber Institute for Brain Development](https://www.libd.org/) (LIBD), including in publications such as BrainSEQ Phase II `r citep('10.1016/j.neuron.2019.05.013')`. This R package started with a collection of functions Andrew Jaffe used frequently, some authored by [Rafael Irizarry](https://rafalab.github.io/) and [Jeff Leek](http://jtleek.com/). It now includes other helper functions that are more specific to our work at LIBD such as `agePlotter()`. Please check the help files of each function to get an idea on what they do.
+
 # Reproducibility
 
 The `r Githubpkg('LieberInstitute/jaffelab')` package `r citep(bib[['jaffelab']])` was made possible thanks to:
 
 * R `r citep(bib[['R']])`
 * `r Biocpkg('BiocStyle')` `r citep(bib[['BiocStyle']])`
-* `r CRANpkg('devtools')` `r citep(bib[['devtools']])`
 * `r Biocpkg('GenomicRanges')` `r citep(bib[['GenomicRanges']])`
 * `r Biocpkg('IRanges')` `r citep(bib[['IRanges']])`
 * `r CRANpkg('knitcitations')` `r citep(bib[['knitcitations']])`
@@ -103,7 +104,9 @@ The `r Githubpkg('LieberInstitute/jaffelab')` package `r citep(bib[['jaffelab']]
 * `r CRANpkg('parallel')` `r citep(bib[['parallel']])`
 * `r CRANpkg('rafalib')` `r citep(bib[['rafalib']])`
 * `r CRANpkg('RColorBrewer')` `r citep(bib[['RColorBrewer']])`
+* `r CRANpkg('remotes')` `r citep(bib[['remotes']])`
 * `r CRANpkg('rmarkdown')` `r citep(bib[['rmarkdown']])`
+* `r CRANpkg('sessioninfo')` `r citep(bib[['sessioninfo']])`
 * `r CRANpkg('testthat')` `r citep(bib[['testthat']])`
 
 
@@ -143,7 +146,7 @@ round(totalTime, digits=3)
 
 ```{r reproduce3, echo=FALSE}
 ## Session info
-library('devtools')
+library('sessioninfo')
 options(width = 120)
 session_info()
 ```
@@ -155,7 +158,7 @@ with `r CRANpkg('knitr')` `r citep(bib[['knitr']])` and `r CRANpkg('rmarkdown')`
 
 Citations made with `r CRANpkg('knitcitations')` `r citep(bib[['knitcitations']])`.
 
-```{r vignetteBiblio, results = 'asis', echo = FALSE, warning = FALSE}
+```{r vignetteBiblio, results = 'asis', echo = FALSE, warning = FALSE, message = FALSE}
 ## Print bibliography
 bibliography()
 ```

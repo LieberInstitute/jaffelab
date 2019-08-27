@@ -1,12 +1,8 @@
-#' Commonly used functions by the Jaffe lab
-#'
-#' The jaffelab contains miscellaneous functions that are commonly used in the
-#' Jaffe lab <http://aejaffe.com/>.
-#'
-#' @name jaffelab-package
-#' @aliases jaffelab-package
-#' @docType package
-#' @author Leonardo Collado-Torres <leo.collado@@libd.org>
-#'
-#' @keywords package
+#' @keywords internal
+"_PACKAGE"
+
+# The following block is used by usethis to automatically manage
+# roxygen namespace tags. Modify with care!
+## usethis namespace: start
+## usethis namespace: end
 NULL
