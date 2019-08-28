@@ -28,7 +28,7 @@ cite_options(hyperlink = 'to.doc', citation_format = 'text', style = 'html')
 # https://github.com/cboettig/knitcitations/issues/63
 
 ## Write bibliography information
-bibs <- c(
+bib <- c(
     BiocStyle = citation('BiocStyle'),
     GenomicRanges = citation('GenomicRanges'),
     IRanges = citation('IRanges'),
@@ -41,17 +41,12 @@ bibs <- c(
     rafalib = citation('rafalib'),
     RColorBrewer = citation('RColorBrewer'),
     remotes = citation('remotes'),
-    rmarkdown = citation('rmarkdown'),
+    rmarkdown = citation('rmarkdown')[1],
     sessioninfo = citation('sessioninfo'),
     testthat = citation('testthat')
 )
 
-write.bibtex(bibs,
-    file = 'quickstartRef.bib')
-bib <- read.bibtex('quickstartRef.bib')
-
-## Assign short names
-names(bib) <- names(bibs)
+write.bibtex(bib, file = 'quickstartRef.bib')
 ```
 
 
