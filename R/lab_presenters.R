@@ -18,6 +18,7 @@
 #' that was uploaded.
 #' @export
 #' @importFrom googledrive drive_find drive_upload drive_update
+#' @author Leonardo Collado-Torres
 #'
 #' @examples
 #'

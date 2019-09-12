@@ -56,3 +56,6 @@ lab_presenters(
 }
 
 }
+\author{
+Leonardo Collado-Torres
+}
