@@ -4,7 +4,7 @@
 \alias{lab_presenters}
 \title{Randomize presenters and upload them to Google Drive}
 \usage{
-lab_presenters(presenters, start_date = "2019-09-19",
+lab_presenters(presenters, start_date = "2019-09-18",
   sheet_name = "Jaffelab research presenters", n = 2, repeat_day = 7)
 }
 \arguments{
@@ -45,10 +45,14 @@ jaffe_research_presenters <- c('Brianna', 'Emily', 'Josh', 'Kira', 'Leo',
 ## Update lab presenters sheet
 lab_presenters(
     presenters = jaffe_research_presenters,
-    start_date = '2019-09-19',
+    start_date = '2019-09-18',
     sheet_name = 'Jaffelab research presenters',
     n = 2
 )
+
+## If it's a new sheet, we recommend sharing an editable link so other
+## lab members can swap out as necessary.
+
 }
 
 }

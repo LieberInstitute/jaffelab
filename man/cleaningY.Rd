@@ -7,7 +7,8 @@
 cleaningY(y, mod, P)
 }
 \arguments{
-\item{y}{The outcome matrix from sva. Could be a gene expression matrix.}
+\item{y}{A matrix such as the outcome matrix from sva or a gene expression
+matrix.}
 
 \item{mod}{A full rank model matrix.}
 
@@ -19,7 +20,7 @@ term in a model that is ~ Dx + more covariates.}
 An object of the same type as \code{y} with the SVs/PCs regressed out.
 }
 \description{
-Regress out covaraites such assurrogate variables or principal components.
+Regress out covariates such as surrogate variables or principal components.
 }
 \examples{
 

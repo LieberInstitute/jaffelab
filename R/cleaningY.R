@@ -1,8 +1,9 @@
 #' Regress out covariates
 #'
-#' Regress out covaraites such assurrogate variables or principal components.
+#' Regress out covariates such as surrogate variables or principal components.
 #'
-#' @param y The outcome matrix from sva. Could be a gene expression matrix.
+#' @param y A matrix such as the outcome matrix from sva or a gene expression
+#' matrix.
 #' @param mod A full rank model matrix.
 #' @param P The number of SVs or PCs to protect based on the column order.
 #' For example, `P=2` would keep the intercept term and a case vs diagnosis
