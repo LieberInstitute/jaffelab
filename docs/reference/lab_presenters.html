@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Function to compute empirical p-values — edge.pvalue • jaffelab</title>
+<title>Randomize presenters and upload them to Google Drive — lab_presenters • jaffelab</title>
 
 
 <!-- jquery -->
@@ -35,8 +35,11 @@
 
 
 
-<meta property="og:title" content="Function to compute empirical p-values — edge.pvalue" />
-<meta property="og:description" content="Given a pattern, it splits and returns the slot of interest." />
+<meta property="og:title" content="Randomize presenters and upload them to Google Drive — lab_presenters" />
+<meta property="og:description" content="This function takes a set of presenter names and randomizes them into groups
+of size n based on the start_date. The resulting table is then uploaded
+to Google Drive. If the sheet_name exists, it's updated, otherwise a new
+spreadsheet is created which you can share later." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -120,72 +123,77 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Function to compute empirical p-values</h1>
-    <small class="dont-index">Source: <a href='https://github.com/LieberInstitute/jaffelab/blob/master/R/edge.pvalue.R'><code>R/edge.pvalue.R</code></a></small>
-    <div class="hidden name"><code>edge.pvalue.Rd</code></div>
+    <h1>Randomize presenters and upload them to Google Drive</h1>
+    <small class="dont-index">Source: <a href='https://github.com/LieberInstitute/jaffelab/blob/master/R/lab_presenters.R'><code>R/lab_presenters.R</code></a></small>
+    <div class="hidden name"><code>lab_presenters.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Given a pattern, it splits and returns the slot of interest.</p>
+    <p>This function takes a set of presenter names and randomizes them into groups
+of size <code>n</code> based on the <code>start_date</code>. The resulting table is then uploaded
+to Google Drive. If the <code>sheet_name</code> exists, it's updated, otherwise a new
+spreadsheet is created which you can share later.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>edge.pvalue</span>(<span class='no'>stat</span>, <span class='no'>stat0</span>, <span class='kw'>pool</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+    <pre class="usage"><span class='fu'>lab_presenters</span>(<span class='no'>presenters</span>, <span class='kw'>start_date</span> <span class='kw'>=</span> <span class='st'>"2019-09-18"</span>,
+  <span class='kw'>sheet_name</span> <span class='kw'>=</span> <span class='st'>"Jaffelab research presenters"</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>repeat_day</span> <span class='kw'>=</span> <span class='fl'>7</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>stat</th>
-      <td><p>vector of observed statistics.</p></td>
+      <th>presenters</th>
+      <td><p>A <code><a href='https://rdrr.io/r/base/character.html'>character()</a></code> vector of presenter names.</p></td>
     </tr>
     <tr>
-      <th>stat0</th>
-      <td><p>matrix of null statistics, where rows are features and columns
-are iterations.</p></td>
+      <th>start_date</th>
+      <td><p>A <code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code> vector with the start date in a
+<code>YYYY-MM-DD</code> format.</p></td>
     </tr>
     <tr>
-      <th>pool</th>
-      <td><p>features are interchangeable, e.g. unlist all null statistics.</p></td>
+      <th>sheet_name</th>
+      <td><p>A <code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code> vector with the name of the Google
+Drive spreadsheet that will be updated (or created if it doesn't exist).</p></td>
+    </tr>
+    <tr>
+      <th>n</th>
+      <td><p>The number of presenters per meeting.</p></td>
+    </tr>
+    <tr>
+      <th>repeat_day</th>
+      <td><p>An <code><a href='https://rdrr.io/r/base/integer.html'>integer(1)</a></code> with the number of days between lab
+meetings. Use 7 for a weekly lab meeting.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A vector of empirical p-values.</p>
+    <p>A one row table with the <code>googledrive</code> information for the file
+that was uploaded.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
-<span class='co'>## Vector of statistics</span>
-<span class='no'>z</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span>(<span class='fl'>100</span>, <span class='kw'>mean</span> <span class='kw'>=</span> <span class='fl'>2</span>)
+<span class='co'>## Presenters as of 2019-09-12</span>
+<span class='no'>jaffe_research_presenters</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>'Brianna'</span>, <span class='st'>'Emily'</span>, <span class='st'>'Josh'</span>, <span class='st'>'Kira'</span>, <span class='st'>'Leo'</span>,
+    <span class='st'>'Maddy'</span>, <span class='st'>'Matt'</span>, <span class='st'>'Nick'</span>)
 
-<span class='co'>## Matrix with one row per element in the vector of statistics</span>
-<span class='co'>## and one column per permutation (here 100)</span>
-<span class='no'>z0</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>matrix</a></span>(<span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span>(<span class='fl'>1e5</span>), <span class='kw'>nrow</span> <span class='kw'>=</span> <span class='fl'>100</span>)
+<span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
+<span class='co'>## You'll need to have access to Google Drive through</span>
+<span class='co'>## googledrive::drive_auth() set up.</span>
 
-<span class='co'>## Pool all the permutations (default)</span>
-<span class='fu'>edge.pvalue</span>(<span class='no'>z</span>, <span class='no'>z0</span>, <span class='kw'>pool</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt;   [1] 0.01382 0.03510 0.01428 0.03591 0.03543 0.29914 0.00372 0.06909 0.01696
-#&gt;  [10] 0.10202 0.01038 0.13017 0.00072 0.05472 0.00008 0.18784 0.00155 0.00004
-#&gt;  [19] 0.00034 0.09499 0.07930 0.21570 0.16363 0.18444 0.00146 0.34111 0.00524
-#&gt;  [28] 0.01969 0.15938 0.00399 0.27992 0.01487 0.00001 0.00360 0.19069 0.00056
-#&gt;  [37] 0.00966 0.00005 0.02098 0.01167 0.00100 0.21018 0.02098 0.10707 0.00453
-#&gt;  [46] 0.06180 0.17439 0.00008 0.00204 0.04405 0.00005 0.00085 0.02831 0.00347
-#&gt;  [55] 0.05188 0.13136 0.00249 0.55647 0.22300 0.06620 0.00063 0.00387 0.07530
-#&gt;  [64] 0.00216 0.14057 0.00604 0.31523 0.26866 0.03212 0.00103 0.07873 0.10390
-#&gt;  [73] 0.00021 0.06156 0.26509 0.10712 0.39060 0.25550 0.00390 0.00145 0.00001
-#&gt;  [82] 0.19433 0.00430 0.17409 0.00003 0.00334 0.12231 0.00089 0.00008 0.01361
-#&gt;  [91] 0.07739 0.08164 0.02312 0.00048 0.01593 0.03107 0.16248 0.08148 0.00293
-#&gt; [100] 0.14941</div><div class='input'>
-<span class='co'>## Or don't pull them</span>
-<span class='fu'>edge.pvalue</span>(<span class='no'>z</span>, <span class='no'>z0</span>, <span class='kw'>pool</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt;   [1] 0.018 0.027 0.017 0.040 0.032 0.307 0.002 0.069 0.020 0.107 0.004 0.115
-#&gt;  [13] 0.001 0.067 0.001 0.186 0.001 0.001 0.001 0.095 0.091 0.223 0.153 0.194
-#&gt;  [25] 0.001 0.362 0.001 0.016 0.183 0.004 0.302 0.015 0.001 0.006 0.172 0.001
-#&gt;  [37] 0.007 0.001 0.021 0.015 0.001 0.202 0.031 0.103 0.001 0.057 0.178 0.001
-#&gt;  [49] 0.001 0.044 0.001 0.001 0.021 0.003 0.055 0.111 0.002 0.567 0.229 0.064
-#&gt;  [61] 0.001 0.004 0.071 0.002 0.160 0.008 0.318 0.268 0.034 0.001 0.060 0.097
-#&gt;  [73] 0.001 0.061 0.273 0.104 0.400 0.255 0.009 0.001 0.001 0.195 0.004 0.176
-#&gt;  [85] 0.001 0.003 0.115 0.001 0.001 0.007 0.077 0.082 0.023 0.001 0.016 0.031
-#&gt;  [97] 0.180 0.075 0.004 0.139</div><div class='input'>
-</div></pre>
+
+<span class='co'>## Update lab presenters sheet</span>
+<span class='fu'>lab_presenters</span>(
+    <span class='kw'>presenters</span> <span class='kw'>=</span> <span class='no'>jaffe_research_presenters</span>,
+    <span class='kw'>start_date</span> <span class='kw'>=</span> <span class='st'>'2019-09-18'</span>,
+    <span class='kw'>sheet_name</span> <span class='kw'>=</span> <span class='st'>'Jaffelab research presenters'</span>,
+    <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>2</span>
+)
+
+<span class='co'>## If it's a new sheet, we recommend sharing an editable link so other</span>
+<span class='co'>## lab members can swap out as necessary.</span>
+
+}</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -195,8 +203,6 @@ are iterations.</p></td>
       <li><a href="#examples">Examples</a></li>
     </ul>
 
-    <h2>Author</h2>
-    <p>Jeffrey T Leek, Leonardo Collado-Torres (examples)</p>
   </div>
 </div>
 
