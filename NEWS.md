@@ -1,3 +1,8 @@
+# jaffelab 0.99.28
+
+* Added the `lab_presenters()` function for randomizing lab presenters. Could
+also be used for randomizing the lab snacks rotation.
+
 # jaffelab 0.99.27
 
 * Added a `NEWS.md` file to track changes to the package, thus replacing the

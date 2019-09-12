@@ -31,6 +31,7 @@ cite_options(hyperlink = 'to.doc', citation_format = 'text', style = 'html')
 bib <- c(
     BiocStyle = citation('BiocStyle'),
     GenomicRanges = citation('GenomicRanges'),
+    googledrive = citation('googledrive'),
     IRanges = citation('IRanges'),
     jaffelab = citation('jaffelab'),
     knitcitations = citation('knitcitations'),
@@ -92,6 +93,7 @@ The `r Githubpkg('LieberInstitute/jaffelab')` package `r citep(bib[['jaffelab']]
 * R `r citep(bib[['R']])`
 * `r Biocpkg('BiocStyle')` `r citep(bib[['BiocStyle']])`
 * `r Biocpkg('GenomicRanges')` `r citep(bib[['GenomicRanges']])`
+* `r CRANpkg('googledrive')` `r citep(bib[['googledrive']])`
 * `r Biocpkg('IRanges')` `r citep(bib[['IRanges']])`
 * `r CRANpkg('knitcitations')` `r citep(bib[['knitcitations']])`
 * `r CRANpkg('knitr')` `r citep(bib[['knitr']])`
