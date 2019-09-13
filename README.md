@@ -44,7 +44,7 @@ citation('jaffelab')
 #> 
 #>   Leonardo Collado-Torres, Andrew E. Jaffe and Emily E. Burke
 #>   (2019). jaffelab: Commonly used functions by the Jaffe lab. R
-#>   package version 0.99.27.
+#>   package version 0.99.29.
 #>   https://github.com/LieberInstitute/jaffelab
 #> 
 #> A BibTeX entry for LaTeX users is
@@ -53,7 +53,7 @@ citation('jaffelab')
 #>     title = {jaffelab: Commonly used functions by the Jaffe lab},
 #>     author = {Leonardo Collado-Torres and Andrew E. Jaffe and Emily E. Burke},
 #>     year = {2019},
-#>     note = {R package version 0.99.27},
+#>     note = {R package version 0.99.29},
 #>     url = {https://github.com/LieberInstitute/jaffelab},
 #>   }
 ```
