@@ -14,7 +14,7 @@
 #' @return  A one row table with the `googledrive` information for the file
 #' that was uploaded.
 #' @export
-#' #' @importFrom googledrive drive_find drive_upload drive_update
+#' @importFrom googledrive drive_find drive_upload drive_update
 #' @author Leonardo Collado-Torres
 #'
 #' @examples
