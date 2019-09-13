@@ -37,7 +37,7 @@ spreadsheet is created which you can share later.
 jaffe_research_presenters <- c('Brianna', 'Emily', 'Josh', 'Kira', 'Leo',
     'Maddy', 'Matt', 'Nick')
 
-\dontrun{
+if(googledrive::drive_has_token()) {
 ## You'll need to have access to Google Drive through
 ## googledrive::drive_auth() set up.
 
@@ -46,7 +46,7 @@ jaffe_research_presenters <- c('Brianna', 'Emily', 'Josh', 'Kira', 'Leo',
 lab_presenters(
     presenters = jaffe_research_presenters,
     start_date = '2019-09-18',
-    sheet_name = 'Jaffelab research presenters',
+    sheet_name = 'Jaffelab research presenters - example',
     n = 2
 )
 
@@ -55,6 +55,9 @@ lab_presenters(
 
 }
 
+}
+\seealso{
+googledrive_csv
 }
 \author{
 Leonardo Collado-Torres

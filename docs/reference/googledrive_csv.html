@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>jaffelab: Commonly used functions by the Jaffe lab — jaffelab-package • jaffelab</title>
+<title>Upload a CSV file to googledrive — googledrive_csv • jaffelab</title>
 
 
 <!-- jquery -->
@@ -35,9 +35,13 @@
 
 
 
-<meta property="og:title" content="jaffelab: Commonly used functions by the Jaffe lab — jaffelab-package" />
-<meta property="og:description" content="The jaffelab contains miscellaneous functions that are commonly
-    used in the Jaffe lab http://aejaffe.com/." />
+<meta property="og:title" content="Upload a CSV file to googledrive — googledrive_csv" />
+<meta property="og:description" content="This function uploads a data.frame as a CSV file to Google Drive. If the
+name of the spreadsheet exists already, then it gets updated. Otherwise
+it uploads it for the first time. Unlike using
+drive_upload(overwrite = TRUE) directly, this function allows you to
+keep the sharing and publishing settings of a spreadsheet if it exists
+already." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -121,42 +125,63 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>jaffelab: Commonly used functions by the Jaffe lab</h1>
-    <small class="dont-index">Source: <a href='https://github.com/LieberInstitute/jaffelab/blob/master/R/jaffelab-package.R'><code>R/jaffelab-package.R</code></a></small>
-    <div class="hidden name"><code>jaffelab-package.Rd</code></div>
+    <h1>Upload a CSV file to googledrive</h1>
+    <small class="dont-index">Source: <a href='https://github.com/LieberInstitute/jaffelab/blob/master/R/googledrive_csv.R'><code>R/googledrive_csv.R</code></a></small>
+    <div class="hidden name"><code>googledrive_csv.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>The jaffelab contains miscellaneous functions that are commonly
-    used in the Jaffe lab http://aejaffe.com/.</p>
+    <p>This function uploads a data.frame as a CSV file to Google Drive. If the
+name of the spreadsheet exists already, then it gets updated. Otherwise
+it uploads it for the first time. Unlike using
+<code>drive_upload(overwrite = TRUE)</code> directly, this function allows you to
+keep the sharing and publishing settings of a spreadsheet if it exists
+already.</p>
     </div>
 
+    <pre class="usage"><span class='fu'>googledrive_csv</span>(<span class='no'>df</span>, <span class='no'>sheet_name</span>)</pre>
+
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>df</th>
+      <td><p>A <code><a href='https://rdrr.io/r/base/data.frame.html'>data.frame()</a></code> to upload.</p></td>
+    </tr>
+    <tr>
+      <th>sheet_name</th>
+      <td><p>A <code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code> vector with the name of the Google
+Drive spreadsheet that will be updated (or created if it doesn't exist).</p></td>
+    </tr>
+    </table>
+
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>A one row table with the <code>googledrive</code> information for the file
+that was uploaded.</p>
+
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'>
+<span class='kw'>if</span>(<span class='kw pkg'>googledrive</span><span class='kw ns'>::</span><span class='fu'><a href='https://googledrive.tidyverse.org/reference/drive_has_token.html'>drive_has_token</a></span>()) {
+<span class='co'>## You'll need to have access to Google Drive through</span>
+<span class='co'>## googledrive::drive_auth() set up.</span>
 
 
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+<span class='co'>## Upload a table to google drive</span>
+<span class='fu'>googledrive_csv</span>(<span class='no'>mtcars</span>, <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/Sys.time.html'>Sys.Date</a></span>(), <span class='st'>'jaffelab::googledrive_csv() example'</span>))
 
-    <div class='dont-index'><p>Useful links:</p><ul>
-<li><p><a href='https://github.com/LieberInstitute/jaffelab'>https://github.com/LieberInstitute/jaffelab</a></p></li>
-<li><p>Report bugs at <a href='https://github.com/LieberInstitute/jaffelab/issues'>https://github.com/LieberInstitute/jaffelab/issues</a></p></li>
-</ul>
-
-</div>
-
+}</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#see-also">See also</a></li>
+      <li><a href="#arguments">Arguments</a></li>
+      <li><a href="#value">Value</a></li>
+      <li><a href="#examples">Examples</a></li>
     </ul>
 
     <h2>Author</h2>
-    <p><strong>Maintainer</strong>: Leonardo Collado-Torres <a href='mailto:lcolladotor@gmail.com'>lcolladotor@gmail.com</a> (0000-0003-2140-308X)</p>
-<p>Authors:</p><ul>
-<li><p>Andrew E. Jaffe <a href='mailto:andrew.jaffe@libd.org'>andrew.jaffe@libd.org</a> (0000-0001-6886-1454)</p></li>
-<li><p>Emily E. Burke <a href='mailto:emily.burke@libd.org'>emily.burke@libd.org</a></p></li>
-</ul>
-
-
+    <p>Leonardo Collado-Torres</p>
   </div>
 </div>
 

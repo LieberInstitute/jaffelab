@@ -1,3 +1,9 @@
+# jaffelab 0.99.29
+
+* Added the `googledrive_csv()` function for uploading CSV files to Google
+Drive. It used to be internal code of `lab_presenters()` but could be more
+useful outside of it.
+
 # jaffelab 0.99.28
 
 * Added the `lab_presenters()` function for randomizing lab presenters. Could

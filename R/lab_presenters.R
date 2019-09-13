@@ -8,17 +8,16 @@
 #' @param presenters A `character()` vector of presenter names.
 #' @param start_date A `character(1)` vector with the start date in a
 #' `YYYY-MM-DD` format.
-#' @param sheet_name A `character(1)` vector with the name of the Google
-#' Drive spreadsheet that will be updated (or created if it doesn't exist).
 #' @param n The number of presenters per meeting.
 #' @param repeat_day An `integer(1)` with the number of days between lab
 #' meetings. Use 7 for a weekly lab meeting.
+#' @inheritParams googledrive_csv
 #'
 #' @return A one row table with the `googledrive` information for the file
 #' that was uploaded.
 #' @export
-#' @importFrom googledrive drive_find drive_upload drive_update
 #' @author Leonardo Collado-Torres
+#' @seealso googledrive_csv
 #'
 #' @examples
 #'
@@ -26,7 +25,7 @@
 #' jaffe_research_presenters <- c('Brianna', 'Emily', 'Josh', 'Kira', 'Leo',
 #'     'Maddy', 'Matt', 'Nick')
 #'
-#' \dontrun{
+#' if(googledrive::drive_has_token()) {
 #' ## You'll need to have access to Google Drive through
 #' ## googledrive::drive_auth() set up.
 #'
@@ -35,7 +34,7 @@
 #' lab_presenters(
 #'     presenters = jaffe_research_presenters,
 #'     start_date = '2019-09-18',
-#'     sheet_name = 'Jaffelab research presenters',
+#'     sheet_name = 'Jaffelab research presenters - example',
 #'     n = 2
 #' )
 #'
@@ -52,8 +51,6 @@ lab_presenters <- function(presenters, start_date = '2019-09-18',
         stop("'presenters' should be a character vector.", call. = FALSE)
     if(!is.character(start_date))
         stop("'start_date' should be a character vector.", call. = FALSE)
-    if(!is.character(sheet_name))
-        stop("'sheet_name' should be a character vector.", call. = FALSE)
     if(n < 1) stop("'n' should be at least 1.", call. = FALSE)
     if(!identical(nchar(strsplit(start_date, '-')[[1]]), c(4L, 2L, 2L)))
         stop("'start_date' should be in the format YYYY-MM-DD.", call. = FALSE)
@@ -79,25 +76,5 @@ lab_presenters <- function(presenters, start_date = '2019-09-18',
     colnames(df) <- paste0('Presenter ', seq_len(n))
     df$Date <- date_start + repeat_day * (seq_len(length(presenters_grouped)) - 1)
 
-    ## Write temp csv
-    tmp_csv <- file.path(tempdir(), paste0(sheet_name, '.csv'))
-    write.csv(df, file = tmp_csv, row.names = FALSE)
-
-    ## Find sheets with the name
-    gdoc <- googledrive::drive_find(
-        pattern = paste0('^', sheet_name, '$'),
-        type = "spreadsheet"
-    )
-
-    if(nrow(gdoc) == 0) {
-        result <- googledrive::drive_upload(tmp_csv, path = ,
-            type = 'spreadsheet', name = sheet_name)
-    } else if (nrow(gdoc) > 1) {
-        stop("The 'sheet_name' you chose is not unique.\n",
-            "Check your Google Drive files!", .call = FALSE)
-    } else {
-        result <- googledrive::drive_update(gdoc, tmp_csv)
-    }
-
-    return(result)
+    googledrive_csv(df = df, sheet_name = sheet_name)
 }
