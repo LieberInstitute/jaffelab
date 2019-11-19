@@ -53,9 +53,29 @@
 #' ## Check the cleaned data for gene 1 (with P = 3)
 #' boxplot(y_clean_p3[1, ] ~ pheno$group, ylab = 'Gene 1 Clean Expr (P = 3)')
 #'
-#' ## The function also supports NAs observations
+#'
+#'
+#'
+#' ## The function also supports NAs observations as detailed below
+#'
+#' ## Make one observation 0, clean the data
+#' y[1, 1] <- 0
+#' y_clean_p2_0 <- cleaningY(y, mod, P = 2)
+#' ## then NA and clean again
 #' y[1, 1] <- NA
-#' corner(cleaningY(y, mod, P = 2))
+#' y_clean_p2_NA <- cleaningY(y, mod, P = 2)
+#'
+#' ## Compare the results
+#' corner(y_clean_p2_0)
+#' corner(y_clean_p2_NA)
+#'
+#' ## They are identical except for that NA in [1, 1]
+#' table(y_clean_p2_0 -  y_clean_p2_NA, useNA = 'ifany')
+#'
+#' ## Compared to the original y, there are differences since we lost
+#' ## one observation which affects all of the first row of the cleaned Y
+#' y_clean_p2[1, ] - y_clean_p2_NA[1, ]
+#' all(y_clean_p2[-1, ] - y_clean_p2_NA[-1, ] == 0)
 #'
 
 cleaningY <- function(y, mod, P) {
