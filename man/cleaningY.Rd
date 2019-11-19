@@ -61,6 +61,10 @@ y_clean_p3 <- cleaningY(y, mod, P = 1)
 ## Check the cleaned data for gene 1 (with P = 3)
 boxplot(y_clean_p3[1, ] ~ pheno$group, ylab = 'Gene 1 Clean Expr (P = 3)')
 
+## The function also supports NAs observations
+y[1, 1] <- NA
+corner(cleaningY(y, mod, P = 2))
+
 }
 \author{
 Rafael Irizarry, Leonardo Collado-Torres (examples)

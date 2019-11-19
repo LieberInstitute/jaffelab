@@ -69,7 +69,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">jaffelab</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.99.29</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.99.30</span>
       </span>
     </div>
 
@@ -191,6 +191,15 @@ term in a model that is ~ Dx + more covariates.</p></td>
 
 <span class='co'>## Check the cleaned data for gene 1 (with P = 3)</span>
 <span class='fu'><a href='https://rdrr.io/r/graphics/boxplot.html'>boxplot</a></span>(<span class='no'>y_clean_p3</span>[<span class='fl'>1</span>, ] ~ <span class='no'>pheno</span>$<span class='no'>group</span>, <span class='kw'>ylab</span> <span class='kw'>=</span> <span class='st'>'Gene 1 Clean Expr (P = 3)'</span>)</div><div class='img'><img src='cleaningY-3.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='co'>## The function also supports NAs observations</span>
+<span class='no'>y</span>[<span class='fl'>1</span>, <span class='fl'>1</span>] <span class='kw'>&lt;-</span> <span class='fl'>NA</span>
+<span class='fu'><a href='corner.html'>corner</a></span>(<span class='fu'>cleaningY</span>(<span class='no'>y</span>, <span class='no'>mod</span>, <span class='kw'>P</span> <span class='kw'>=</span> <span class='fl'>2</span>))</div><div class='output co'>#&gt;                1        2          3         4          5          6
+#&gt; [1,]          NA 4.467535  0.8237796 0.7589492 2.30182237  6.3893738
+#&gt; [2,]  4.69694020 4.872453  2.7572398 2.6498754 0.81870259  5.6974067
+#&gt; [3,]  5.96280181 2.850590  3.0170601 0.4007953 3.90552240  3.1884766
+#&gt; [4,]  2.77728433 1.847305 -0.1302775 1.2934618 0.09785331 -0.6839241
+#&gt; [5,] -0.01552682 1.422351  0.7492889 3.5181029 3.70823366  0.9740959
+#&gt; [6,]  0.92320637 1.789145  1.9848853 3.0993772 2.48755033  1.2495944</div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -213,7 +222,7 @@ term in a model that is ~ Dx + more covariates.</p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
 </div>
 
       </footer>

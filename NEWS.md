@@ -1,3 +1,7 @@
+# jaffelab 0.99.30
+
+* `cleaningY()` now supports `NA`s in the input `y`.
+
 # jaffelab 0.99.29
 
 * Added the `googledrive_csv()` function for uploading CSV files to Google

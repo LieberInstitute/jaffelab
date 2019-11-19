@@ -53,11 +53,21 @@
 #' ## Check the cleaned data for gene 1 (with P = 3)
 #' boxplot(y_clean_p3[1, ] ~ pheno$group, ylab = 'Gene 1 Clean Expr (P = 3)')
 #'
+#' ## The function also supports NAs observations
+#' y[1, 1] <- NA
+#' corner(cleaningY(y, mod, P = 2))
+#'
 
 cleaningY <- function(y, mod, P) {
     stopifnot(P <= ncol(mod))
     Hat <- solve(t(mod) %*% mod) %*% t(mod)
-    beta <- (Hat %*% t(y))
+    ## For dealing with NAs
+    ## https://stackoverflow.com/questions/16535084/matrix-multiplication-with-scattered-na-values
+    ty <- t(y)
+    ty[is.na(ty)] <- 0
+    beta <- (Hat %*% ty)
+    ## Note that y might still have the NAs, and NA - a number = NA
+    ## so there's no need to reset the NAs back on cleany
     cleany <- y - t(as.matrix(mod[, -c(seq_len(P))]) %*% beta[-seq_len(P), ])
     return(cleany)
 }
