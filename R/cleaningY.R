@@ -80,6 +80,7 @@
 
 cleaningY <- function(y, mod, P) {
     stopifnot(P <= ncol(mod))
+    stopifnot("Input matrix is not full rank"=qr(mod)$rank == ncol(mod))
     Hat <- solve(t(mod) %*% mod) %*% t(mod)
     ## For dealing with NAs
     ## https://stackoverflow.com/questions/16535084/matrix-multiplication-with-scattered-na-values
