@@ -4,8 +4,13 @@
 \alias{lab_presenters}
 \title{Randomize presenters and upload them to Google Drive}
 \usage{
-lab_presenters(presenters, start_date = "2019-09-18",
-  sheet_name = "Jaffelab research presenters", n = 2, repeat_day = 7)
+lab_presenters(
+  presenters,
+  start_date = "2019-09-18",
+  sheet_name = "Jaffelab research presenters",
+  n = 2,
+  repeat_day = 7
+)
 }
 \arguments{
 \item{presenters}{A \code{character()} vector of presenter names.}

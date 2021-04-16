@@ -4,11 +4,23 @@
 \alias{agePlotter}
 \title{Age plotter}
 \usage{
-agePlotter(y, age, mod = matrix(rep(1, length(y)), ncol = 1), mainText,
-  smoothIt = TRUE, jitter = TRUE, ageLabel = "bottom",
-  orderByAge = TRUE, ylim = NULL, ageBreaks = c(-1, 0, 1, 10, 100),
-  ylab = "Adjusted Expression", pointColor = 2, lineColor = 1,
-  alreadyFitted = NULL, ...)
+agePlotter(
+  y,
+  age,
+  mod = matrix(rep(1, length(y)), ncol = 1),
+  mainText,
+  smoothIt = TRUE,
+  jitter = TRUE,
+  ageLabel = "bottom",
+  orderByAge = TRUE,
+  ylim = NULL,
+  ageBreaks = c(-1, 0, 1, 10, 100),
+  ylab = "Adjusted Expression",
+  pointColor = 2,
+  lineColor = 1,
+  alreadyFitted = NULL,
+  ...
+)
 }
 \arguments{
 \item{y}{A vector with the Y outcome.}
@@ -40,10 +52,10 @@ the points.}
 \item{lineColor}{An integer indicating the paletter color to use for the
 lines.}
 
-\item{alreadyFitted}{The output of \link[stats:fitted]{fitted} on a linear model
+\item{alreadyFitted}{The output of \link[stats:fitted.values]{fitted} on a linear model
 if you already calculated it. If so, \code{y} will be ignored.}
 
-\item{...}{Additional parameters to pass to \link[graphics:plot]{plot}.}
+\item{...}{Additional parameters to pass to \link[graphics:plot.default]{plot}.}
 }
 \value{
 A nice plot =)

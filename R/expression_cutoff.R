@@ -11,7 +11,10 @@
 #' expression cutoff returned is the average of the two suggested cutoffs.
 #'
 #' @param expr A matrix with the expression values with features in the rows and
-#' samples in the columns in RPKM format.
+#' samples in the columns in RPKM format (typically). `expr` can be any matrix
+#' as `expression_cutoff()` will work with the row means of the matrix. You'll
+#' most likely want to use a normalized expression matrix, although this
+#' function will work with any matrix.
 #' @param max_cut Maximum expression cutoff to consider. Increasing this value
 #' does then to increase the suggested cutoffs. If set to `NULL`, this
 #' will be chosen automatically from 1 to 5.

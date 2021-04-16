@@ -4,10 +4,16 @@
 \alias{junctionCount}
 \title{Count junctions}
 \usage{
-junctionCount(junctionFiles, sampleNames = names(junctionFiles),
-  output = c("Count", "Rail"), minOverhang = 0,
-  strandSpecific = FALSE, illuminaStranded = FALSE, minCount = 1,
-  maxCores = 1)
+junctionCount(
+  junctionFiles,
+  sampleNames = names(junctionFiles),
+  output = c("Count", "Rail"),
+  minOverhang = 0,
+  strandSpecific = FALSE,
+  illuminaStranded = FALSE,
+  minCount = 1,
+  maxCores = 1
+)
 }
 \arguments{
 \item{junctionFiles}{A character vector with the full paths to the junction

@@ -18,11 +18,11 @@ Useful links:
 
 }
 \author{
-\strong{Maintainer}: Leonardo Collado-Torres \email{lcolladotor@gmail.com} (0000-0003-2140-308X)
+\strong{Maintainer}: Leonardo Collado-Torres \email{lcolladotor@gmail.com} (\href{https://orcid.org/0000-0003-2140-308X}{ORCID})
 
 Authors:
 \itemize{
-  \item Andrew E. Jaffe \email{andrew.jaffe@libd.org} (0000-0001-6886-1454)
+  \item Andrew E. Jaffe \email{andrew.jaffe@libd.org} (\href{https://orcid.org/0000-0001-6886-1454}{ORCID})
   \item Emily E. Burke \email{emily.burke@libd.org}
 }
 
