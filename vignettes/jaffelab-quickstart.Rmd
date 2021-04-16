@@ -84,7 +84,7 @@ citation('jaffelab')
 
 # Overview
 
-`r Githubpkg('LieberInstitute/jaffelab')` is based on many other packages and in particular in those that have implemented the infrastructure needed for dealing with RNA-seq data. We use it extensively at the [Andrew Jaffe Data Science team](http://aejaffe.com/) from the [Lieber Institute for Brain Development](https://www.libd.org/) (LIBD), including in publications such as BrainSEQ Phase II `r citep('10.1016/j.neuron.2019.05.013')`. This R package started with a collection of functions Andrew Jaffe used frequently, some authored by [Rafael Irizarry](https://rafalab.github.io/) and [Jeff Leek](http://jtleek.com/). It now includes other helper functions that are more specific to our work at LIBD such as `agePlotter()`. Please check the help files of each function to get an idea on what they do.
+`r Githubpkg('LieberInstitute/jaffelab')` is based on many other packages and in particular in those that have implemented the infrastructure needed for dealing with RNA-seq data. We use it extensively at the [Andrew Jaffe Data Science team](http://aejaffe.com/) from the [Lieber Institute for Brain Development](https://www.libd.org/) (LIBD), including in publications such as BrainSEQ Phase II (DOI [10.1016/j.neuron.2019.05.013](https://doi.org/10.1016/j.neuron.2019.05.013)). This R package started with a collection of functions Andrew Jaffe used frequently, some authored by [Rafael Irizarry](https://rafalab.github.io/) and [Jeff Leek](http://jtleek.com/). It now includes other helper functions that are more specific to our work at LIBD such as `agePlotter()`. Please check the help files of each function to get an idea on what they do.
 
 # Reproducibility
 
