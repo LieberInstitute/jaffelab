@@ -25,7 +25,6 @@ Returns the n maximum or n minimum values of a vector.
 x <- rnorm(100)
 n_max(x)
 n_min(x)
-
 }
 \author{
 Emily E. Burke

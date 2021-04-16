@@ -17,10 +17,8 @@ This function takes a GRanges objects and returns a string of UCSC genome
 browser coordinates.
 }
 \examples{
-ucsc_coords <- c('chr1:1000-2000')
+ucsc_coords <- c("chr1:1000-2000")
 granges_to_ucsc(ucsc_to_granges(ucsc_coords))
-
-
 }
 \seealso{
 \link{ucsc_to_granges}

@@ -42,7 +42,7 @@ Below is the citation output from using `citation('jaffelab')` in R. Please
 run this yourself to check for any updates on how to cite __jaffelab__.
 
 ```{r 'citation', eval = requireNamespace('jaffelab')}
-print(citation('jaffelab'), bibtex = TRUE)
+print(citation("jaffelab"), bibtex = TRUE)
 ```
 
 Please note that the `jaffelab` was only made possible thanks to many other R and bioinformatics software authors, which are cited either in the vignettes and/or the paper(s) describing this package.

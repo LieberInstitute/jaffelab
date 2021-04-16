@@ -38,7 +38,7 @@ Please run this yourself to check for any updates on how to cite
 **jaffelab**.
 
 ``` r
-print(citation('jaffelab'), bibtex = TRUE)
+print(citation("jaffelab"), bibtex = TRUE)
 #> 
 #> To cite package 'jaffelab' in publications use:
 #> 

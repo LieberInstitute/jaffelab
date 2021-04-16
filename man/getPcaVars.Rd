@@ -23,7 +23,6 @@ the percent of variance explained by each of the principal components.
 
 pca <- prcomp(USArrests)
 getPcaVars(pca)
-
 }
 \author{
 Andrew E Jaffe

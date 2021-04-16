@@ -50,7 +50,8 @@
 #' ## Generate some ages
 #' age <- as.vector(
 #'     mapply(runif,
-#'         c(-1, 0, 1, 10, 20, 50), c(0, 1, 10, 20, 50, 90), n = 20
+#'         c(-1, 0, 1, 10, 20, 50), c(0, 1, 10, 20, 50, 90),
+#'         n = 20
 #'     )
 #' )
 #'
@@ -58,52 +59,51 @@
 #' agePlotter(y, age,
 #'     mainText = "agePlotter example",
 #'     ylab = "Random Ys",
-#'     mod = model.matrix(~ age),
+#'     mod = model.matrix(~age),
 #'     ageBreaks = c(-1, 0, 1, 10, 20, 50, 100)
 #' )
 #'
 #' ## Define line and point colors
-#' p_cols <- rep(rep(c('skyblue3', 'dark orange'), each = 10), 6)
-#' l_cols <- c('lightgoldenrod', 'light blue')
+#' p_cols <- rep(rep(c("skyblue3", "dark orange"), each = 10), 6)
+#' l_cols <- c("lightgoldenrod", "light blue")
 #'
 #' ## Make the plot with the above colors
 #' agePlotter(y, age,
 #'     mainText = "agePlotter example",
 #'     ylab = "Random Ys",
-#'     mod = model.matrix(~ age),
+#'     mod = model.matrix(~age),
 #'     ageBreaks = c(-1, 0, 1, 10, 20, 50, 100),
 #'     pointColor = p_cols,
 #'     lineColor = l_cols
 #' )
-#' legend('bottom', c('DLPFC', 'HIPPO'), col = l_cols, lwd = 3, bty = 'n',
-#'     ncol = 2)
+#' legend("bottom", c("DLPFC", "HIPPO"),
+#'     col = l_cols, lwd = 3, bty = "n",
+#'     ncol = 2
+#' )
 #'
 #'
-#' par(def.par)  #- reset to default
-#'
-
-agePlotter <- function(y, age, mod = matrix(rep(1, length(y)), ncol=1),
+#' par(def.par) #- reset to default
+agePlotter <- function(y, age, mod = matrix(rep(1, length(y)), ncol = 1),
     mainText, smoothIt = TRUE, jitter = TRUE, ageLabel = "bottom",
     orderByAge = TRUE, ylim = NULL, ageBreaks = c(-1, 0, 1, 10, 100),
     ylab = "Adjusted Expression", pointColor = 2, lineColor = 1,
     alreadyFitted = NULL, ...) {
-
     stopifnot(length(ageBreaks) >= 4)
-    stopifnot(ageLabel %in% c('bottom', 'top'))
+    stopifnot(ageLabel %in% c("bottom", "top"))
     stopifnot(length(lineColor) == length(unique(pointColor)))
 
-    if(orderByAge) {
+    if (orderByAge) {
         oo <- order(age, decreasing = FALSE)
         y <- y[oo]
         age <- age[oo]
-        mod <- mod[oo,, drop = FALSE]
-        if(length(pointColor) == length(age)) pointColor <- pointColor[oo]
-        if(!is.null(alreadyFitted)) alreadyFitted <- alreadyFitted[oo]
+        mod <- mod[oo, , drop = FALSE]
+        if (length(pointColor) == length(age)) pointColor <- pointColor[oo]
+        if (!is.null(alreadyFitted)) alreadyFitted <- alreadyFitted[oo]
     }
 
     nfits <- length(unique(pointColor))
-    if(is.null(alreadyFitted)) {
-        if(nfits == 1) {
+    if (is.null(alreadyFitted)) {
+        if (nfits == 1) {
             fit <- fitted(lm(y ~ mod - 1))
         } else {
             fit <- lapply(unique(pointColor), function(col) {
@@ -111,7 +111,7 @@ agePlotter <- function(y, age, mod = matrix(rep(1, length(y)), ncol=1),
             })
         }
     } else {
-        if(nfits > 1) warning('Only one line will be draw. Try again specifying "mod"')
+        if (nfits > 1) warning('Only one line will be draw. Try again specifying "mod"')
         nfits <- 1
         fit <- alreadyFitted
     }
@@ -120,83 +120,96 @@ agePlotter <- function(y, age, mod = matrix(rep(1, length(y)), ncol=1),
     fIndex <- splitit(fetal)
 
     make_line <- function(i, case0 = FALSE) {
-        if(nfits == 1) {
-            if(case0) {
+        if (nfits == 1) {
+            if (case0) {
                 lines(age[fIndex[[i]]][-1], fit[fIndex[[i]]][-1], col = lineColor, lwd = 6)
             } else {
                 lines(age[fIndex[[i]]], fit[fIndex[[i]]], col = lineColor, lwd = 6)
             }
-
         } else {
-            for(j in seq_len(nfits)) {
+            for (j in seq_len(nfits)) {
                 nfit_split <- splitit(cut(age[pointColor == unique(pointColor)[j]],
-                    breaks = ageBreaks, lab = FALSE))
-                if(case0) {
+                    breaks = ageBreaks, lab = FALSE
+                ))
+                if (case0) {
                     lines(age[pointColor == unique(pointColor)[j]][nfit_split[[i]]][-1],
                         fit[[j]][nfit_split[[i]]][-1],
-                        col = lineColor[j], lwd = 6)
+                        col = lineColor[j], lwd = 6
+                    )
                 } else {
                     lines(age[pointColor == unique(pointColor)[j]][nfit_split[[i]]], fit[[j]][nfit_split[[i]]],
-                        col = lineColor[j], lwd = 6)
+                        col = lineColor[j], lwd = 6
+                    )
                 }
-
             }
         }
     }
 
     nBreaks <- length(ageBreaks) - 1
     layout(matrix(rep(seq_len(nBreaks), c(5, rep(2, nBreaks - 2), 4)),
-        nrow = 1, byrow = TRUE))
+        nrow = 1, byrow = TRUE
+    ))
     palette(brewer.pal(8, "Set1"))
 
     par(mar = c(4, 5, 3, 0.45))
-    if(is.null(ylim)) ylims <- range(y,na.rm=TRUE) else ylims <- ylim
+    if (is.null(ylim)) ylims <- range(y, na.rm = TRUE) else ylims <- ylim
 
-    if(jitter) xx <- jitter(age, amount=0.005) else xx <- age
+    if (jitter) xx <- jitter(age, amount = 0.005) else xx <- age
     plot(y ~ xx,
         subset = fIndex[[1]],
         main = "", ylab = ylab, xlab = "",
         ylim = ylims, cex.axis = 1.5, cex.lab = 1.75,
-        pch = 21, cex = 1.4, bg = pointColor, xaxt = 'n',
-        xlim = c(range(age[fIndex[[1]]]) + c(-0.01, 0.01)), ...)
+        pch = 21, cex = 1.4, bg = pointColor, xaxt = "n",
+        xlim = c(range(age[fIndex[[1]]]) + c(-0.01, 0.01)), ...
+    )
 
-    if(smoothIt) make_line(1)
+    if (smoothIt) make_line(1)
 
 
     fetal_rang <- round(range(age[fIndex[[1]]]) * 52 + 40, 0)
     fetal_ax <- seq(fetal_rang[1], fetal_rang[2], round(diff(fetal_rang) / 4, 0))
 
-    axis(1, at = (fetal_ax - 40) / 52,
-        labels = fetal_ax, 1, cex.axis = 1.5)
+    axis(1,
+        at = (fetal_ax - 40) / 52,
+        labels = fetal_ax, 1, cex.axis = 1.5
+    )
 
-    if(ageLabel == "bottom") {
-        text(x = quantile(age[fIndex[[1]]], 0.33), y = min(ylims), "PCW",
-            cex=1.5)
-    } else if(ageLabel == "top") {
-        text(x = quantile(age[fIndex[[1]]], 0.33), y = max(ylims), "PCW",
-            cex=1.5)
+    if (ageLabel == "bottom") {
+        text(
+            x = quantile(age[fIndex[[1]]], 0.33), y = min(ylims), "PCW",
+            cex = 1.5
+        )
+    } else if (ageLabel == "top") {
+        text(
+            x = quantile(age[fIndex[[1]]], 0.33), y = max(ylims), "PCW",
+            cex = 1.5
+        )
     }
 
     # infant + child
-    par(mar = c(4, 0.25,3,0.25))
-    for(j in 2:(nBreaks - 1)) {
-        plot(y ~ age, subset=fIndex[[j]],
-            main = "", ylab = "" , xlab = "", yaxt = "n", cex = 1.4,
+    par(mar = c(4, 0.25, 3, 0.25))
+    for (j in 2:(nBreaks - 1)) {
+        plot(y ~ age,
+            subset = fIndex[[j]],
+            main = "", ylab = "", xlab = "", yaxt = "n", cex = 1.4,
             xlim = range(age[fIndex[[j]]]) + c(-0.03, 0.03),
-            ylim = ylims, cex.axis = 1.5, pch = 21, bg = pointColor, ...)
+            ylim = ylims, cex.axis = 1.5, pch = 21, bg = pointColor, ...
+        )
 
-        if(ageBreaks[2] == 0 & smoothIt) make_line(j)
-        if(ageBreaks[2] < 0 & smoothIt) make_line(j, case0 = TRUE)
+        if (ageBreaks[2] == 0 & smoothIt) make_line(j)
+        if (ageBreaks[2] < 0 & smoothIt) make_line(j, case0 = TRUE)
     }
 
     # adults
-    par(mar = c(4, 0.25,3,1))
-    plot(y ~ age, subset=fIndex[[length(fIndex)]],
+    par(mar = c(4, 0.25, 3, 1))
+    plot(y ~ age,
+        subset = fIndex[[length(fIndex)]],
         main = "", ylab = "", xlab = "", yaxt = "n", cex = 1.4,
         xlim = range(age[fIndex[[length(fIndex)]]]) + c(-0.01, 0.01),
-        ylim = ylims, cex.axis = 1.5, pch = 21, bg = pointColor, ...)
+        ylim = ylims, cex.axis = 1.5, pch = 21, bg = pointColor, ...
+    )
 
-    if(smoothIt) make_line(length(fIndex))
+    if (smoothIt) make_line(length(fIndex))
 
     mtext(mainText, outer = TRUE, line = -2.5, cex = 1.35)
     mtext("Age", side = 1, outer = TRUE, line = -1.5, cex = 1.35)

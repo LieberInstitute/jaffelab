@@ -22,18 +22,17 @@ Get the t-statistics from a \link[limma:lmFit]{lmFit} object.
 \examples{
 
 ## From lmFit() example page
-sd <- 0.3*sqrt(4/rchisq(100,df=4))
-y <- matrix(rnorm(100*6,sd=sd),100,6)
-rownames(y) <- paste("Gene",1:100)
-y[1:2,4:6] <- y[1:2,4:6] + 2
-design <- cbind(Grp1=1,Grp2vs1=c(0,0,0,1,1,1))
+sd <- 0.3 * sqrt(4 / rchisq(100, df = 4))
+y <- matrix(rnorm(100 * 6, sd = sd), 100, 6)
+rownames(y) <- paste("Gene", 1:100)
+y[1:2, 4:6] <- y[1:2, 4:6] + 2
+design <- cbind(Grp1 = 1, Grp2vs1 = c(0, 0, 0, 1, 1, 1))
 
 # Ordinary fit
-library('limma')
-fit <- lmFit(y,design)
+library("limma")
+fit <- lmFit(y, design)
 ## Get Ts
 getT(fit)
-
 }
 \author{
 Andrew E Jaffe

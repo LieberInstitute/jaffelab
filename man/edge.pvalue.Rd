@@ -34,7 +34,6 @@ edge.pvalue(z, z0, pool = TRUE)
 
 ## Or don't pull them
 edge.pvalue(z, z0, pool = FALSE)
-
 }
 \author{
 Jeffrey T Leek, Leonardo Collado-Torres (examples)

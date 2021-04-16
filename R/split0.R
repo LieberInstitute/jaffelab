@@ -1,6 +1,6 @@
 #' Splits into a list
 #'
-#' Splits a vector (which is casted as a factor) by its elements returning a 
+#' Splits a vector (which is casted as a factor) by its elements returning a
 #' named list with the indices for each unique element of the vector.
 #'
 #' @param x A vector to split.
@@ -22,8 +22,6 @@
 #' set.seed(20161005)
 #' abc <- sample(letters[1:3], 9, replace = TRUE)
 #' split0(abc)
-#'
-
 split0 <- function(x) {
     splitit(factor(x, levels = unique(x)))
 }

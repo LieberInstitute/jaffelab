@@ -26,16 +26,14 @@ already.
 }
 \examples{
 
-if(googledrive::drive_has_token()) {
-## You'll need to have access to Google Drive through
-## googledrive::drive_auth() set up.
+if (googledrive::drive_has_token()) {
+    ## You'll need to have access to Google Drive through
+    ## googledrive::drive_auth() set up.
 
 
-## Upload a table to google drive
-googledrive_csv(mtcars, paste(Sys.Date(), 'jaffelab::googledrive_csv() example'))
-
+    ## Upload a table to google drive
+    googledrive_csv(mtcars, paste(Sys.Date(), "jaffelab::googledrive_csv() example"))
 }
-
 }
 \author{
 Leonardo Collado-Torres

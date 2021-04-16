@@ -1,6 +1,6 @@
 #' Calculates the percent of variance explained for principal components
 #'
-#' Given a PCA object created with [prcomp][stats::prcomp], this function computes 
+#' Given a PCA object created with [prcomp][stats::prcomp], this function computes
 #' the percent of variance explained by each of the principal components.
 #'
 #' @param pca An object created with [prcomp][stats::prcomp].
@@ -17,9 +17,7 @@
 #'
 #' pca <- prcomp(USArrests)
 #' getPcaVars(pca)
-#'
-
 getPcaVars <- function(pca, digits = 3) {
-    stopifnot(is(pca) == 'prcomp')
+    stopifnot(is(pca) == "prcomp")
     signif(pca$sdev^2 / sum(pca$sdev^2) * 100, digits = digits)
 }

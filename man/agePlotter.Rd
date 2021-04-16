@@ -81,7 +81,8 @@ y <- as.vector(vapply(0:5, function(x) rnorm(20, mean = x), numeric(20)))
 ## Generate some ages
 age <- as.vector(
     mapply(runif,
-        c(-1, 0, 1, 10, 20, 50), c(0, 1, 10, 20, 50, 90), n = 20
+        c(-1, 0, 1, 10, 20, 50), c(0, 1, 10, 20, 50, 90),
+        n = 20
     )
 )
 
@@ -89,29 +90,30 @@ age <- as.vector(
 agePlotter(y, age,
     mainText = "agePlotter example",
     ylab = "Random Ys",
-    mod = model.matrix(~ age),
+    mod = model.matrix(~age),
     ageBreaks = c(-1, 0, 1, 10, 20, 50, 100)
 )
 
 ## Define line and point colors
-p_cols <- rep(rep(c('skyblue3', 'dark orange'), each = 10), 6)
-l_cols <- c('lightgoldenrod', 'light blue')
+p_cols <- rep(rep(c("skyblue3", "dark orange"), each = 10), 6)
+l_cols <- c("lightgoldenrod", "light blue")
 
 ## Make the plot with the above colors
 agePlotter(y, age,
     mainText = "agePlotter example",
     ylab = "Random Ys",
-    mod = model.matrix(~ age),
+    mod = model.matrix(~age),
     ageBreaks = c(-1, 0, 1, 10, 20, 50, 100),
     pointColor = p_cols,
     lineColor = l_cols
 )
-legend('bottom', c('DLPFC', 'HIPPO'), col = l_cols, lwd = 3, bty = 'n',
-    ncol = 2)
+legend("bottom", c("DLPFC", "HIPPO"),
+    col = l_cols, lwd = 3, bty = "n",
+    ncol = 2
+)
 
 
-par(def.par)  #- reset to default
-
+par(def.par) #- reset to default
 }
 \author{
 Andrew E Jaffe, Leonardo Collado-Torres (examples)

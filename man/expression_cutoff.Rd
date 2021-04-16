@@ -47,10 +47,10 @@ expression cutoff returned is the average of the two suggested cutoffs.
 \examples{
 
 ## Simulate expression data. Based on the limma::lmFit() man page
-sd <- 0.3*sqrt(4/rchisq(100,df=4))
-y <- matrix(rnorm(100*6,sd=sd),100,6)
-rownames(y) <- paste("Gene",1:100)
-y[1:2,4:6] <- y[1:2,4:6] + 2
+sd <- 0.3 * sqrt(4 / rchisq(100, df = 4))
+y <- matrix(rnorm(100 * 6, sd = sd), 100, 6)
+rownames(y) <- paste("Gene", 1:100)
+y[1:2, 4:6] <- y[1:2, 4:6] + 2
 
 ## Make the expression data look like RPKM values
 y2 <- apply(y, 2, function(z) {
@@ -64,13 +64,12 @@ expression_cutoff(y2)
 
 ## Or same the plots to a PDF file
 
-pdf('test_expression_cutoff.pdf', width = 12)
+pdf("test_expression_cutoff.pdf", width = 12)
 expression_cutoff(y2)
 dev.off()
 
 ## View the pdf with the following code
-utils::browseURL('test_expression_cutoff.pdf')
-
+utils::browseURL("test_expression_cutoff.pdf")
 }
 \author{
 Leonardo Collado-Torres

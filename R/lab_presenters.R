@@ -22,38 +22,40 @@
 #' @examples
 #'
 #' ## Presenters as of 2019-09-12
-#' jaffe_research_presenters <- c('Brianna', 'Emily', 'Josh', 'Kira', 'Leo',
-#'     'Maddy', 'Matt', 'Nick')
-#'
-#' if(googledrive::drive_has_token()) {
-#' ## You'll need to have access to Google Drive through
-#' ## googledrive::drive_auth() set up.
-#'
-#'
-#' ## Update lab presenters sheet
-#' lab_presenters(
-#'     presenters = jaffe_research_presenters,
-#'     start_date = '2019-09-18',
-#'     sheet_name = 'Jaffelab research presenters - example',
-#'     n = 2
+#' jaffe_research_presenters <- c(
+#'     "Brianna", "Emily", "Josh", "Kira", "Leo",
+#'     "Maddy", "Matt", "Nick"
 #' )
 #'
-#' ## If it's a new sheet, we recommend sharing an editable link so other
-#' ## lab members can swap out as necessary.
+#' if (googledrive::drive_has_token()) {
+#'     ## You'll need to have access to Google Drive through
+#'     ## googledrive::drive_auth() set up.
 #'
+#'
+#'     ## Update lab presenters sheet
+#'     lab_presenters(
+#'         presenters = jaffe_research_presenters,
+#'         start_date = "2019-09-18",
+#'         sheet_name = "Jaffelab research presenters - example",
+#'         n = 2
+#'     )
+#'
+#'     ## If it's a new sheet, we recommend sharing an editable link so other
+#'     ## lab members can swap out as necessary.
 #' }
-#'
-
-lab_presenters <- function(presenters, start_date = '2019-09-18',
-    sheet_name = 'Jaffelab research presenters', n = 2, repeat_day = 7) {
+lab_presenters <- function(presenters, start_date = "2019-09-18",
+    sheet_name = "Jaffelab research presenters", n = 2, repeat_day = 7) {
     ## Check inputs
-    if(!is.character(presenters))
-        stop("'presenters' should be a character vector.", call. = FALSE)
-    if(!is.character(start_date))
-        stop("'start_date' should be a character vector.", call. = FALSE)
-    if(n < 1) stop("'n' should be at least 1.", call. = FALSE)
-    if(!identical(nchar(strsplit(start_date, '-')[[1]]), c(4L, 2L, 2L)))
-        stop("'start_date' should be in the format YYYY-MM-DD.", call. = FALSE)
+    if (!is.character(presenters)) {
+          stop("'presenters' should be a character vector.", call. = FALSE)
+      }
+    if (!is.character(start_date)) {
+          stop("'start_date' should be a character vector.", call. = FALSE)
+      }
+    if (n < 1) stop("'n' should be at least 1.", call. = FALSE)
+    if (!identical(nchar(strsplit(start_date, "-")[[1]]), c(4L, 2L, 2L))) {
+          stop("'start_date' should be in the format YYYY-MM-DD.", call. = FALSE)
+      }
 
     ## Keep the unique and sort them to make it 100% reproducible
     presenters <- sort(unique(presenters))
@@ -63,17 +65,17 @@ lab_presenters <- function(presenters, start_date = '2019-09-18',
     i <- rep(seq(from = 1, to = length(presenters), by = n), each = n)
 
     ## Randomize presenters
-    set.seed(as.numeric(gsub('-', '', start_date)))
+    set.seed(as.numeric(gsub("-", "", start_date)))
     presenters <- sample(presenters)
 
     ## Group presenters (add NAs if missing)
-    if(length(i) > length(presenters)) {
+    if (length(i) > length(presenters)) {
         presenters <- c(presenters, rep(NA, length(i) - length(presenters)))
     }
     presenters_grouped <- split(presenters, i)
 
     df <- data.frame(do.call(rbind, presenters_grouped), stringsAsFactors = FALSE)
-    colnames(df) <- paste0('Presenter ', seq_len(n))
+    colnames(df) <- paste0("Presenter ", seq_len(n))
     df$Date <- date_start + repeat_day * (seq_len(length(presenters_grouped)) - 1)
 
     googledrive_csv(df = df, sheet_name = sheet_name)

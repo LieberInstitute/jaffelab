@@ -39,27 +39,27 @@ spreadsheet is created which you can share later.
 \examples{
 
 ## Presenters as of 2019-09-12
-jaffe_research_presenters <- c('Brianna', 'Emily', 'Josh', 'Kira', 'Leo',
-    'Maddy', 'Matt', 'Nick')
-
-if(googledrive::drive_has_token()) {
-## You'll need to have access to Google Drive through
-## googledrive::drive_auth() set up.
-
-
-## Update lab presenters sheet
-lab_presenters(
-    presenters = jaffe_research_presenters,
-    start_date = '2019-09-18',
-    sheet_name = 'Jaffelab research presenters - example',
-    n = 2
+jaffe_research_presenters <- c(
+    "Brianna", "Emily", "Josh", "Kira", "Leo",
+    "Maddy", "Matt", "Nick"
 )
 
-## If it's a new sheet, we recommend sharing an editable link so other
-## lab members can swap out as necessary.
+if (googledrive::drive_has_token()) {
+    ## You'll need to have access to Google Drive through
+    ## googledrive::drive_auth() set up.
 
+
+    ## Update lab presenters sheet
+    lab_presenters(
+        presenters = jaffe_research_presenters,
+        start_date = "2019-09-18",
+        sheet_name = "Jaffelab research presenters - example",
+        n = 2
+    )
+
+    ## If it's a new sheet, we recommend sharing an editable link so other
+    ## lab members can swap out as necessary.
 }
-
 }
 \seealso{
 googledrive_csv

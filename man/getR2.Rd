@@ -28,9 +28,11 @@ set.seed(20190827)
 model_fun <- function(x) {
     ## Baseline + a group effect (2 groups) + a second covariate effect
     rnorm(30) +
-    c(rnorm(15, mean = 3), rnorm(15, mean = 1)) +
-    c(rnorm(5, sd = 0.5), rnorm(5, sd = 0.2, mean = 0.5),
-        rnorm(5, sd = 0.2, mean = 0.9))
+        c(rnorm(15, mean = 3), rnorm(15, mean = 1)) +
+        c(
+            rnorm(5, sd = 0.5), rnorm(5, sd = 0.2, mean = 0.5),
+            rnorm(5, sd = 0.2, mean = 0.9)
+        )
 }
 
 ## Generate the data for 20 'genes'
@@ -38,7 +40,7 @@ p <- t(sapply(1:20, model_fun))
 
 ## Define the phenotype data for these 30 'samples'
 pheno <- data.frame(
-    group = rep(c('A', 'B'), each = 15),
+    group = rep(c("A", "B"), each = 15),
     batch = rep(1:3, each = 5)
 )
 
@@ -48,10 +50,9 @@ mod <- with(pheno, model.matrix(~ group + batch))
 getR2(p, mod)
 
 ## Define a smaller model
-mod0 <- with(pheno, model.matrix(~ group))
+mod0 <- with(pheno, model.matrix(~group))
 ## And now compute the new R2 for each 'gene'
 getR2(p, mod, mod0)
-
 }
 \author{
 Andrew E Jaffe, Leonardo Collado-Torres (examples)

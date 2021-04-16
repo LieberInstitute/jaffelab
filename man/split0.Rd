@@ -25,7 +25,6 @@ split0(letters[1:3])
 set.seed(20161005)
 abc <- sample(letters[1:3], 9, replace = TRUE)
 split0(abc)
-
 }
 \seealso{
 \link[rafalib:splitit]{splitit}

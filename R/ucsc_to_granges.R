@@ -12,10 +12,8 @@
 #' @importFrom GenomicRanges GRanges
 #'
 #' @examples
-#' ucsc_coords <- c('chr1:1000-2000')
+#' ucsc_coords <- c("chr1:1000-2000")
 #' ucsc_to_granges(ucsc_coords)
-#'
-#'
 ucsc_to_granges <- function(coords) {
     stopifnot(is.character(coords))
     chr <- ss(coords, ":")
@@ -40,16 +38,14 @@ ucsc_to_granges <- function(coords) {
 #' @importFrom GenomicRanges GRanges
 #'
 #' @examples
-#' ucsc_coords <- c('chr1:1000-2000')
+#' ucsc_coords <- c("chr1:1000-2000")
 #' granges_to_ucsc(ucsc_to_granges(ucsc_coords))
-#'
-#'
 granges_to_ucsc <- function(gr) {
-    stopifnot(is(gr, 'GRanges'))
+    stopifnot(is(gr, "GRanges"))
 
     chr <- as.character(seqnames(gr))
     start <- start(gr)
     end <- end(gr)
 
-    paste0(chr, ':', start, '-', end)
+    paste0(chr, ":", start, "-", end)
 }

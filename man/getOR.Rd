@@ -18,7 +18,6 @@ Calculate the odds ratio from a 2 by 2 table.
 \examples{
 
 getOR(matrix(1:4, ncol = 2))
-
 }
 \author{
 Andrew E Jaffe

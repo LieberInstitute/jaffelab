@@ -25,7 +25,6 @@ corner(m)
 
 lis <- list(iris, mtcars, matrix(rnorm(1000), ncol = 10))
 corner(lis)
-
 }
 \author{
 Emily E. Burke

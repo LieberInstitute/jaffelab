@@ -19,35 +19,35 @@ Quick start to using to `r Githubpkg('LieberInstitute/jaffelab')`
 startTime <- Sys.time()
 
 ## Bib setup
-library('knitcitations')
+library("knitcitations")
 
 ## Load knitcitations with a clean bibliography
 cleanbib()
-cite_options(hyperlink = 'to.doc', citation_format = 'text', style = 'html')
+cite_options(hyperlink = "to.doc", citation_format = "text", style = "html")
 # Note links won't show for now due to the following issue
 # https://github.com/cboettig/knitcitations/issues/63
 
 ## Write bibliography information
 bib <- c(
-    BiocStyle = citation('BiocStyle'),
-    GenomicRanges = citation('GenomicRanges'),
-    googledrive = citation('googledrive'),
-    IRanges = citation('IRanges'),
-    jaffelab = citation('jaffelab'),
-    knitcitations = citation('knitcitations'),
-    knitr = citation('knitr')[3],
-    limma = citation('limma'),
-    parallel = citation('parallel'),
+    BiocStyle = citation("BiocStyle"),
+    GenomicRanges = citation("GenomicRanges"),
+    googledrive = citation("googledrive"),
+    IRanges = citation("IRanges"),
+    jaffelab = citation("jaffelab"),
+    knitcitations = citation("knitcitations"),
+    knitr = citation("knitr")[3],
+    limma = citation("limma"),
+    parallel = citation("parallel"),
     R = citation(),
-    rafalib = citation('rafalib'),
-    RColorBrewer = citation('RColorBrewer'),
-    remotes = citation('remotes'),
-    rmarkdown = citation('rmarkdown')[1],
-    sessioninfo = citation('sessioninfo'),
-    testthat = citation('testthat')
+    rafalib = citation("rafalib"),
+    RColorBrewer = citation("RColorBrewer"),
+    remotes = citation("remotes"),
+    rmarkdown = citation("rmarkdown")[1],
+    sessioninfo = citation("sessioninfo"),
+    testthat = citation("testthat")
 )
 
-write.bibtex(bib, file = 'quickstartRef.bib')
+write.bibtex(bib, file = "quickstartRef.bib")
 ```
 
 
@@ -59,10 +59,11 @@ write.bibtex(bib, file = 'quickstartRef.bib')
 `R` is an open-source statistical environment which can be easily modified to enhance its functionality via packages. `r Githubpkg('LieberInstitute/jaffelab')` is a `R` package available via GitHub. `R` can be installed on any operating system from [CRAN](https://cran.r-project.org/) after which you can install `r Githubpkg('LieberInstitute/jaffelab')` by using the following commands in your `R` session:
 
 ```{r 'installpkg', eval = FALSE}
-if (!requireNamespace("remotes", quietly = TRUE))
-   install.packages("remotes")
+if (!requireNamespace("remotes", quietly = TRUE)) {
+      install.packages("remotes")
+  }
 
-remotes::install_github('LieberInstitute/jaffelab')
+remotes::install_github("LieberInstitute/jaffelab")
 ```
 
 ## Required knowledge
@@ -79,7 +80,7 @@ We hope that `r Githubpkg('LieberInstitute/jaffelab')` will be useful for your r
 
 ```{r 'citation'}
 ## Citation info
-citation('jaffelab')
+citation("jaffelab")
 ```
 
 # Overview
@@ -111,17 +112,17 @@ Code for creating the vignette
 
 ```{r createVignette, eval=FALSE}
 ## Create the vignette
-library('rmarkdown')
-system.time(render('jaffelab-quickstart.Rmd', 'BiocStyle::html_document'))
+library("rmarkdown")
+system.time(render("jaffelab-quickstart.Rmd", "BiocStyle::html_document"))
 
 ## Extract the R code
-library('knitr')
-knit('jaffelab-quickstart.Rmd', tangle = TRUE)
+library("knitr")
+knit("jaffelab-quickstart.Rmd", tangle = TRUE)
 ```
 
 ```{r createVignette2}
 ## Clean up
-file.remove('quickstartRef.bib')
+file.remove("quickstartRef.bib")
 ```
 
 Date the vignette was generated.
@@ -136,14 +137,14 @@ Wallclock time spent generating the vignette.
 ```{r reproduce2, echo=FALSE}
 ## Processing time in seconds
 totalTime <- diff(c(startTime, Sys.time()))
-round(totalTime, digits=3)
+round(totalTime, digits = 3)
 ```
 
 `R` session information.
 
 ```{r reproduce3, echo=FALSE}
 ## Session info
-library('sessioninfo')
+library("sessioninfo")
 options(width = 120)
 session_info()
 ```

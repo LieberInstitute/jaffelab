@@ -26,33 +26,36 @@
 #'
 #' ## Or don't pull them
 #' edge.pvalue(z, z0, pool = FALSE)
-#'
-
-edge.pvalue <- function(stat, stat0, pool=TRUE) {
-  err.func <- "edge.pvalue"
-  m <- length(stat)
-  if(pool==TRUE) {
-    if(is.matrix(stat0)) {stat0 <- as.vector(stat0)}
-    m0 <- length(stat0)
-    v <- c(rep(T, m), rep(F, m0))
-    v <- v[order(c(stat,stat0), decreasing = TRUE)]
-    u <- 1:length(v)
-    w <- 1:m
-    p <- (u[v==TRUE]-w)/m0
-    p <- p[rank(-stat)]
-    p <- pmax(p,1/m0)
-  } else {
-    if(is.vector(stat0)) {
-        stop('stat0 must be a matrix.', call. = FALSE)
+edge.pvalue <- function(stat, stat0, pool = TRUE) {
+    err.func <- "edge.pvalue"
+    m <- length(stat)
+    if (pool == TRUE) {
+        if (is.matrix(stat0)) {
+            stat0 <- as.vector(stat0)
+        }
+        m0 <- length(stat0)
+        v <- c(rep(T, m), rep(F, m0))
+        v <- v[order(c(stat, stat0), decreasing = TRUE)]
+        u <- 1:length(v)
+        w <- 1:m
+        p <- (u[v == TRUE] - w) / m0
+        p <- p[rank(-stat)]
+        p <- pmax(p, 1 / m0)
+    } else {
+        if (is.vector(stat0)) {
+            stop("stat0 must be a matrix.", call. = FALSE)
+        }
+        if (ncol(stat0) == m) {
+            stat0 <- t(stat0)
+        }
+        if (nrow(stat0) != m) {
+            stop("Number of rows of stat0 must equal length of stat.",
+                call. = FALSE
+            )
+        }
+        stat0 <- (stat0 - matrix(rep(stat, ncol(stat0)), byrow = FALSE, nrow = m)) >= 0
+        p <- apply(stat0, 1, mean)
+        p <- pmax(p, 1 / ncol(stat0))
     }
-    if(ncol(stat0)==m) {stat0 <- t(stat0)}
-    if(nrow(stat0)!=m){
-        stop("Number of rows of stat0 must equal length of stat.",
-            call. = FALSE)
-    }
-    stat0 <- (stat0 - matrix(rep(stat,ncol(stat0)),byrow=FALSE,nrow=m)) >= 0
-    p <- apply(stat0,1,mean)
-    p <- pmax(p,1/ncol(stat0))
-  }
-  return(p)
+    return(p)
 }

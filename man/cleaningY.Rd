@@ -29,9 +29,11 @@ set.seed(20190827)
 model_fun <- function(x) {
     ## Baseline + a group effect (2 groups) + a second covariate effect
     rnorm(30) +
-    c(rnorm(15, mean = 3), rnorm(15, mean = 1)) +
-    c(rnorm(5, sd = 0.5), rnorm(5, sd = 0.2, mean = 0.5),
-        rnorm(5, sd = 0.2, mean = 0.9))
+        c(rnorm(15, mean = 3), rnorm(15, mean = 1)) +
+        c(
+            rnorm(5, sd = 0.5), rnorm(5, sd = 0.2, mean = 0.5),
+            rnorm(5, sd = 0.2, mean = 0.9)
+        )
 }
 
 ## Generate the data for 20 'genes'
@@ -39,7 +41,7 @@ y <- t(sapply(1:20, model_fun))
 
 ## Define the phenotype data for these 30 'samples'
 pheno <- data.frame(
-    group = rep(c('A', 'B'), each = 15),
+    group = rep(c("A", "B"), each = 15),
     batch = rep(1:3, each = 5)
 )
 
@@ -47,19 +49,19 @@ pheno <- data.frame(
 mod <- with(pheno, model.matrix(~ group + batch))
 
 ## Check the raw data for gene 1
-boxplot(y[1, ] ~ pheno$group, ylab = 'Gene 1 Raw Expr')
+boxplot(y[1, ] ~ pheno$group, ylab = "Gene 1 Raw Expr")
 
 ## Now regress out the batch covariate from the gene expression matrix
 y_clean_p2 <- cleaningY(y, mod, P = 2)
 
 ## Check the cleaned data for gene 1 (with P = 2)
-boxplot(y_clean_p2[1, ] ~ pheno$group, ylab = 'Gene 1 Clean Expr (P = 2)')
+boxplot(y_clean_p2[1, ] ~ pheno$group, ylab = "Gene 1 Clean Expr (P = 2)")
 
 ## Or regress out the group and batch effects
 y_clean_p3 <- cleaningY(y, mod, P = 1)
 
 ## Check the cleaned data for gene 1 (with P = 3)
-boxplot(y_clean_p3[1, ] ~ pheno$group, ylab = 'Gene 1 Clean Expr (P = 3)')
+boxplot(y_clean_p3[1, ] ~ pheno$group, ylab = "Gene 1 Clean Expr (P = 3)")
 
 
 
@@ -78,13 +80,12 @@ corner(y_clean_p2_0)
 corner(y_clean_p2_NA)
 
 ## They are identical except for that NA in [1, 1]
-table(y_clean_p2_0 -  y_clean_p2_NA, useNA = 'ifany')
+table(y_clean_p2_0 - y_clean_p2_NA, useNA = "ifany")
 
 ## Compared to the original y, there are differences since we lost
 ## one observation which affects all of the first row of the cleaned Y
 y_clean_p2[1, ] - y_clean_p2_NA[1, ]
 all(y_clean_p2[-1, ] - y_clean_p2_NA[-1, ] == 0)
-
 }
 \author{
 Rafael Irizarry, Leonardo Collado-Torres (examples)

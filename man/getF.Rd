@@ -33,7 +33,7 @@ set.seed(20161005)
 ## From limma::limFit example page:
 sd <- 0.3 * sqrt(4 / rchisq(100, df = 4))
 y <- matrix(rnorm(100 * 6, sd = sd), 100, 6)
-rownames(y) <- paste('Gene', seq_len(100))
+rownames(y) <- paste("Gene", seq_len(100))
 y[1:2, 4:6] <- y[1:2, 4:6] + 4
 
 ## Define the alternative and null models
@@ -42,7 +42,7 @@ mod <- model.matrix(~ pheno$group + pheno$RIN)
 mod0 <- model.matrix(~ pheno$RIN)
 
 ## Fit the models
-library('limma')
+library("limma")
 fit <- lmFit(y, mod)
 fit0 <- lmFit(y, mod0)
 
@@ -51,9 +51,8 @@ finfo <- getF(fit, fit0, y)
 head(finfo)
 
 ## You can then use p.adjust() for multiple testing corrections
-qvals <- p.adjust(finfo$f_pval, 'fdr')
+qvals <- p.adjust(finfo$f_pval, "fdr")
 summary(qvals)
-
 }
 \author{
 Leonardo Collado-Torres, Andrew E Jaffe
