@@ -29,6 +29,7 @@ Imports:
     utils,
     googledrive
 Suggests:
+    covr,
     BiocStyle (>= 2.3.12),
     derfinderHelper,
     knitcitations,
