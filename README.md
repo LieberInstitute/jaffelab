@@ -10,6 +10,7 @@ stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://
 [![R-CMD-check-bioc](https://github.com/LieberInstitute/jaffelab/workflows/R-CMD-check-bioc/badge.svg)](https://github.com/LieberInstitute/jaffelab/actions)
 [![Codecov test
 coverage](https://codecov.io/gh/LieberInstitute/jaffelab/branch/master/graph/badge.svg)](https://codecov.io/gh/LieberInstitute/jaffelab?branch=master)
+[![DOI](https://zenodo.org/badge/70074284.svg)](https://zenodo.org/badge/latestdoi/70074284)
 <!-- badges: end -->
 
 `jaffelab` is a package initially developed by Andrew E Jaffe’s team at
