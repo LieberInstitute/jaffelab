@@ -166,7 +166,7 @@ with merged columns for 'concordMapRate', 'overallMapRate', 'mitoRate',
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
 <span class='co'>## Taken from ?SummarizedExperiment</span>
-<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='st'><a href='https://bioconductor.org/packages/SummarizedExperiment'>'SummarizedExperiment'</a></span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='st'><a href='https://bioconductor.org/packages/SummarizedExperiment'>"SummarizedExperiment"</a></span><span class='op'>)</span>
 </div><div class='output co'>#&gt; <span class='message'>Loading required package: MatrixGenerics</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: matrixStats</span></div><div class='output co'>#&gt; <span class='message'></span>
 #&gt; <span class='message'>Attaching package: ‘MatrixGenerics’</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from ‘package:matrixStats’:</span>
 #&gt; <span class='message'></span>
@@ -201,9 +201,9 @@ with merged columns for 'concordMapRate', 'overallMapRate', 'mitoRate',
 #&gt; <span class='message'>    order, paste, pmax, pmax.int, pmin, pmin.int, Position, rank,</span>
 #&gt; <span class='message'>    rbind, Reduce, rownames, sapply, setdiff, sort, table, tapply,</span>
 #&gt; <span class='message'>    union, unique, unsplit, which.max, which.min</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: S4Vectors</span></div><div class='output co'>#&gt; <span class='message'></span>
-#&gt; <span class='message'>Attaching package: ‘S4Vectors’</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from ‘package:base’:</span>
+#&gt; <span class='message'>Attaching package: ‘S4Vectors’</span></div><div class='output co'>#&gt; <span class='message'>The following object is masked from ‘package:base’:</span>
 #&gt; <span class='message'></span>
-#&gt; <span class='message'>    expand.grid, I, unname</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: IRanges</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: GenomeInfoDb</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: Biobase</span></div><div class='output co'>#&gt; <span class='message'>Welcome to Bioconductor</span>
+#&gt; <span class='message'>    expand.grid</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: IRanges</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: GenomeInfoDb</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: Biobase</span></div><div class='output co'>#&gt; <span class='message'>Welcome to Bioconductor</span>
 #&gt; <span class='message'></span>
 #&gt; <span class='message'>    Vignettes contain introductory material; view with</span>
 #&gt; <span class='message'>    'browseVignettes()'. To cite Bioconductor, see</span>
@@ -212,13 +212,15 @@ with merged columns for 'concordMapRate', 'overallMapRate', 'mitoRate',
 #&gt; <span class='message'></span>
 #&gt; <span class='message'>    rowMedians</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from ‘package:matrixStats’:</span>
 #&gt; <span class='message'></span>
-#&gt; <span class='message'>    anyMissing, rowMedians</span></div><div class='input'><span class='va'>nrows</span> <span class='op'>&lt;-</span> <span class='fl'>200</span>; <span class='va'>ncols</span> <span class='op'>&lt;-</span> <span class='fl'>6</span>
+#&gt; <span class='message'>    anyMissing, rowMedians</span></div><div class='input'><span class='va'>nrows</span> <span class='op'>&lt;-</span> <span class='fl'>200</span>
+<span class='va'>ncols</span> <span class='op'>&lt;-</span> <span class='fl'>6</span>
 <span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span><span class='op'>(</span><span class='fl'>20181116</span><span class='op'>)</span>
 <span class='va'>counts</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>matrix</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/stats/Uniform.html'>runif</a></span><span class='op'>(</span><span class='va'>nrows</span> <span class='op'>*</span> <span class='va'>ncols</span>, <span class='fl'>1</span>, <span class='fl'>1e4</span><span class='op'>)</span>, <span class='va'>nrows</span><span class='op'>)</span>
 <span class='va'>rowRanges</span> <span class='op'>&lt;-</span> <span class='fu'>GRanges</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"chr1"</span>, <span class='st'>"chr2"</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>50</span>, <span class='fl'>150</span><span class='op'>)</span><span class='op'>)</span>,
-                     <span class='fu'>IRanges</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/Round.html'>floor</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/stats/Uniform.html'>runif</a></span><span class='op'>(</span><span class='fl'>200</span>, <span class='fl'>1e5</span>, <span class='fl'>1e6</span><span class='op'>)</span><span class='op'>)</span>, width<span class='op'>=</span><span class='fl'>100</span><span class='op'>)</span>,
-                     strand<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"+"</span>, <span class='st'>"-"</span><span class='op'>)</span>, <span class='fl'>200</span>, <span class='cn'>TRUE</span><span class='op'>)</span>,
-                     feature_id<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/sprintf.html'>sprintf</a></span><span class='op'>(</span><span class='st'>"ID%03d"</span>, <span class='fl'>1</span><span class='op'>:</span><span class='fl'>200</span><span class='op'>)</span><span class='op'>)</span>
+    <span class='fu'>IRanges</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/Round.html'>floor</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/stats/Uniform.html'>runif</a></span><span class='op'>(</span><span class='fl'>200</span>, <span class='fl'>1e5</span>, <span class='fl'>1e6</span><span class='op'>)</span><span class='op'>)</span>, width <span class='op'>=</span> <span class='fl'>100</span><span class='op'>)</span>,
+    strand <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"+"</span>, <span class='st'>"-"</span><span class='op'>)</span>, <span class='fl'>200</span>, <span class='cn'>TRUE</span><span class='op'>)</span>,
+    feature_id <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/sprintf.html'>sprintf</a></span><span class='op'>(</span><span class='st'>"ID%03d"</span>, <span class='fl'>1</span><span class='op'>:</span><span class='fl'>200</span><span class='op'>)</span>
+<span class='op'>)</span>
 
 <span class='co'>## Function for generating some data</span>
 <span class='va'>rand_gen</span> <span class='op'>&lt;-</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>mu</span> <span class='op'>=</span> <span class='fl'>1e6</span>, <span class='va'>sd</span> <span class='op'>=</span> <span class='fl'>1e3</span>, <span class='va'>digits</span> <span class='op'>=</span> <span class='fl'>0</span><span class='op'>)</span> <span class='op'>{</span>
@@ -226,21 +228,24 @@ with merged columns for 'concordMapRate', 'overallMapRate', 'mitoRate',
         <span class='fu'><a href='https://rdrr.io/r/base/Round.html'>round</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span><span class='op'>(</span><span class='fl'>2</span>, <span class='va'>mu</span>, <span class='va'>sd</span><span class='op'>)</span>, <span class='va'>digits</span><span class='op'>)</span>
     <span class='op'>}</span><span class='op'>)</span><span class='op'>)</span>
 <span class='op'>}</span>
-<span class='va'>colData</span> <span class='op'>&lt;-</span> <span class='fu'>DataFrame</span><span class='op'>(</span>Treatment<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"ChIP"</span>, <span class='st'>"Input"</span><span class='op'>)</span>, <span class='fl'>3</span><span class='op'>)</span>,
-                     row.names<span class='op'>=</span><span class='va'>LETTERS</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>6</span><span class='op'>]</span>,
-                     concordMapRate <span class='op'>=</span> <span class='fu'>rand_gen</span><span class='op'>(</span><span class='fl'>0.5</span>, <span class='fl'>0.05</span>, <span class='fl'>10</span><span class='op'>)</span>,
-                     overallMapRate <span class='op'>=</span> <span class='fu'>rand_gen</span><span class='op'>(</span><span class='fl'>0.7</span>, <span class='fl'>0.05</span>, <span class='fl'>10</span><span class='op'>)</span>,
-                     mitoRate <span class='op'>=</span> <span class='fu'>rand_gen</span><span class='op'>(</span><span class='fl'>0.2</span>, <span class='fl'>0.05</span>, <span class='fl'>10</span><span class='op'>)</span>,
-                     rRNA_rate <span class='op'>=</span> <span class='fu'>rand_gen</span><span class='op'>(</span><span class='fl'>0.1</span>, <span class='fl'>0.01</span>, <span class='fl'>10</span><span class='op'>)</span>,
-                     totalAssignedGene <span class='op'>=</span> <span class='fu'>rand_gen</span><span class='op'>(</span><span class='fl'>0.5</span>, <span class='fl'>0.05</span>, <span class='fl'>10</span><span class='op'>)</span>,
-                     numMapped <span class='op'>=</span> <span class='fu'>rand_gen</span><span class='op'>(</span><span class='op'>)</span>,
-                     numReads <span class='op'>=</span> <span class='fu'>rand_gen</span><span class='op'>(</span><span class='fl'>1e6</span> <span class='op'>+</span> <span class='fl'>6e5</span><span class='op'>)</span>,
-                     numUnmapped <span class='op'>=</span> <span class='fu'>rand_gen</span><span class='op'>(</span><span class='fl'>5e5</span><span class='op'>)</span>,
-                     mitoMapped <span class='op'>=</span> <span class='fu'>rand_gen</span><span class='op'>(</span><span class='fl'>1e5</span><span class='op'>)</span>,
-                     totalMapped <span class='op'>=</span> <span class='fu'>rand_gen</span><span class='op'>(</span><span class='fl'>1e6</span> <span class='op'>+</span> <span class='fl'>1e5</span><span class='op'>)</span>
+<span class='va'>colData</span> <span class='op'>&lt;-</span> <span class='fu'>DataFrame</span><span class='op'>(</span>
+    Treatment <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"ChIP"</span>, <span class='st'>"Input"</span><span class='op'>)</span>, <span class='fl'>3</span><span class='op'>)</span>,
+    row.names <span class='op'>=</span> <span class='va'>LETTERS</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>6</span><span class='op'>]</span>,
+    concordMapRate <span class='op'>=</span> <span class='fu'>rand_gen</span><span class='op'>(</span><span class='fl'>0.5</span>, <span class='fl'>0.05</span>, <span class='fl'>10</span><span class='op'>)</span>,
+    overallMapRate <span class='op'>=</span> <span class='fu'>rand_gen</span><span class='op'>(</span><span class='fl'>0.7</span>, <span class='fl'>0.05</span>, <span class='fl'>10</span><span class='op'>)</span>,
+    mitoRate <span class='op'>=</span> <span class='fu'>rand_gen</span><span class='op'>(</span><span class='fl'>0.2</span>, <span class='fl'>0.05</span>, <span class='fl'>10</span><span class='op'>)</span>,
+    rRNA_rate <span class='op'>=</span> <span class='fu'>rand_gen</span><span class='op'>(</span><span class='fl'>0.1</span>, <span class='fl'>0.01</span>, <span class='fl'>10</span><span class='op'>)</span>,
+    totalAssignedGene <span class='op'>=</span> <span class='fu'>rand_gen</span><span class='op'>(</span><span class='fl'>0.5</span>, <span class='fl'>0.05</span>, <span class='fl'>10</span><span class='op'>)</span>,
+    numMapped <span class='op'>=</span> <span class='fu'>rand_gen</span><span class='op'>(</span><span class='op'>)</span>,
+    numReads <span class='op'>=</span> <span class='fu'>rand_gen</span><span class='op'>(</span><span class='fl'>1e6</span> <span class='op'>+</span> <span class='fl'>6e5</span><span class='op'>)</span>,
+    numUnmapped <span class='op'>=</span> <span class='fu'>rand_gen</span><span class='op'>(</span><span class='fl'>5e5</span><span class='op'>)</span>,
+    mitoMapped <span class='op'>=</span> <span class='fu'>rand_gen</span><span class='op'>(</span><span class='fl'>1e5</span><span class='op'>)</span>,
+    totalMapped <span class='op'>=</span> <span class='fu'>rand_gen</span><span class='op'>(</span><span class='fl'>1e6</span> <span class='op'>+</span> <span class='fl'>1e5</span><span class='op'>)</span>
 <span class='op'>)</span>
-<span class='va'>rse</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/SummarizedExperiment/man/RangedSummarizedExperiment-class.html'>SummarizedExperiment</a></span><span class='op'>(</span>assays<span class='op'>=</span><span class='fu'>SimpleList</span><span class='op'>(</span>counts<span class='op'>=</span><span class='va'>counts</span><span class='op'>)</span>,
-                            rowRanges<span class='op'>=</span><span class='va'>rowRanges</span>, colData<span class='op'>=</span><span class='va'>colData</span><span class='op'>)</span>
+<span class='va'>rse</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/SummarizedExperiment/man/RangedSummarizedExperiment-class.html'>SummarizedExperiment</a></span><span class='op'>(</span>
+    assays <span class='op'>=</span> <span class='fu'>SimpleList</span><span class='op'>(</span>counts <span class='op'>=</span> <span class='va'>counts</span><span class='op'>)</span>,
+    rowRanges <span class='op'>=</span> <span class='va'>rowRanges</span>, colData <span class='op'>=</span> <span class='va'>colData</span>
+<span class='op'>)</span>
 <span class='fu'><a href='https://rdrr.io/pkg/SummarizedExperiment/man/SummarizedExperiment-class.html'>colData</a></span><span class='op'>(</span><span class='va'>rse</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; DataFrame with 6 rows and 11 columns
 #&gt;     Treatment    concordMapRate    overallMapRate          mitoRate
@@ -284,8 +289,7 @@ with merged columns for 'concordMapRate', 'overallMapRate', 'mitoRate',
 #&gt; C          0.522079   2000988   3198158      999852     200693     2200620
 #&gt; D          0.424632   2001723   3201525      998866     196405     2197077
 #&gt; E          0.478166   1997963   3198693      999856     198893     2201101
-#&gt; F          0.547085   1999725   3197209     1001121     197892     2200127</div><div class='input'>
-</div></pre>
+#&gt; F          0.547085   1999725   3197209     1001121     197892     2200127</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

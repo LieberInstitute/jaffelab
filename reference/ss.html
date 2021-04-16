@@ -166,14 +166,13 @@ return.</p></td>
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
 <span class='co'>## Some example info with two variables separated by a _</span>
-<span class='va'>info</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>'DLPFC_polyA'</span>, <span class='st'>'DLPFC_RiboZero'</span><span class='op'>)</span>
-<span class='fu'>ss</span><span class='op'>(</span><span class='va'>info</span>, <span class='st'>'_'</span>, <span class='fl'>1</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] "DLPFC" "DLPFC"</div><div class='input'><span class='fu'>ss</span><span class='op'>(</span><span class='va'>info</span>, <span class='st'>'_'</span>, <span class='fl'>2</span><span class='op'>)</span>
+<span class='va'>info</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"DLPFC_polyA"</span>, <span class='st'>"DLPFC_RiboZero"</span><span class='op'>)</span>
+<span class='fu'>ss</span><span class='op'>(</span><span class='va'>info</span>, <span class='st'>"_"</span>, <span class='fl'>1</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] "DLPFC" "DLPFC"</div><div class='input'><span class='fu'>ss</span><span class='op'>(</span><span class='va'>info</span>, <span class='st'>"_"</span>, <span class='fl'>2</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; [1] "polyA"    "RiboZero"</div><div class='input'>
 <span class='co'>## Example where we use the ... argument</span>
-<span class='fu'>ss</span><span class='op'>(</span><span class='st'>'a.b.c'</span>, <span class='st'>'.'</span>, slot <span class='op'>=</span> <span class='fl'>1</span>, fixed <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] "a"</div><div class='input'>
-</div></pre>
+<span class='fu'>ss</span><span class='op'>(</span><span class='st'>"a.b.c"</span>, <span class='st'>"."</span>, slot <span class='op'>=</span> <span class='fl'>1</span>, fixed <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] "a"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
