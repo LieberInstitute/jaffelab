@@ -1,3 +1,8 @@
+# jaffelab 0.99.32
+
+* Added the `skipLines` argument to `junctionCount` to resolve
+https://github.com/LieberInstitute/jaffelab/issues/8.
+
 # jaffelab 0.99.30
 
 * `cleaningY()` now supports `NA`s in the input `y`.
