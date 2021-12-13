@@ -15,6 +15,9 @@
 #' is stranded or not.
 #' @param minCount Minimum count.
 #' @param maxCores The maximum number of cores to use. By default one.
+#' @param skipLines An `integer(1)` specifying how many lines to skip on the
+#' junction files. Some files have a header and some don't. So you'll either
+#' want to use `1` or `0` in most scenarios.
 #'
 #' @return A two element list with a `DataFrame` and a
 #' [GRanges-class][GenomicRanges::GRanges-class] object with the counts and the
@@ -36,7 +39,7 @@
 junctionCount <- function(junctionFiles, sampleNames = names(junctionFiles),
     output = c("Count", "Rail"), minOverhang = 0,
     strandSpecific = FALSE, illuminaStranded = FALSE,
-    minCount = 1, maxCores = 1) {
+    minCount = 1, maxCores = 1, skipLines = ifelse(output == "Count", 0, 1)) {
     stopifnot(length(junctionFiles) == length(sampleNames))
     stopifnot(output %in% c("Count", "Rail"))
 
@@ -47,7 +50,7 @@ junctionCount <- function(junctionFiles, sampleNames = names(junctionFiles),
         theData <- mclapply(junctionFiles, function(x) {
             if (output == "Rail") {
                 y <- read.delim(x,
-                    skip = 1, header = FALSE,
+                    skip = skipLines, header = FALSE,
                     colClasses = c(
                         "character", "integer",
                         "integer", "integer", "integer", "integer"
@@ -61,7 +64,7 @@ junctionCount <- function(junctionFiles, sampleNames = names(junctionFiles),
                 y <- y[y$leftHang > minOverhang & y$rightHang > minOverhang, ]
             } else if (output == "Count") {
                 y <- read.delim(x,
-                    skip = 1, header = FALSE,
+                    skip = skipLines, header = FALSE,
                     col.names = c("chr", "start", "end", "strand", "count"),
                     colClasses = c(
                         "character", "integer", "integer",

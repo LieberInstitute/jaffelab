@@ -46,5 +46,5 @@ Encoding: UTF-8
 LazyData: true
 URL: https://github.com/LieberInstitute/jaffelab
 BugReports: https://github.com/LieberInstitute/jaffelab/issues
-RoxygenNote: 7.1.1
+RoxygenNote: 7.1.2
 Roxygen: list(markdown = TRUE)

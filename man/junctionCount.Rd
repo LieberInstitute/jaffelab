@@ -12,7 +12,8 @@ junctionCount(
   strandSpecific = FALSE,
   illuminaStranded = FALSE,
   minCount = 1,
-  maxCores = 1
+  maxCores = 1,
+  skipLines = ifelse(output == "Count", 0, 1)
 )
 }
 \arguments{
@@ -36,6 +37,10 @@ is stranded or not.}
 \item{minCount}{Minimum count.}
 
 \item{maxCores}{The maximum number of cores to use. By default one.}
+
+\item{skipLines}{An \code{integer(1)} specifying how many lines to skip on the
+junction files. Some files have a header and some don't. So you'll either
+want to use \code{1} or \code{0} in most scenarios.}
 }
 \value{
 A two element list with a \code{DataFrame} and a

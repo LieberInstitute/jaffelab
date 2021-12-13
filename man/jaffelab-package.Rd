@@ -6,8 +6,7 @@
 \alias{jaffelab-package}
 \title{jaffelab: Commonly used functions by the Jaffe lab}
 \description{
-The jaffelab contains miscellaneous functions that are commonly
-    used in the Jaffe lab http://aejaffe.com/.
+The jaffelab contains miscellaneous functions that are commonly used in the Jaffe lab http://aejaffe.com/.
 }
 \seealso{
 Useful links:
