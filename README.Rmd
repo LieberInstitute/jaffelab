@@ -17,8 +17,10 @@ knitr::opts_chunk$set(
 
 <!-- badges: start -->
 [![Lifecycle: stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
-[![R-CMD-check-bioc](https://github.com/LieberInstitute/jaffelab/workflows/R-CMD-check-bioc/badge.svg)](https://github.com/LieberInstitute/jaffelab/actions)
-[![Codecov test coverage](https://codecov.io/gh/LieberInstitute/jaffelab/branch/master/graph/badge.svg)](https://codecov.io/gh/LieberInstitute/jaffelab?branch=master)
+[![Codecov test coverage](https://codecov.io/gh/LieberInstitute/jaffelab/branch/devel/graph/badge.svg)](https://codecov.io/gh/LieberInstitute/jaffelab?branch=devel)
+[![R build status](https://github.com/LieberInstitute/jaffelab/workflows/R-CMD-check-bioc/badge.svg)](https://github.com/LieberInstitute/jaffelab/actions)
+[![GitHub issues](https://img.shields.io/github/issues/LieberInstitute/jaffelab)](https://github.com/LieberInstitute/jaffelab/issues)
+[![GitHub pulls](https://img.shields.io/github/issues-pr/LieberInstitute/jaffelab)](https://github.com/LieberInstitute/jaffelab/pulls)
 [![DOI](https://zenodo.org/badge/70074284.svg)](https://zenodo.org/badge/latestdoi/70074284)
 <!-- badges: end -->
 

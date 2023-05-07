@@ -29,8 +29,8 @@
 #' }
 googledrive_csv <- function(df, sheet_name) {
     if (!is.character(sheet_name)) {
-          stop("'sheet_name' should be a character vector.", call. = FALSE)
-      }
+        stop("'sheet_name' should be a character vector.", call. = FALSE)
+    }
 
     ## Write temp csv
     tmp_csv <- file.path(tempdir(), paste0(sheet_name, ".csv"))

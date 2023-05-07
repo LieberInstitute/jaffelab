@@ -64,8 +64,9 @@
 #'
 #' ## View the pdf with the following code
 #' utils::browseURL("test_expression_cutoff.pdf")
-expression_cutoff <- function(expr, max_cut = 1, seed = NULL, n.boot = 2000,
-    k = 2) {
+expression_cutoff <- function(
+        expr, max_cut = 1, seed = NULL, n.boot = 2000,
+        k = 2) {
     meanExpr <- rowMeans(expr)
 
 

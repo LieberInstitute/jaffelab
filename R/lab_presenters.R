@@ -43,19 +43,20 @@
 #'     ## If it's a new sheet, we recommend sharing an editable link so other
 #'     ## lab members can swap out as necessary.
 #' }
-lab_presenters <- function(presenters, start_date = "2019-09-18",
-    sheet_name = "Jaffelab research presenters", n = 2, repeat_day = 7) {
+lab_presenters <- function(
+        presenters, start_date = "2019-09-18",
+        sheet_name = "Jaffelab research presenters", n = 2, repeat_day = 7) {
     ## Check inputs
     if (!is.character(presenters)) {
-          stop("'presenters' should be a character vector.", call. = FALSE)
-      }
+        stop("'presenters' should be a character vector.", call. = FALSE)
+    }
     if (!is.character(start_date)) {
-          stop("'start_date' should be a character vector.", call. = FALSE)
-      }
+        stop("'start_date' should be a character vector.", call. = FALSE)
+    }
     if (n < 1) stop("'n' should be at least 1.", call. = FALSE)
     if (!identical(nchar(strsplit(start_date, "-")[[1]]), c(4L, 2L, 2L))) {
-          stop("'start_date' should be in the format YYYY-MM-DD.", call. = FALSE)
-      }
+        stop("'start_date' should be in the format YYYY-MM-DD.", call. = FALSE)
+    }
 
     ## Keep the unique and sort them to make it 100% reproducible
     presenters <- sort(unique(presenters))

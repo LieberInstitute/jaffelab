@@ -60,8 +60,8 @@ write.bibtex(bib, file = "quickstartRef.bib")
 
 ```{r 'installpkg', eval = FALSE}
 if (!requireNamespace("remotes", quietly = TRUE)) {
-      install.packages("remotes")
-  }
+    install.packages("remotes")
+}
 
 remotes::install_github("LieberInstitute/jaffelab")
 ```
