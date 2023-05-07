@@ -26,7 +26,7 @@
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -63,17 +63,17 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">junctionCount</span><span class="op">(</span>
-  <span class="va">junctionFiles</span>,
-  sampleNames <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">junctionFiles</span><span class="op">)</span>,
-  output <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Count"</span>, <span class="st">"Rail"</span><span class="op">)</span>,
-  minOverhang <span class="op">=</span> <span class="fl">0</span>,
-  strandSpecific <span class="op">=</span> <span class="cn">FALSE</span>,
-  illuminaStranded <span class="op">=</span> <span class="cn">FALSE</span>,
-  minCount <span class="op">=</span> <span class="fl">1</span>,
-  maxCores <span class="op">=</span> <span class="fl">1</span>,
-  skipLines <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html" class="external-link">ifelse</a></span><span class="op">(</span><span class="va">output</span> <span class="op">==</span> <span class="st">"Count"</span>, <span class="fl">0</span>, <span class="fl">1</span><span class="op">)</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">junctionCount</span><span class="op">(</span></span>
+<span>  <span class="va">junctionFiles</span>,</span>
+<span>  sampleNames <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">junctionFiles</span><span class="op">)</span>,</span>
+<span>  output <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Count"</span>, <span class="st">"Rail"</span><span class="op">)</span>,</span>
+<span>  minOverhang <span class="op">=</span> <span class="fl">0</span>,</span>
+<span>  strandSpecific <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  illuminaStranded <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  minCount <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>  maxCores <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>  skipLines <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html" class="external-link">ifelse</a></span><span class="op">(</span><span class="va">output</span> <span class="op">==</span> <span class="st">"Count"</span>, <span class="fl">0</span>, <span class="fl">1</span><span class="op">)</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -82,31 +82,50 @@
 <dd><p>A character vector with the full paths to the junction
 files. Can alternatively be a list of <a href="https://rdrr.io/pkg/GenomicRanges/man/GRanges-class.html" class="external-link">GRanges-class</a>
 objects with the junction count information.</p></dd>
+
+
 <dt>sampleNames</dt>
 <dd><p>A character vector of the same length as <code>junctionsFiles</code>
 to use as the sample names.</p></dd>
+
+
 <dt>output</dt>
 <dd><p>Either <code>Count</code> (TopHat2, HISAT2) or <code>Rail</code> (Rail-RNA).</p></dd>
+
+
 <dt>minOverhang</dt>
 <dd><p>minimum overhang.</p></dd>
+
+
 <dt>strandSpecific</dt>
 <dd><p>a logical specifying whether the library is strand
 specific or not.</p></dd>
+
+
 <dt>illuminaStranded</dt>
 <dd><p>a logical indicating whether the Illumina library
 is stranded or not.</p></dd>
+
+
 <dt>minCount</dt>
 <dd><p>Minimum count.</p></dd>
+
+
 <dt>maxCores</dt>
 <dd><p>The maximum number of cores to use. By default one.</p></dd>
+
+
 <dt>skipLines</dt>
 <dd><p>An <code>integer(1)</code> specifying how many lines to skip on the
 junction files. Some files have a header and some don't. So you'll either
 want to use <code>1</code> or <code>0</code> in most scenarios.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>A two element list with a <code>DataFrame</code> and a
+    
+
+<p>A two element list with a <code>DataFrame</code> and a
 <a href="https://rdrr.io/pkg/GenomicRanges/man/GRanges-class.html" class="external-link">GRanges-class</a> object with the counts and the
 annotation used.</p>
     </div>
@@ -117,10 +136,10 @@ annotation used.</p>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"></span>
-<span class="r-in"><span class="co">## TODO (need some data)</span></span>
-<span class="r-in"><span class="co">## See https://github.com/LieberInstitute/RNAseq-pipeline/blob/ab71dedb36bcc3dad57233e645fabd5deb96d446/sh/create_count_objects-human.R#L633-L643</span></span>
-<span class="r-in"><span class="co">## for an example of how it's being using the the RNA-seq pipeline code</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">## TODO (need some data)</span></span></span>
+<span class="r-in"><span><span class="co">## See https://github.com/LieberInstitute/RNAseq-pipeline/blob/ab71dedb36bcc3dad57233e645fabd5deb96d446/sh/create_count_objects-human.R#L633-L643</span></span></span>
+<span class="r-in"><span><span class="co">## for an example of how it's being using the the RNA-seq pipeline code</span></span></span>
 <span class="r-in"></span>
 </code></pre></div>
     </div>
@@ -136,7 +155,7 @@ annotation used.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>

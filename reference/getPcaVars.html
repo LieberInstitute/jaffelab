@@ -27,7 +27,7 @@ the percent of variance explained by each of the principal components."><!-- mat
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -65,19 +65,24 @@ the percent of variance explained by each of the principal components.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">getPcaVars</span><span class="op">(</span><span class="va">pca</span>, digits <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">getPcaVars</span><span class="op">(</span><span class="va">pca</span>, digits <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>pca</dt>
 <dd><p>An object created with <a href="https://rdrr.io/r/stats/prcomp.html" class="external-link">prcomp</a>.</p></dd>
+
+
 <dt>digits</dt>
 <dd><p>The number of significant digits to round to.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>A vector with the percent of variance explained for each of the
+    
+
+<p>A vector with the percent of variance explained for each of the
 principal components in decreasing order.</p>
     </div>
     <div id="author">
@@ -87,9 +92,9 @@ principal components in decreasing order.</p>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"></span>
-<span class="r-in"><span class="va">pca</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/prcomp.html" class="external-link">prcomp</a></span><span class="op">(</span><span class="va">USArrests</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">getPcaVars</span><span class="op">(</span><span class="va">pca</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">pca</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/prcomp.html" class="external-link">prcomp</a></span><span class="op">(</span><span class="va">USArrests</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">getPcaVars</span><span class="op">(</span><span class="va">pca</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 96.6000  2.7800  0.5800  0.0849</span>
 </code></pre></div>
     </div>
@@ -105,7 +110,7 @@ principal components in decreasing order.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>

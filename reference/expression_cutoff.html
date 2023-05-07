@@ -34,7 +34,7 @@ expression cutoff returned is the average of the two suggested cutoffs."><!-- ma
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -79,7 +79,7 @@ expression cutoff returned is the average of the two suggested cutoffs.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">expression_cutoff</span><span class="op">(</span><span class="va">expr</span>, max_cut <span class="op">=</span> <span class="fl">1</span>, seed <span class="op">=</span> <span class="cn">NULL</span>, n.boot <span class="op">=</span> <span class="fl">2000</span>, k <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">expression_cutoff</span><span class="op">(</span><span class="va">expr</span>, max_cut <span class="op">=</span> <span class="fl">1</span>, seed <span class="op">=</span> <span class="cn">NULL</span>, n.boot <span class="op">=</span> <span class="fl">2000</span>, k <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -90,24 +90,35 @@ samples in the columns in RPKM format (typically). <code>expr</code> can be any 
 as <code>expression_cutoff()</code> will work with the row means of the matrix. You'll
 most likely want to use a normalized expression matrix, although this
 function will work with any matrix.</p></dd>
+
+
 <dt>max_cut</dt>
 <dd><p>Maximum expression cutoff to consider. Increasing this value
 does then to increase the suggested cutoffs. If set to <code>NULL</code>, this
 will be chosen automatically from 1 to 5.</p></dd>
+
+
 <dt>seed</dt>
 <dd><p>Set this argument for increased reproducibility of the results.
 This is passed to <a href="https://rdrr.io/pkg/segmented/man/seg.control.html" class="external-link">seg.control</a>. We highly recommend
 specifiying this value.</p></dd>
+
+
 <dt>n.boot</dt>
 <dd><p>This argument controls the stability of the suggested cutoffs.
 It is passed to <a href="https://rdrr.io/pkg/segmented/man/seg.control.html" class="external-link">seg.control</a>.</p></dd>
+
+
 <dt>k</dt>
 <dd><p>The number of breakpoints to consider. If you increase this value
 the estimated breakpoints are less stable.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>A two element vector with the suggested cutoffs based on the
+    
+
+<p>A two element vector with the suggested cutoffs based on the
 number of features expressed and the mean number of expressed samples
 across all features. The function also makes plots that visualize
 both curves and show the identified breakpoints as vertical grey lines.</p>
@@ -119,20 +130,20 @@ both curves and show the identified breakpoints as vertical grey lines.</p>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"></span>
-<span class="r-in"><span class="co">## Simulate expression data. Based on the limma::lmFit() man page</span></span>
-<span class="r-in"><span class="va">sd</span> <span class="op">&lt;-</span> <span class="fl">0.3</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html" class="external-link">sqrt</a></span><span class="op">(</span><span class="fl">4</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/stats/Chisquare.html" class="external-link">rchisq</a></span><span class="op">(</span><span class="fl">100</span>, df <span class="op">=</span> <span class="fl">4</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">100</span> <span class="op">*</span> <span class="fl">6</span>, sd <span class="op">=</span> <span class="va">sd</span><span class="op">)</span>, <span class="fl">100</span>, <span class="fl">6</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">rownames</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="st">"Gene"</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">100</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">y</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">2</span>, <span class="fl">4</span><span class="op">:</span><span class="fl">6</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="va">y</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">2</span>, <span class="fl">4</span><span class="op">:</span><span class="fl">6</span><span class="op">]</span> <span class="op">+</span> <span class="fl">2</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">## Make the expression data look like RPKM values</span></span>
-<span class="r-in"><span class="va">y2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/apply.html" class="external-link">apply</a></span><span class="op">(</span><span class="va">y</span>, <span class="fl">2</span>, <span class="kw">function</span><span class="op">(</span><span class="va">z</span><span class="op">)</span> <span class="op">{</span></span>
-<span class="r-in">    <span class="va">res</span> <span class="op">&lt;-</span> <span class="va">z</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html" class="external-link">abs</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">min</a></span><span class="op">(</span><span class="va">z</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in">    <span class="va">res</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq_len</a></span><span class="op">(</span><span class="fl">100</span><span class="op">)</span>, <span class="fl">10</span><span class="op">)</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fl">0</span></span>
-<span class="r-in">    <span class="va">res</span></span>
-<span class="r-in"><span class="op">}</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">y2</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">## Simulate expression data. Based on the limma::lmFit() man page</span></span></span>
+<span class="r-in"><span><span class="va">sd</span> <span class="op">&lt;-</span> <span class="fl">0.3</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html" class="external-link">sqrt</a></span><span class="op">(</span><span class="fl">4</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/stats/Chisquare.html" class="external-link">rchisq</a></span><span class="op">(</span><span class="fl">100</span>, df <span class="op">=</span> <span class="fl">4</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">100</span> <span class="op">*</span> <span class="fl">6</span>, sd <span class="op">=</span> <span class="va">sd</span><span class="op">)</span>, <span class="fl">100</span>, <span class="fl">6</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">rownames</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="st">"Gene"</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">100</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">y</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">2</span>, <span class="fl">4</span><span class="op">:</span><span class="fl">6</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="va">y</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">2</span>, <span class="fl">4</span><span class="op">:</span><span class="fl">6</span><span class="op">]</span> <span class="op">+</span> <span class="fl">2</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">## Make the expression data look like RPKM values</span></span></span>
+<span class="r-in"><span><span class="va">y2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/apply.html" class="external-link">apply</a></span><span class="op">(</span><span class="va">y</span>, <span class="fl">2</span>, <span class="kw">function</span><span class="op">(</span><span class="va">z</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span>    <span class="va">res</span> <span class="op">&lt;-</span> <span class="va">z</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html" class="external-link">abs</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">min</a></span><span class="op">(</span><span class="va">z</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span>    <span class="va">res</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq_len</a></span><span class="op">(</span><span class="fl">100</span><span class="op">)</span>, <span class="fl">10</span><span class="op">)</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fl">0</span></span></span>
+<span class="r-in"><span>    <span class="va">res</span></span></span>
+<span class="r-in"><span><span class="op">}</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">y2</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>        V1              V2               V3               V4        </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  Min.   :0.000   Min.   :0.0000   Min.   :0.0000   Min.   :0.0000  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  1st Qu.:0.812   1st Qu.:0.5794   1st Qu.:0.6757   1st Qu.:0.7014  </span>
@@ -147,28 +158,28 @@ both curves and show the identified breakpoints as vertical grey lines.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  Mean   :1.364   Mean   :1.558  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  3rd Qu.:1.710   3rd Qu.:1.894  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  Max.   :3.563   Max.   :3.829  </span>
-<span class="r-in"></span>
-<span class="r-in"><span class="fu">expression_cutoff</span><span class="op">(</span><span class="va">y2</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu">expression_cutoff</span><span class="op">(</span><span class="va">y2</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="expression_cutoff-1.png" alt="" width="700" height="433"></span>
 <span class="r-plt img"><img src="expression_cutoff-2.png" alt="" width="700" height="433"></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> 2021-12-13 17:34:26 the suggested expression cutoff is 0.78</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> 2023-05-07 01:37:19.818383 the suggested expression cutoff is 0.78</span>
 <span class="r-plt img"><img src="expression_cutoff-3.png" alt="" width="700" height="433"></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> percent_features_cut  samples_nonzero_cut </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                 0.79                 0.77 </span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">## Or same the plots to a PDF file</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/grDevices/pdf.html" class="external-link">pdf</a></span><span class="op">(</span><span class="st">"test_expression_cutoff.pdf"</span>, width <span class="op">=</span> <span class="fl">12</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">expression_cutoff</span><span class="op">(</span><span class="va">y2</span><span class="op">)</span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> 2021-12-13 17:34:26 the suggested expression cutoff is 0.78</span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">## Or same the plots to a PDF file</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/grDevices/pdf.html" class="external-link">pdf</a></span><span class="op">(</span><span class="st">"test_expression_cutoff.pdf"</span>, width <span class="op">=</span> <span class="fl">12</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">expression_cutoff</span><span class="op">(</span><span class="va">y2</span><span class="op">)</span></span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> 2023-05-07 01:37:20.180624 the suggested expression cutoff is 0.85</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> percent_features_cut  samples_nonzero_cut </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                 0.79                 0.77 </span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/grDevices/dev.html" class="external-link">dev.off</a></span><span class="op">(</span><span class="op">)</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                 0.93                 0.77 </span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/grDevices/dev.html" class="external-link">dev.off</a></span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> agg_png </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       2 </span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">## View the pdf with the following code</span></span>
-<span class="r-in"><span class="fu">utils</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/utils/browseURL.html" class="external-link">browseURL</a></span><span class="op">(</span><span class="st">"test_expression_cutoff.pdf"</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">## View the pdf with the following code</span></span></span>
+<span class="r-in"><span><span class="fu">utils</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/utils/browseURL.html" class="external-link">browseURL</a></span><span class="op">(</span><span class="st">"test_expression_cutoff.pdf"</span><span class="op">)</span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -183,7 +194,7 @@ both curves and show the identified breakpoints as vertical grey lines.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>

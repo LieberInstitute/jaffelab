@@ -26,7 +26,7 @@
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -63,22 +63,29 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">edge.pvalue</span><span class="op">(</span><span class="va">stat</span>, <span class="va">stat0</span>, pool <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">edge.pvalue</span><span class="op">(</span><span class="va">stat</span>, <span class="va">stat0</span>, pool <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>stat</dt>
 <dd><p>vector of observed statistics.</p></dd>
+
+
 <dt>stat0</dt>
 <dd><p>matrix of null statistics, where rows are features and columns
 are iterations.</p></dd>
+
+
 <dt>pool</dt>
 <dd><p>features are interchangeable, e.g. unlist all null statistics.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>A vector of empirical p-values.</p>
+    
+
+<p>A vector of empirical p-values.</p>
     </div>
     <div id="author">
     <h2>Author</h2>
@@ -87,16 +94,16 @@ are iterations.</p></dd>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"></span>
-<span class="r-in"><span class="co">## Vector of statistics</span></span>
-<span class="r-in"><span class="va">z</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">100</span>, mean <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">## Matrix with one row per element in the vector of statistics</span></span>
-<span class="r-in"><span class="co">## and one column per permutation (here 100)</span></span>
-<span class="r-in"><span class="va">z0</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">1e5</span><span class="op">)</span>, nrow <span class="op">=</span> <span class="fl">100</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">## Pool all the permutations (default)</span></span>
-<span class="r-in"><span class="fu">edge.pvalue</span><span class="op">(</span><span class="va">z</span>, <span class="va">z0</span>, pool <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">## Vector of statistics</span></span></span>
+<span class="r-in"><span><span class="va">z</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">100</span>, mean <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">## Matrix with one row per element in the vector of statistics</span></span></span>
+<span class="r-in"><span><span class="co">## and one column per permutation (here 100)</span></span></span>
+<span class="r-in"><span><span class="va">z0</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">1e5</span><span class="op">)</span>, nrow <span class="op">=</span> <span class="fl">100</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">## Pool all the permutations (default)</span></span></span>
+<span class="r-in"><span><span class="fu">edge.pvalue</span><span class="op">(</span><span class="va">z</span>, <span class="va">z0</span>, pool <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   [1] 0.01382 0.03510 0.01428 0.03591 0.03543 0.29914 0.00372 0.06909 0.01696</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [10] 0.10202 0.01038 0.13017 0.00072 0.05472 0.00008 0.18784 0.00155 0.00004</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [19] 0.00034 0.09499 0.07930 0.21570 0.16363 0.18444 0.00146 0.34111 0.00524</span>
@@ -109,9 +116,9 @@ are iterations.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [82] 0.19433 0.00430 0.17409 0.00003 0.00334 0.12231 0.00089 0.00008 0.01361</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [91] 0.07739 0.08164 0.02312 0.00048 0.01593 0.03107 0.16248 0.08148 0.00293</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [100] 0.14941</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">## Or don't pull them</span></span>
-<span class="r-in"><span class="fu">edge.pvalue</span><span class="op">(</span><span class="va">z</span>, <span class="va">z0</span>, pool <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">## Or don't pull them</span></span></span>
+<span class="r-in"><span><span class="fu">edge.pvalue</span><span class="op">(</span><span class="va">z</span>, <span class="va">z0</span>, pool <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   [1] 0.018 0.027 0.017 0.040 0.032 0.307 0.002 0.069 0.020 0.107 0.004 0.115</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [13] 0.001 0.067 0.001 0.186 0.001 0.001 0.001 0.095 0.091 0.223 0.153 0.194</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [25] 0.001 0.362 0.001 0.016 0.183 0.004 0.302 0.015 0.001 0.006 0.172 0.001</span>
@@ -135,7 +142,7 @@ are iterations.</p></dd>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>

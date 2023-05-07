@@ -26,7 +26,7 @@
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -63,7 +63,7 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">cleaningY</span><span class="op">(</span><span class="va">y</span>, <span class="va">mod</span>, <span class="va">P</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">cleaningY</span><span class="op">(</span><span class="va">y</span>, <span class="va">mod</span>, <span class="va">P</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -71,16 +71,23 @@
     <dl><dt>y</dt>
 <dd><p>A matrix such as the outcome matrix from sva or a gene expression
 matrix.</p></dd>
+
+
 <dt>mod</dt>
 <dd><p>A full rank model matrix.</p></dd>
+
+
 <dt>P</dt>
 <dd><p>The number of SVs or PCs to protect based on the column order.
 For example, <code>P=2</code> would keep the intercept term and a case vs diagnosis
 term in a model that is ~ Dx + more covariates.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>An object of the same type as <code>y</code> with the SVs/PCs regressed out.</p>
+    
+
+<p>An object of the same type as <code>y</code> with the SVs/PCs regressed out.</p>
     </div>
     <div id="author">
     <h2>Author</h2>
@@ -89,63 +96,63 @@ term in a model that is ~ Dx + more covariates.</p></dd>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"></span>
-<span class="r-in"><span class="co">## Define a model generating function for 30 'samples'</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">20190827</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">model_fun</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">{</span></span>
-<span class="r-in">    <span class="co">## Baseline + a group effect (2 groups) + a second covariate effect</span></span>
-<span class="r-in">    <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">30</span><span class="op">)</span> <span class="op">+</span></span>
-<span class="r-in">        <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">15</span>, mean <span class="op">=</span> <span class="fl">3</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">15</span>, mean <span class="op">=</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span class="r-in">        <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
-<span class="r-in">            <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">5</span>, sd <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">5</span>, sd <span class="op">=</span> <span class="fl">0.2</span>, mean <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span>,</span>
-<span class="r-in">            <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">5</span>, sd <span class="op">=</span> <span class="fl">0.2</span>, mean <span class="op">=</span> <span class="fl">0.9</span><span class="op">)</span></span>
-<span class="r-in">        <span class="op">)</span></span>
-<span class="r-in"><span class="op">}</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">## Generate the data for 20 'genes'</span></span>
-<span class="r-in"><span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/t.html" class="external-link">t</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">sapply</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">20</span>, <span class="va">model_fun</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">## Define the phenotype data for these 30 'samples'</span></span>
-<span class="r-in"><span class="va">pheno</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span></span>
-<span class="r-in">    group <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"A"</span>, <span class="st">"B"</span><span class="op">)</span>, each <span class="op">=</span> <span class="fl">15</span><span class="op">)</span>,</span>
-<span class="r-in">    batch <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, each <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></span>
-<span class="r-in"><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">## Define a full model</span></span>
-<span class="r-in"><span class="va">mod</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/with.html" class="external-link">with</a></span><span class="op">(</span><span class="va">pheno</span>, <span class="fu"><a href="https://rdrr.io/r/stats/model.matrix.html" class="external-link">model.matrix</a></span><span class="op">(</span><span class="op">~</span> <span class="va">group</span> <span class="op">+</span> <span class="va">batch</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">## Check the raw data for gene 1</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/graphics/boxplot.html" class="external-link">boxplot</a></span><span class="op">(</span><span class="va">y</span><span class="op">[</span><span class="fl">1</span>, <span class="op">]</span> <span class="op">~</span> <span class="va">pheno</span><span class="op">$</span><span class="va">group</span>, ylab <span class="op">=</span> <span class="st">"Gene 1 Raw Expr"</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">## Define a model generating function for 30 'samples'</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">20190827</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">model_fun</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span>    <span class="co">## Baseline + a group effect (2 groups) + a second covariate effect</span></span></span>
+<span class="r-in"><span>    <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">30</span><span class="op">)</span> <span class="op">+</span></span></span>
+<span class="r-in"><span>        <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">15</span>, mean <span class="op">=</span> <span class="fl">3</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">15</span>, mean <span class="op">=</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span></span>
+<span class="r-in"><span>        <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>            <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">5</span>, sd <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">5</span>, sd <span class="op">=</span> <span class="fl">0.2</span>, mean <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>            <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">5</span>, sd <span class="op">=</span> <span class="fl">0.2</span>, mean <span class="op">=</span> <span class="fl">0.9</span><span class="op">)</span></span></span>
+<span class="r-in"><span>        <span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">## Generate the data for 20 'genes'</span></span></span>
+<span class="r-in"><span><span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/t.html" class="external-link">t</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">sapply</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">20</span>, <span class="va">model_fun</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">## Define the phenotype data for these 30 'samples'</span></span></span>
+<span class="r-in"><span><span class="va">pheno</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>    group <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"A"</span>, <span class="st">"B"</span><span class="op">)</span>, each <span class="op">=</span> <span class="fl">15</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>    batch <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, each <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">## Define a full model</span></span></span>
+<span class="r-in"><span><span class="va">mod</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/with.html" class="external-link">with</a></span><span class="op">(</span><span class="va">pheno</span>, <span class="fu"><a href="https://rdrr.io/r/stats/model.matrix.html" class="external-link">model.matrix</a></span><span class="op">(</span><span class="op">~</span> <span class="va">group</span> <span class="op">+</span> <span class="va">batch</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">## Check the raw data for gene 1</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/boxplot.html" class="external-link">boxplot</a></span><span class="op">(</span><span class="va">y</span><span class="op">[</span><span class="fl">1</span>, <span class="op">]</span> <span class="op">~</span> <span class="va">pheno</span><span class="op">$</span><span class="va">group</span>, ylab <span class="op">=</span> <span class="st">"Gene 1 Raw Expr"</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="cleaningY-1.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">## Now regress out the batch covariate from the gene expression matrix</span></span>
-<span class="r-in"><span class="va">y_clean_p2</span> <span class="op">&lt;-</span> <span class="fu">cleaningY</span><span class="op">(</span><span class="va">y</span>, <span class="va">mod</span>, P <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">## Check the cleaned data for gene 1 (with P = 2)</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/graphics/boxplot.html" class="external-link">boxplot</a></span><span class="op">(</span><span class="va">y_clean_p2</span><span class="op">[</span><span class="fl">1</span>, <span class="op">]</span> <span class="op">~</span> <span class="va">pheno</span><span class="op">$</span><span class="va">group</span>, ylab <span class="op">=</span> <span class="st">"Gene 1 Clean Expr (P = 2)"</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">## Now regress out the batch covariate from the gene expression matrix</span></span></span>
+<span class="r-in"><span><span class="va">y_clean_p2</span> <span class="op">&lt;-</span> <span class="fu">cleaningY</span><span class="op">(</span><span class="va">y</span>, <span class="va">mod</span>, P <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">## Check the cleaned data for gene 1 (with P = 2)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/boxplot.html" class="external-link">boxplot</a></span><span class="op">(</span><span class="va">y_clean_p2</span><span class="op">[</span><span class="fl">1</span>, <span class="op">]</span> <span class="op">~</span> <span class="va">pheno</span><span class="op">$</span><span class="va">group</span>, ylab <span class="op">=</span> <span class="st">"Gene 1 Clean Expr (P = 2)"</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="cleaningY-2.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">## Or regress out the group and batch effects</span></span>
-<span class="r-in"><span class="va">y_clean_p3</span> <span class="op">&lt;-</span> <span class="fu">cleaningY</span><span class="op">(</span><span class="va">y</span>, <span class="va">mod</span>, P <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">## Check the cleaned data for gene 1 (with P = 3)</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/graphics/boxplot.html" class="external-link">boxplot</a></span><span class="op">(</span><span class="va">y_clean_p3</span><span class="op">[</span><span class="fl">1</span>, <span class="op">]</span> <span class="op">~</span> <span class="va">pheno</span><span class="op">$</span><span class="va">group</span>, ylab <span class="op">=</span> <span class="st">"Gene 1 Clean Expr (P = 3)"</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">## Or regress out the group and batch effects</span></span></span>
+<span class="r-in"><span><span class="va">y_clean_p3</span> <span class="op">&lt;-</span> <span class="fu">cleaningY</span><span class="op">(</span><span class="va">y</span>, <span class="va">mod</span>, P <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">## Check the cleaned data for gene 1 (with P = 3)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/boxplot.html" class="external-link">boxplot</a></span><span class="op">(</span><span class="va">y_clean_p3</span><span class="op">[</span><span class="fl">1</span>, <span class="op">]</span> <span class="op">~</span> <span class="va">pheno</span><span class="op">$</span><span class="va">group</span>, ylab <span class="op">=</span> <span class="st">"Gene 1 Clean Expr (P = 3)"</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="cleaningY-3.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
-<span class="r-in"></span>
-<span class="r-in"></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">## The function also supports NAs observations as detailed below</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">## Make one observation 0, clean the data</span></span>
-<span class="r-in"><span class="va">y</span><span class="op">[</span><span class="fl">1</span>, <span class="fl">1</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fl">0</span></span>
-<span class="r-in"><span class="va">y_clean_p2_0</span> <span class="op">&lt;-</span> <span class="fu">cleaningY</span><span class="op">(</span><span class="va">y</span>, <span class="va">mod</span>, P <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
-<span class="r-in"><span class="co">## then NA and clean again</span></span>
-<span class="r-in"><span class="va">y</span><span class="op">[</span><span class="fl">1</span>, <span class="fl">1</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="cn">NA</span></span>
-<span class="r-in"><span class="va">y_clean_p2_NA</span> <span class="op">&lt;-</span> <span class="fu">cleaningY</span><span class="op">(</span><span class="va">y</span>, <span class="va">mod</span>, P <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">## Compare the results</span></span>
-<span class="r-in"><span class="fu"><a href="corner.html">corner</a></span><span class="op">(</span><span class="va">y_clean_p2_0</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">## The function also supports NAs observations as detailed below</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">## Make one observation 0, clean the data</span></span></span>
+<span class="r-in"><span><span class="va">y</span><span class="op">[</span><span class="fl">1</span>, <span class="fl">1</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fl">0</span></span></span>
+<span class="r-in"><span><span class="va">y_clean_p2_0</span> <span class="op">&lt;-</span> <span class="fu">cleaningY</span><span class="op">(</span><span class="va">y</span>, <span class="va">mod</span>, P <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co">## then NA and clean again</span></span></span>
+<span class="r-in"><span><span class="va">y</span><span class="op">[</span><span class="fl">1</span>, <span class="fl">1</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="cn">NA</span></span></span>
+<span class="r-in"><span><span class="va">y_clean_p2_NA</span> <span class="op">&lt;-</span> <span class="fu">cleaningY</span><span class="op">(</span><span class="va">y</span>, <span class="va">mod</span>, P <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">## Compare the results</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="corner.html">corner</a></span><span class="op">(</span><span class="va">y_clean_p2_0</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                1        2          3         4          5          6</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1,] -0.91412161 4.467535  0.8237796 0.7589492 2.30182237  6.3893738</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [2,]  4.69694020 4.872453  2.7572398 2.6498754 0.81870259  5.6974067</span>
@@ -153,7 +160,7 @@ term in a model that is ~ Dx + more covariates.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [4,]  2.77728433 1.847305 -0.1302775 1.2934618 0.09785331 -0.6839241</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [5,] -0.01552682 1.422351  0.7492889 3.5181029 3.70823366  0.9740959</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [6,]  0.92320637 1.789145  1.9848853 3.0993772 2.48755033  1.2495944</span>
-<span class="r-in"><span class="fu"><a href="corner.html">corner</a></span><span class="op">(</span><span class="va">y_clean_p2_NA</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu"><a href="corner.html">corner</a></span><span class="op">(</span><span class="va">y_clean_p2_NA</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                1        2          3         4          5          6</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1,]          NA 4.467535  0.8237796 0.7589492 2.30182237  6.3893738</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [2,]  4.69694020 4.872453  2.7572398 2.6498754 0.81870259  5.6974067</span>
@@ -161,16 +168,16 @@ term in a model that is ~ Dx + more covariates.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [4,]  2.77728433 1.847305 -0.1302775 1.2934618 0.09785331 -0.6839241</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [5,] -0.01552682 1.422351  0.7492889 3.5181029 3.70823366  0.9740959</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [6,]  0.92320637 1.789145  1.9848853 3.0993772 2.48755033  1.2495944</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">## They are identical except for that NA in [1, 1]</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/table.html" class="external-link">table</a></span><span class="op">(</span><span class="va">y_clean_p2_0</span> <span class="op">-</span> <span class="va">y_clean_p2_NA</span>, useNA <span class="op">=</span> <span class="st">"ifany"</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">## They are identical except for that NA in [1, 1]</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/table.html" class="external-link">table</a></span><span class="op">(</span><span class="va">y_clean_p2_0</span> <span class="op">-</span> <span class="va">y_clean_p2_NA</span>, useNA <span class="op">=</span> <span class="st">"ifany"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    0 &lt;NA&gt; </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  599    1 </span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">## Compared to the original y, there are differences since we lost</span></span>
-<span class="r-in"><span class="co">## one observation which affects all of the first row of the cleaned Y</span></span>
-<span class="r-in"><span class="va">y_clean_p2</span><span class="op">[</span><span class="fl">1</span>, <span class="op">]</span> <span class="op">-</span> <span class="va">y_clean_p2_NA</span><span class="op">[</span><span class="fl">1</span>, <span class="op">]</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">## Compared to the original y, there are differences since we lost</span></span></span>
+<span class="r-in"><span><span class="co">## one observation which affects all of the first row of the cleaned Y</span></span></span>
+<span class="r-in"><span><span class="va">y_clean_p2</span><span class="op">[</span><span class="fl">1</span>, <span class="op">]</span> <span class="op">-</span> <span class="va">y_clean_p2_NA</span><span class="op">[</span><span class="fl">1</span>, <span class="op">]</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>         1         2         3         4         5         6         7         8 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>        NA 0.2632404 0.2632404 0.2632404 0.2632404 0.5264807 0.5264807 0.5264807 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>         9        10        11        12        13        14        15        16 </span>
@@ -179,7 +186,7 @@ term in a model that is ~ Dx + more covariates.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 0.2632404 0.2632404 0.2632404 0.2632404 0.5264807 0.5264807 0.5264807 0.5264807 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>        25        26        27        28        29        30 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 0.5264807 0.7897211 0.7897211 0.7897211 0.7897211 0.7897211 </span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/all.html" class="external-link">all</a></span><span class="op">(</span><span class="va">y_clean_p2</span><span class="op">[</span><span class="op">-</span><span class="fl">1</span>, <span class="op">]</span> <span class="op">-</span> <span class="va">y_clean_p2_NA</span><span class="op">[</span><span class="op">-</span><span class="fl">1</span>, <span class="op">]</span> <span class="op">==</span> <span class="fl">0</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/all.html" class="external-link">all</a></span><span class="op">(</span><span class="va">y_clean_p2</span><span class="op">[</span><span class="op">-</span><span class="fl">1</span>, <span class="op">]</span> <span class="op">-</span> <span class="va">y_clean_p2_NA</span><span class="op">[</span><span class="op">-</span><span class="fl">1</span>, <span class="op">]</span> <span class="op">==</span> <span class="fl">0</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] TRUE</span>
 </code></pre></div>
     </div>
@@ -195,7 +202,7 @@ term in a model that is ~ Dx + more covariates.</p></dd>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>
