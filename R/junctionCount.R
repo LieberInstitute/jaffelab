@@ -36,11 +36,10 @@
 #' ## TODO (need some data)
 #' ## See https://github.com/LieberInstitute/RNAseq-pipeline/blob/ab71dedb36bcc3dad57233e645fabd5deb96d446/sh/create_count_objects-human.R#L633-L643
 #' ## for an example of how it's being using the the RNA-seq pipeline code
-junctionCount <- function(
-        junctionFiles, sampleNames = names(junctionFiles),
-        output = c("Count", "Rail"), minOverhang = 0,
-        strandSpecific = FALSE, illuminaStranded = FALSE,
-        minCount = 1, maxCores = 1, skipLines = ifelse(output == "Count", 0, 1)) {
+junctionCount <- function(junctionFiles, sampleNames = names(junctionFiles),
+    output = c("Count", "Rail"), minOverhang = 0,
+    strandSpecific = FALSE, illuminaStranded = FALSE,
+    minCount = 1, maxCores = 1, skipLines = ifelse(output == "Count", 0, 1)) {
     stopifnot(length(junctionFiles) == length(sampleNames))
     stopifnot(output %in% c("Count", "Rail"))
 

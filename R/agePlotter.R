@@ -83,12 +83,11 @@
 #'
 #'
 #' par(def.par) #- reset to default
-agePlotter <- function(
-        y, age, mod = matrix(rep(1, length(y)), ncol = 1),
-        mainText, smoothIt = TRUE, jitter = TRUE, ageLabel = "bottom",
-        orderByAge = TRUE, ylim = NULL, ageBreaks = c(-1, 0, 1, 10, 100),
-        ylab = "Adjusted Expression", pointColor = 2, lineColor = 1,
-        alreadyFitted = NULL, ...) {
+agePlotter <- function(y, age, mod = matrix(rep(1, length(y)), ncol = 1),
+    mainText, smoothIt = TRUE, jitter = TRUE, ageLabel = "bottom",
+    orderByAge = TRUE, ylim = NULL, ageBreaks = c(-1, 0, 1, 10, 100),
+    ylab = "Adjusted Expression", pointColor = 2, lineColor = 1,
+    alreadyFitted = NULL, ...) {
     stopifnot(length(ageBreaks) >= 4)
     stopifnot(ageLabel %in% c("bottom", "top"))
     stopifnot(length(lineColor) == length(unique(pointColor)))

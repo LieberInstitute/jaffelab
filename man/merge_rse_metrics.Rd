@@ -10,14 +10,14 @@ merge_rse_metrics(rse)
 \item{rse}{A \link[SummarizedExperiment:RangedSummarizedExperiment-class]{RangedSummarizedExperiment-class}
 object with 'concordMapRate', 'overallMapRate', 'mitoRate',
 'rRNA_rate', 'totalAssignedGene', 'numMapped', 'numReads', 'numUnmapped',
-'mitoMapped', 'totalMapped' as either NumericList() or IntegerList() objects
-in the colData() columns.}
+'mitoMapped', 'totalMapped', 'ERCCsumLogErr' as either NumericList() or
+IntegerList() objects in the colData() columns.}
 }
 \value{
 A \link[SummarizedExperiment:RangedSummarizedExperiment-class]{RangedSummarizedExperiment-class}
 with merged columns for 'concordMapRate', 'overallMapRate', 'mitoRate',
 'rRNA_rate', 'totalAssignedGene', 'numMapped', 'numReads', 'numUnmapped',
-'mitoMapped', 'totalMapped'.
+'mitoMapped', 'totalMapped', 'ERCCsumLogErr'
 }
 \description{
 This function merges the sample metadata from a RangedSummarizedExperiment
@@ -57,7 +57,8 @@ colData <- DataFrame(
     numReads = rand_gen(1e6 + 6e5),
     numUnmapped = rand_gen(5e5),
     mitoMapped = rand_gen(1e5),
-    totalMapped = rand_gen(1e6 + 1e5)
+    totalMapped = rand_gen(1e6 + 1e5),
+    ERCCsumLogErr = rand_gen(-28.5, 4, 6)
 )
 rse <- SummarizedExperiment(
     assays = SimpleList(counts = counts),
@@ -66,6 +67,40 @@ rse <- SummarizedExperiment(
 colData(rse)
 rse_merged <- merge_rse_metrics(rse)
 colData(rse_merged)
+
+## Use the BSP2 real data
+local_bsp2 <- tempfile("BSP2_rse_gene.Rdata")
+download.file(
+    "https://s3.us-east-2.amazonaws.com/libd-brainseq2/rse_gene_unfiltered.Rdata",
+    destfile = local_bsp2,
+    mode = "wb"
+)
+load(local_bsp2, verbose = TRUE)
+# lobstr::obj_size(rse_gene)
+# 872.12 MB
+bsp2_rse_merged <- merge_rse_metrics(rse_gene)
+colData(bsp2_rse_merged)
+
+## Compare the ERCCsumLogErr approximation against the mean of the
+## error values. Note that you would actually have to load the actual
+## ERCC quantification output files in order to compute the correct
+## ERCCsumLogErr values.
+bsp2_rse_merged$mean_ERCCsumLogErr <-
+    sapply(rse_gene$ERCCsumLogErr, mean)
+with(
+    colData(bsp2_rse_merged)[lengths(rse_gene$ERCCsumLogErr) > 1, ],
+    plot(
+        mean_ERCCsumLogErr,
+        ERCCsumLogErr,
+        ylab = "Approximate ERCCsumLogErr"
+    )
+)
+abline(a = 0, b = 1, col = "red")
+with(
+    colData(bsp2_rse_merged)[lengths(rse_gene$ERCCsumLogErr) > 1, ],
+    summary(mean_ERCCsumLogErr - ERCCsumLogErr)
+)
+
 }
 \author{
 Leonardo Collado-Torres, Andrew E Jaffe

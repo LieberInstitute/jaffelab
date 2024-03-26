@@ -43,9 +43,8 @@
 #'     ## If it's a new sheet, we recommend sharing an editable link so other
 #'     ## lab members can swap out as necessary.
 #' }
-lab_presenters <- function(
-        presenters, start_date = "2019-09-18",
-        sheet_name = "Jaffelab research presenters", n = 2, repeat_day = 7) {
+lab_presenters <- function(presenters, start_date = "2019-09-18",
+    sheet_name = "Jaffelab research presenters", n = 2, repeat_day = 7) {
     ## Check inputs
     if (!is.character(presenters)) {
         stop("'presenters' should be a character vector.", call. = FALSE)

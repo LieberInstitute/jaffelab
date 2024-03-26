@@ -96,7 +96,6 @@
 #'     summary(mean_ERCCsumLogErr - ERCCsumLogErr)
 #' )
 #'
-
 merge_rse_metrics <- function(rse) {
     stopifnot(is(rse, "RangedSummarizedExperiment"))
     stopifnot(
@@ -138,7 +137,7 @@ merge_rse_metrics <- function(rse) {
     rse$mitoMapped <- sapply(rse$mitoMapped, sum)
     rse$totalMapped <- sapply(rse$totalMapped, sum)
 
-    if("ERCCsumLogErr" %in% colnames(colData(rse))) {
+    if ("ERCCsumLogErr" %in% colnames(colData(rse))) {
         message(Sys.time(), " attempting to approximate ERCCsumLogErr.")
         stopifnot(is(rse$ERCCsumLogErr, "NumericList"))
 
@@ -161,9 +160,9 @@ merge_rse_metrics <- function(rse) {
 
         ## Then compute the approximate result starting from a NumericList input
         rse$ERCCsumLogErr <- sapply(rse$ERCCsumLogErr, function(sumlogerr) {
-            log2(mean((2 ^ (
+            log2(mean((2^(
                 sumlogerr + ercc_expected_conc
-            )) ^ (1 / n_erccs)) ^ n_erccs) - ercc_expected_conc
+            ))^(1 / n_erccs))^n_erccs) - ercc_expected_conc
         })
     }
 
