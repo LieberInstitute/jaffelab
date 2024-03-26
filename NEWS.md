@@ -1,3 +1,10 @@
+# jaffelab 0.99.33
+
+* `merge_rse_metrics()` can now also handle `ERCCsumLogErr`. Note that its an
+approximation given properties of logarithms. To compute the actual correct
+values, you would need access to the original output ERCC quantification output
+files.
+
 # jaffelab 0.99.32
 
 * Added the `skipLines` argument to `junctionCount` to resolve
