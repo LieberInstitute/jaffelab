@@ -46,8 +46,8 @@ Please run this yourself to check for any updates on how to cite
 print(citation("jaffelab"), bibtex = TRUE)
 #> To cite package 'jaffelab' in publications use:
 #> 
-#>   Collado-Torres L, Jaffe AE, Burke EE (2021). _jaffelab: Commonly used
-#>   functions by the Jaffe lab_. R package version 0.99.32,
+#>   Collado-Torres L, Jaffe AE, Burke EE (2024). _jaffelab: Commonly used
+#>   functions by the Jaffe lab_. R package version 0.99.33,
 #>   <https://github.com/LieberInstitute/jaffelab>.
 #> 
 #> A BibTeX entry for LaTeX users is
@@ -55,8 +55,8 @@ print(citation("jaffelab"), bibtex = TRUE)
 #>   @Manual{,
 #>     title = {jaffelab: Commonly used functions by the Jaffe lab},
 #>     author = {Leonardo Collado-Torres and Andrew E. Jaffe and Emily E. Burke},
-#>     year = {2021},
-#>     note = {R package version 0.99.32},
+#>     year = {2024},
+#>     note = {R package version 0.99.33},
 #>     url = {https://github.com/LieberInstitute/jaffelab},
 #>   }
 ```
@@ -80,7 +80,7 @@ contributing to this project, you agree to abide by its terms.
   *[rcmdcheck](https://CRAN.R-project.org/package=rcmdcheck)* customized
   to use [Bioconductor’s docker
   containers](https://www.bioconductor.org/help/docker/) and
-  *[BiocCheck](https://bioconductor.org/packages/3.17/BiocCheck)*.
+  *[BiocCheck](https://bioconductor.org/packages/3.18/BiocCheck)*.
 - Code coverage assessment is possible thanks to
   [codecov](https://codecov.io/gh) and
   *[covr](https://CRAN.R-project.org/package=covr)*.
@@ -96,4 +96,4 @@ contributing to this project, you agree to abide by its terms.
 For more details, check the `dev` directory.
 
 This package was developed using
-*[biocthis](https://bioconductor.org/packages/3.17/biocthis)*.
+*[biocthis](https://bioconductor.org/packages/3.18/biocthis)*.
