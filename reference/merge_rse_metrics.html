@@ -78,8 +78,8 @@ in more than one lane.</p>
 <dd><p>A <a href="https://rdrr.io/pkg/SummarizedExperiment/man/RangedSummarizedExperiment-class.html" class="external-link">RangedSummarizedExperiment-class</a>
 object with 'concordMapRate', 'overallMapRate', 'mitoRate',
 'rRNA_rate', 'totalAssignedGene', 'numMapped', 'numReads', 'numUnmapped',
-'mitoMapped', 'totalMapped' as either NumericList() or IntegerList() objects
-in the colData() columns.</p></dd>
+'mitoMapped', 'totalMapped', 'ERCCsumLogErr' as either NumericList() or
+IntegerList() objects in the colData() columns.</p></dd>
 
 </dl></div>
     <div id="value">
@@ -91,7 +91,7 @@ in the colData() columns.</p></dd>
 
 <p>with merged columns for 'concordMapRate', 'overallMapRate', 'mitoRate',
 'rRNA_rate', 'totalAssignedGene', 'numMapped', 'numReads', 'numUnmapped',
-'mitoMapped', 'totalMapped'.</p>
+'mitoMapped', 'totalMapped', 'ERCCsumLogErr'</p>
     </div>
     <div id="author">
     <h2>Author</h2>
@@ -196,14 +196,15 @@ in the colData() columns.</p></dd>
 <span class="r-in"><span>    numReads <span class="op">=</span> <span class="fu">rand_gen</span><span class="op">(</span><span class="fl">1e6</span> <span class="op">+</span> <span class="fl">6e5</span><span class="op">)</span>,</span></span>
 <span class="r-in"><span>    numUnmapped <span class="op">=</span> <span class="fu">rand_gen</span><span class="op">(</span><span class="fl">5e5</span><span class="op">)</span>,</span></span>
 <span class="r-in"><span>    mitoMapped <span class="op">=</span> <span class="fu">rand_gen</span><span class="op">(</span><span class="fl">1e5</span><span class="op">)</span>,</span></span>
-<span class="r-in"><span>    totalMapped <span class="op">=</span> <span class="fu">rand_gen</span><span class="op">(</span><span class="fl">1e6</span> <span class="op">+</span> <span class="fl">1e5</span><span class="op">)</span></span></span>
+<span class="r-in"><span>    totalMapped <span class="op">=</span> <span class="fu">rand_gen</span><span class="op">(</span><span class="fl">1e6</span> <span class="op">+</span> <span class="fl">1e5</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>    ERCCsumLogErr <span class="op">=</span> <span class="fu">rand_gen</span><span class="op">(</span><span class="op">-</span><span class="fl">28.5</span>, <span class="fl">4</span>, <span class="fl">6</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">rse</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/SummarizedExperiment/man/RangedSummarizedExperiment-class.html" class="external-link">SummarizedExperiment</a></span><span class="op">(</span></span></span>
 <span class="r-in"><span>    assays <span class="op">=</span> <span class="fu">SimpleList</span><span class="op">(</span>counts <span class="op">=</span> <span class="va">counts</span><span class="op">)</span>,</span></span>
 <span class="r-in"><span>    rowRanges <span class="op">=</span> <span class="va">rowRanges</span>, colData <span class="op">=</span> <span class="va">colData</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/pkg/SummarizedExperiment/man/SummarizedExperiment-class.html" class="external-link">colData</a></span><span class="op">(</span><span class="va">rse</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> DataFrame with 6 rows and 11 columns</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> DataFrame with 6 rows and 12 columns</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     Treatment    concordMapRate    overallMapRate          mitoRate</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   &lt;character&gt;     &lt;NumericList&gt;     &lt;NumericList&gt;     &lt;NumericList&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> A        ChIP 0.541645,0.581919 0.638841,0.744259 0.196154,0.176830</span>
@@ -220,17 +221,18 @@ in the colData() columns.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> D 0.0983786,0.0961797 0.454453,0.394858 1000080,1001643 1600388,1601137</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> E 0.0786774,0.0902039 0.511399,0.444904   999405,998558 1598587,1600106</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> F   0.116688,0.101786 0.512436,0.581784 1000598, 999127 1598227,1598982</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     numUnmapped    mitoMapped     totalMapped</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   &lt;NumericList&gt; &lt;NumericList&gt;   &lt;NumericList&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> A 498799,500663 100075, 99746 1100621,1098107</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> B 499160,501936 100454,100220 1099005,1100717</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> C 499887,499965 100077,100616 1099423,1101197</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> D 499315,499551   98586,97819 1098706,1098371</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> E 499205,500651  98690,100203 1099373,1101728</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> F 500096,501025   99278,98614 1101246,1098881</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     numUnmapped    mitoMapped     totalMapped     ERCCsumLogErr</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   &lt;NumericList&gt; &lt;NumericList&gt;   &lt;NumericList&gt;     &lt;NumericList&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> A 498799,500663 100075, 99746 1100621,1098107 -30.5656,-40.7510</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> B 499160,501936 100454,100220 1099005,1100717 -26.1549,-25.9601</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> C 499887,499965 100077,100616 1099423,1101197 -29.4516,-27.9824</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> D 499315,499551   98586,97819 1098706,1098371 -22.6042,-28.8658</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> E 499205,500651  98690,100203 1099373,1101728 -22.6664,-31.5804</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> F 500096,501025   99278,98614 1101246,1098881 -28.1533,-28.5806</span>
 <span class="r-in"><span><span class="va">rse_merged</span> <span class="op">&lt;-</span> <span class="fu">merge_rse_metrics</span><span class="op">(</span><span class="va">rse</span><span class="op">)</span></span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> 2024-03-26 18:00:41.45746 attempting to approximate ERCCsumLogErr.</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/pkg/SummarizedExperiment/man/SummarizedExperiment-class.html" class="external-link">colData</a></span><span class="op">(</span><span class="va">rse_merged</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> DataFrame with 6 rows and 11 columns</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> DataFrame with 6 rows and 12 columns</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     Treatment concordMapRate overallMapRate  mitoRate rRNA_rate</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   &lt;character&gt;      &lt;numeric&gt;      &lt;numeric&gt; &lt;numeric&gt; &lt;numeric&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> A        ChIP       0.561778       0.691539  0.186484 0.0993439</span>
@@ -247,6 +249,237 @@ in the colData() columns.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> D          0.424632   2001723   3201525      998866     196405     2197077</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> E          0.478166   1997963   3198693      999856     198893     2201101</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> F          0.547085   1999725   3197209     1001121     197892     2200127</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ERCCsumLogErr</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       &lt;numeric&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> A      -35.5606</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> B      -26.0575</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> C      -28.7150</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> D      -25.6981</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> E      -27.0485</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> F      -28.3668</span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">## Use the BSP2 real data</span></span></span>
+<span class="r-in"><span><span class="va">local_bsp2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempfile</a></span><span class="op">(</span><span class="st">"BSP2_rse_gene.Rdata"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/download.file.html" class="external-link">download.file</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>    <span class="st">"https://s3.us-east-2.amazonaws.com/libd-brainseq2/rse_gene_unfiltered.Rdata"</span>,</span></span>
+<span class="r-in"><span>    destfile <span class="op">=</span> <span class="va">local_bsp2</span>,</span></span>
+<span class="r-in"><span>    mode <span class="op">=</span> <span class="st">"wb"</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/load.html" class="external-link">load</a></span><span class="op">(</span><span class="va">local_bsp2</span>, verbose <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Loading objects:</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   rse_gene</span>
+<span class="r-in"><span><span class="co"># lobstr::obj_size(rse_gene)</span></span></span>
+<span class="r-in"><span><span class="co"># 872.12 MB</span></span></span>
+<span class="r-in"><span><span class="va">bsp2_rse_merged</span> <span class="op">&lt;-</span> <span class="fu">merge_rse_metrics</span><span class="op">(</span><span class="va">rse_gene</span><span class="op">)</span></span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> 2024-03-26 18:00:51.991294 attempting to approximate ERCCsumLogErr.</span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/pkg/SummarizedExperiment/man/SummarizedExperiment-class.html" class="external-link">colData</a></span><span class="op">(</span><span class="va">bsp2_rse_merged</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> DataFrame with 900 rows and 54 columns</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                            SAMPLE_ID   FQCbasicStats</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                      &lt;CharacterList&gt; &lt;CharacterList&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R10424                        R10424_C4KC9ACXX_TAA..            PASS</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R12195                        R12195_C4E9TACXX_CGG..            PASS</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R12198                        R12198_C4KC9ACXX_TCC..            PASS</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R12199                        R12199_C4KC9ACXX_TCT..            PASS</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R12200                        R12200_C4KC9ACXX_AGC..            PASS</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ...                                              ...             ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R5760                         R5760_C3ULGACXX_ATTA..            PASS</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R5764                         R5764_C3ULGACXX_TCCG..            PASS</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R5765                         R5765_C3KUEACXX_TCTC..            PASS</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R5766  R5766_C41CPACXX_CTGA..,R5766_C4KY0ACXX_CTGA..            PASS</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R5768                         R5768_C3DE5ACXX_GAAT..            PASS</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>            perBaseQual     perTileQual      perSeqQual  perBaseContent</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        &lt;CharacterList&gt; &lt;CharacterList&gt; &lt;CharacterList&gt; &lt;CharacterList&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R10424            PASS            PASS            PASS       FAIL/WARN</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R12195            PASS            WARN            PASS       FAIL/WARN</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R12198            PASS            PASS            PASS       FAIL/WARN</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R12199            PASS            PASS            PASS       FAIL/WARN</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R12200            PASS            PASS            PASS       FAIL/WARN</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ...                ...             ...             ...             ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R5760             PASS            PASS            PASS       FAIL/WARN</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R5764             PASS            PASS            PASS       FAIL/WARN</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R5765             PASS       PASS/WARN            PASS       FAIL/WARN</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R5766        PASS,FAIL  WARN/PASS,WARN            PASS            FAIL</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R5768             PASS            PASS            PASS       FAIL/WARN</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>              GCcontent        Ncontent   SeqLengthDist  SeqDuplication</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        &lt;CharacterList&gt; &lt;CharacterList&gt; &lt;CharacterList&gt; &lt;CharacterList&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R10424       WARN/FAIL            PASS            PASS            FAIL</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R12195       WARN/FAIL            PASS            PASS            WARN</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R12198            WARN            PASS            PASS       FAIL/WARN</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R12199            WARN            PASS            PASS            WARN</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R12200       WARN/FAIL            PASS            PASS       WARN/PASS</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ...                ...             ...             ...             ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R5760             WARN            PASS            PASS       FAIL/WARN</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R5764             WARN            PASS            PASS       FAIL/WARN</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R5765             WARN            PASS            PASS       FAIL/WARN</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R5766             WARN            PASS            PASS            WARN</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R5768             WARN            PASS            PASS       FAIL/WARN</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>            OverrepSeqs  AdapterContent     KmerContent  percentGC_R1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        &lt;CharacterList&gt; &lt;CharacterList&gt; &lt;CharacterList&gt; &lt;IntegerList&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R10424            WARN            PASS            FAIL            43</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R12195            WARN            PASS            FAIL            44</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R12198            WARN            PASS            FAIL            45</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R12199            WARN            PASS            FAIL            44</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R12200            WARN            PASS            FAIL            45</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ...                ...             ...             ...           ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R5760             WARN            FAIL            FAIL            45</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R5764             WARN            WARN            FAIL            45</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R5765             WARN            PASS            FAIL            44</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R5766             WARN            WARN            FAIL         47,46</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R5768             WARN            PASS            FAIL            45</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          phred100_R1      phredGT30_R1      phredGT35_R1    Adapter88_R1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        &lt;NumericList&gt;     &lt;NumericList&gt;     &lt;NumericList&gt;   &lt;NumericList&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R10424            33          0.909088           0.70897         2.74234</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R12195            34          0.906698          0.706421         1.52881</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R12198            33          0.904668          0.695954         1.79942</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R12199            33          0.907879          0.704134         1.48579</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R12200            33          0.908431          0.705177          1.8948</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ...              ...               ...               ...             ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R5760             34          0.901271          0.705441         11.8898</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R5764             34          0.904807          0.705915         6.36412</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R5765             34          0.932119          0.769267         2.87781</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R5766          32,29 0.889595,0.769699 0.673802,0.438134 6.99110,6.57718</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R5768             34           0.93067          0.785657         2.23658</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         percentGC_R2   phred100_R2      phredGT30_R2      phredGT35_R2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        &lt;IntegerList&gt; &lt;NumericList&gt;     &lt;NumericList&gt;     &lt;NumericList&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R10424            43            32          0.861428          0.663019</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R12195            44            34          0.853311           0.65908</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R12198            45            32          0.832541          0.619686</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R12199            44            32          0.839551          0.635018</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R12200            45            32          0.849138          0.647683</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ...              ...           ...               ...               ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R5760             45            33          0.855376          0.692943</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R5764             45            33          0.850278          0.682974</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R5765             44            32            0.8122          0.617688</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R5766          47,46         31,30 0.855985,0.739332 0.687230,0.479329</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R5768             45            34          0.876481          0.731134</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           Adapter88_R2 ERCCsumLogErr</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          &lt;NumericList&gt;     &lt;numeric&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R10424          2.7528     -110.3658</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R12195         1.54912      -18.3144</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R12198         1.80651      -23.1269</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R12199         1.49456      -30.3037</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R12200         1.90594      -24.5632</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ...                ...           ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R5760          12.2012      -623.141</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R5764          6.53021      -623.141</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R5765          2.72979      -623.141</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R5766  7.13411,6.80373      -623.141</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R5768          2.27037      -623.141</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                              bamFile       trimmed  numReads</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                      &lt;CharacterList&gt; &lt;LogicalList&gt; &lt;integer&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R10424                        /dcl01/lieber/ajaffe..         FALSE 137207346</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R12195                        /dcl01/lieber/ajaffe..         FALSE 186256540</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R12198                        /dcl01/lieber/ajaffe..         FALSE 211587890</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R12199                        /dcl01/lieber/ajaffe..         FALSE 127053710</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R12200                        /dcl01/lieber/ajaffe..         FALSE  80463970</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ...                                              ...           ...       ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R5760                         /dcl01/lieber/ajaffe..          TRUE 141075744</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R5764                         /dcl01/lieber/ajaffe..         FALSE 119501410</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R5765                         /dcl01/lieber/ajaffe..         FALSE 172994940</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R5766  /dcl01/lieber/ajaffe..,/dcl01/lieber/ajaffe..         FALSE 111397580</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R5768                         /dcl01/lieber/ajaffe..         FALSE 118383286</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        numMapped numUnmapped overallMapRate concordMapRate totalMapped</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        &lt;integer&gt;   &lt;integer&gt;      &lt;numeric&gt;      &lt;numeric&gt;   &lt;integer&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R10424 125018261    12189085         0.9112         0.8586   127414655</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R12195 173098203    13158337         0.9294         0.8862   179828658</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R12198 190675169    20912721         0.9012         0.8541   197766175</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R12199 118502044     8551666         0.9327         0.8868   122760702</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R12200  73183420     7280550         0.9095         0.8596    75668574</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ...          ...         ...            ...            ...         ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R5760  129117038    11958706         0.9152       0.914900   107353997</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R5764  102010413    17490997         0.8536       0.767300    80847720</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R5765  157607321    15387619         0.9111       0.847400   120937201</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R5766   94485287    16912293         0.8482       0.760247    79219995</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R5768  110231568     8151718         0.9311       0.855700    85972502</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        mitoMapped  mitoRate totalAssignedGene   rRNA_rate        RNum</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         &lt;integer&gt; &lt;numeric&gt;         &lt;numeric&gt;   &lt;numeric&gt; &lt;character&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R10424    2250800 0.0173585          0.360012 5.26368e-05      R10424</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R12195    2929274 0.0160282          0.400558 7.92850e-05      R12195</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R12198    4838084 0.0238795          0.438474 8.75740e-05      R12198</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R12199    1915632 0.0153648          0.438864 6.99381e-05      R12199</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R12200     826483 0.0108044          0.362791 8.24223e-05      R12200</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ...           ...       ...               ...         ...         ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R5760    29972076  0.218255          0.419577 1.86703e-05       R5760</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R5764    26910188  0.249728          0.454518 1.91898e-05       R5764</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R5765    44435124  0.268697          0.479815 1.57517e-05       R5765</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R5766    21543948  0.213824          0.497928 2.62909e-05       R5766</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R5768    29687209  0.256677          0.555499 8.52578e-06       R5768</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>              BrNum      Region           RIN       Age         Sex        Race</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        &lt;character&gt; &lt;character&gt; &lt;NumericList&gt; &lt;numeric&gt; &lt;character&gt; &lt;character&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R10424      Br5168       DLPFC           6.7     64.08           M        CAUC</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R12195      Br5073       DLPFC           8.4     62.61           M          AA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R12198      Br5217       DLPFC           8.5     29.98           M        CAUC</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R12199      Br5234       DLPFC           8.8     65.26           M        CAUC</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R12200      Br5372       DLPFC             7     32.35           M          AA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ...            ...         ...           ...       ...         ...         ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R5760       Br1627       HIPPO           7.1    0.5147           F        CAUC</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R5764       Br1832       HIPPO           5.7   54.8600           M          AA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R5765       Br1840       HIPPO           5.6   55.3400           M          AA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R5766       Br1884       HIPPO             8   38.4800           M          AA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R5768       Br1898       HIPPO           7.8   34.7600           M          AA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                 Dx      snpPC1       snpPC2      snpPC3       snpPC4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        &lt;character&gt;   &lt;numeric&gt;    &lt;numeric&gt;   &lt;numeric&gt;    &lt;numeric&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R10424     Control   0.0541862   0.00141503 -0.02229830  6.71690e-06</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R12195      Schizo  -0.0255144  -0.00401754  0.00553881 -5.78574e-04</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R12198      Schizo   0.0545858  -0.00788385  0.00479833  4.66608e-04</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R12199      Schizo   0.0543872  -0.00683429  0.00556194 -8.37099e-05</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R12200      Schizo  -0.0434981  -0.00112584  0.00438767 -3.02685e-03</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ...            ...         ...          ...         ...          ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R5760      Control  0.05343660 -5.27473e-03  0.00452529 -0.000197550</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R5764      Control -0.07612950 -7.49554e-05  0.00128218 -0.000715601</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R5765       Schizo -0.04487910  1.43625e-04  0.00581480 -0.002767710</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R5766      Control  0.00203288 -5.36031e-03  0.00636164  0.003517570</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R5768      Control -0.05808860 -1.22494e-03  0.00182823  0.000191893</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>              snpPC5      snpPC6       snpPC7      snpPC8       snpPC9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           &lt;numeric&gt;   &lt;numeric&gt;    &lt;numeric&gt;   &lt;numeric&gt;    &lt;numeric&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R10424  8.66316e-05 -0.00505508 -0.001056890  0.00511064 -0.001438760</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R12195 -1.47552e-03  0.00816687 -0.005289970  0.00590834 -0.006252970</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R12198  1.82373e-04  0.00346950 -0.001874620 -0.00283671 -0.000653331</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R12199 -6.26193e-04 -0.00131079  0.000433349 -0.00301263  0.001626550</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R12200  1.78597e-03 -0.00347009  0.000658279 -0.00062054  0.002938670</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ...             ...         ...          ...         ...          ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R5760   0.000762996 -0.00125775 -0.001663130 -0.00240119  2.14050e-03</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R5764   0.001890170  0.00334776  0.003100850 -0.00130183 -5.45976e-05</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R5765  -0.001926500 -0.00123727 -0.000452834 -0.00148963  2.95421e-03</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R5766   0.002043590 -0.00792677  0.005129850  0.00190378  4.51872e-03</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R5768  -0.001656520  0.00538843 -0.001508440 -0.00038706 -1.06840e-03</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             snpPC10</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           &lt;numeric&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R10424  0.000946483</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R12195  0.008017290</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R12198 -0.002142300</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R12199 -0.003569450</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R12200 -0.000186203</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ...             ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R5760  -0.005488660</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R5764  -0.000805835</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R5765   0.004231900</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R5766  -0.002314040</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R5768   0.000110817</span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">## Compare the ERCCsumLogErr approximation against the mean of the</span></span></span>
+<span class="r-in"><span><span class="co">## error values. Note that you would actually have to load the actual</span></span></span>
+<span class="r-in"><span><span class="co">## ERCC quantification output files in order to compute the correct</span></span></span>
+<span class="r-in"><span><span class="co">## ERCCsumLogErr values.</span></span></span>
+<span class="r-in"><span><span class="va">bsp2_rse_merged</span><span class="op">$</span><span class="va">mean_ERCCsumLogErr</span> <span class="op">&lt;-</span></span></span>
+<span class="r-in"><span>    <span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">sapply</a></span><span class="op">(</span><span class="va">rse_gene</span><span class="op">$</span><span class="va">ERCCsumLogErr</span>, <span class="va">mean</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/with.html" class="external-link">with</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>    <span class="fu"><a href="https://rdrr.io/pkg/SummarizedExperiment/man/SummarizedExperiment-class.html" class="external-link">colData</a></span><span class="op">(</span><span class="va">bsp2_rse_merged</span><span class="op">)</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/lengths.html" class="external-link">lengths</a></span><span class="op">(</span><span class="va">rse_gene</span><span class="op">$</span><span class="va">ERCCsumLogErr</span><span class="op">)</span> <span class="op">&gt;</span> <span class="fl">1</span>, <span class="op">]</span>,</span></span>
+<span class="r-in"><span>    <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>        <span class="va">mean_ERCCsumLogErr</span>,</span></span>
+<span class="r-in"><span>        <span class="va">ERCCsumLogErr</span>,</span></span>
+<span class="r-in"><span>        ylab <span class="op">=</span> <span class="st">"Approximate ERCCsumLogErr"</span></span></span>
+<span class="r-in"><span>    <span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/abline.html" class="external-link">abline</a></span><span class="op">(</span>a <span class="op">=</span> <span class="fl">0</span>, b <span class="op">=</span> <span class="fl">1</span>, col <span class="op">=</span> <span class="st">"red"</span><span class="op">)</span></span></span>
+<span class="r-plt img"><img src="merge_rse_metrics-1.png" alt="" width="700" height="433"></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/with.html" class="external-link">with</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>    <span class="fu"><a href="https://rdrr.io/pkg/SummarizedExperiment/man/SummarizedExperiment-class.html" class="external-link">colData</a></span><span class="op">(</span><span class="va">bsp2_rse_merged</span><span class="op">)</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/lengths.html" class="external-link">lengths</a></span><span class="op">(</span><span class="va">rse_gene</span><span class="op">$</span><span class="va">ERCCsumLogErr</span><span class="op">)</span> <span class="op">&gt;</span> <span class="fl">1</span>, <span class="op">]</span>,</span></span>
+<span class="r-in"><span>    <span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">mean_ERCCsumLogErr</span> <span class="op">-</span> <span class="va">ERCCsumLogErr</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      Min.   1st Qu.    Median      Mean   3rd Qu.      Max. </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -46.91332  -0.47002  -0.25959  -1.02531  -0.12544  -0.00001 </span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
