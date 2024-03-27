@@ -48,6 +48,8 @@ if (googledrive::drive_has_token()) {
     ## You'll need to have access to Google Drive through
     ## googledrive::drive_auth() set up.
 
+    ## Set the seed for reproducibility of the results
+    set.seed(20190918)
 
     ## Update lab presenters sheet
     lab_presenters(

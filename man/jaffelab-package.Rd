@@ -6,7 +6,7 @@
 \alias{jaffelab-package}
 \title{jaffelab: Commonly used functions by the Jaffe lab}
 \description{
-The jaffelab contains miscellaneous functions that are commonly used in the Jaffe lab http://aejaffe.com/.
+The jaffelab contains miscellaneous functions that are commonly used in the Jaffe lab http://aejaffe.com/. It is similar in spirit to https://cran.r-project.org/package=rafalib and implements several helper functions that were using in Lieber Institute for Brain Development RNA-sequencing projects such as BrainSEQ Phase I, BrainSEQ Phase II, among other ones.
 }
 \seealso{
 Useful links:

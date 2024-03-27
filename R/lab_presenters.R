@@ -31,6 +31,8 @@
 #'     ## You'll need to have access to Google Drive through
 #'     ## googledrive::drive_auth() set up.
 #'
+#'     ## Set the seed for reproducibility of the results
+#'     set.seed(20190918)
 #'
 #'     ## Update lab presenters sheet
 #'     lab_presenters(
@@ -65,7 +67,6 @@ lab_presenters <- function(presenters, start_date = "2019-09-18",
     i <- rep(seq(from = 1, to = length(presenters), by = n), each = n)
 
     ## Randomize presenters
-    set.seed(as.numeric(gsub("-", "", start_date)))
     presenters <- sample(presenters)
 
     ## Group presenters (add NAs if missing)
