@@ -1,3 +1,7 @@
+# jaffelab 0.99.34
+
+* Updated internal code in the package to make it compliant with BiocCheck.
+
 # jaffelab 0.99.33
 
 * `merge_rse_metrics()` can now also handle `ERCCsumLogErr`. Note that its an

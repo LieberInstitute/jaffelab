@@ -47,7 +47,7 @@ print(citation("jaffelab"), bibtex = TRUE)
 #> To cite package 'jaffelab' in publications use:
 #> 
 #>   Collado-Torres L, Jaffe AE, Burke EE (2024). _jaffelab: Commonly used
-#>   functions by the Jaffe lab_. R package version 0.99.33,
+#>   functions by the Jaffe lab_. R package version 0.99.34,
 #>   <https://github.com/LieberInstitute/jaffelab>.
 #> 
 #> A BibTeX entry for LaTeX users is
@@ -56,7 +56,7 @@ print(citation("jaffelab"), bibtex = TRUE)
 #>     title = {jaffelab: Commonly used functions by the Jaffe lab},
 #>     author = {Leonardo Collado-Torres and Andrew E. Jaffe and Emily E. Burke},
 #>     year = {2024},
-#>     note = {R package version 0.99.33},
+#>     note = {R package version 0.99.34},
 #>     url = {https://github.com/LieberInstitute/jaffelab},
 #>   }
 ```
