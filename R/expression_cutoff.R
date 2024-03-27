@@ -166,9 +166,9 @@ expression_cutoff <- function(expr, max_cut = 1, seed = NULL, n.boot = 2000,
         "samples_nonzero_cut" = cuts[round(seg2$psi[, 2])][2]
     )
 
-    message(paste(
-        Sys.time(), "the suggested expression cutoff is",
+    message(
+        Sys.time(), " the suggested expression cutoff is ",
         round(mean(suggested), 2)
-    ))
+    )
     return(suggested)
 }

@@ -44,7 +44,7 @@ junctionCount <- function(junctionFiles, sampleNames = names(junctionFiles),
     stopifnot(output %in% c("Count", "Rail"))
 
     names(junctionFiles) <- sampleNames
-    message(paste(Sys.time(), "reading in data"))
+    message(Sys.time(), " reading in data")
 
     if (all(is.character(junctionFiles))) {
         theData <- mclapply(junctionFiles, function(x) {
@@ -86,7 +86,7 @@ junctionCount <- function(junctionFiles, sampleNames = names(junctionFiles),
         theData <- junctionFiles
         stopifnot(all(sapply(theData, class) == "GRanges"))
     }
-    message(paste(Sys.time(), "creating master table of junctions"))
+    message(Sys.time(), " creating master table of junctions")
 
     ## turn into GRangesList
     ### THIS STEP IS SLOW...
@@ -108,8 +108,8 @@ junctionCount <- function(junctionFiles, sampleNames = names(junctionFiles),
     fullGR <- sort(fullGR)
     fullGR$count <- NULL
 
-    message(paste(Sys.time(), "there are", length(fullGR), "total junctions"))
-    message(paste(Sys.time(), "populating count matrix"))
+    message(Sys.time(), " there are ", length(fullGR), " total junctions")
+    message(Sys.time(), " populating count matrix")
 
     jNames <- paste0(
         as.character(seqnames(fullGR)), ":", start(fullGR), "-",
@@ -127,7 +127,7 @@ junctionCount <- function(junctionFiles, sampleNames = names(junctionFiles),
     M <- length(jNames)
 
     ## fill in matrix
-    message(paste(Sys.time(), "filling in the count matrix"))
+    message(Sys.time(), " filling in the count matrix")
     for (i in seq(along = grList)) {
         if (i %% 25 == 0) message(".")
         cc <- rep(0, M)

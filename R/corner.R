@@ -18,13 +18,25 @@
 #' lis <- list(iris, mtcars, matrix(rnorm(1000), ncol = 10))
 #' corner(lis)
 corner <- function(mat, n = 6) {
-    types <- c("list", "DataFrame", "data.frame", "GRanges", "matrix", "tbl_df")
+    types <-
+        c("list",
+            "DataFrame",
+            "data.frame",
+            "GRanges",
+            "matrix",
+            "tbl_df")
     if (!(class(mat)[1] %in% types)) {
-        stop(paste0("The class of your object (", class(mat), ") is not handled by this function."))
+        stop(
+            "The class of your object (",
+            class(mat),
+            ") is not handled by this function.",
+            call. = FALSE
+        )
     }
     if (class(mat)[1] == "list") {
         # return corners of first n items of list
-        return(lapply(mat[seq_len(min(length(mat), n))], function(x) x[seq_len(min(nrow(x), n)), seq_len(min(ncol(x), n))]))
+        return(lapply(mat[seq_len(min(length(mat), n))], function(x)
+            x[seq_len(min(nrow(x), n)), seq_len(min(ncol(x), n))]))
     } else {
         return(mat[seq_len(min(nrow(mat), n)), seq_len(min(ncol(mat), n))])
     }
