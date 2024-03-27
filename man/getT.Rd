@@ -24,8 +24,8 @@ Get the t-statistics from a \link[limma:lmFit]{lmFit} object.
 ## From lmFit() example page
 sd <- 0.3 * sqrt(4 / rchisq(100, df = 4))
 y <- matrix(rnorm(100 * 6, sd = sd), 100, 6)
-rownames(y) <- paste("Gene", 1:100)
-y[1:2, 4:6] <- y[1:2, 4:6] + 2
+rownames(y) <- paste("Gene", seq_len(100))
+y[seq_len(2), seq_len(3) + 3] <- y[seq_len(2), seq_len(3) + 3] + 2
 design <- cbind(Grp1 = 1, Grp2vs1 = c(0, 0, 0, 1, 1, 1))
 
 # Ordinary fit

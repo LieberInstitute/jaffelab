@@ -36,8 +36,8 @@ edge.pvalue <- function(stat, stat0, pool = TRUE) {
         m0 <- length(stat0)
         v <- c(rep(TRUE, m), rep(FALSE, m0))
         v <- v[order(c(stat, stat0), decreasing = TRUE)]
-        u <- 1:length(v)
-        w <- 1:m
+        u <- seq_len(length(v))
+        w <- seq_len(m)
         p <- (u[v == TRUE] - w) / m0
         p <- p[rank(-stat)]
         p <- pmax(p, 1 / m0)

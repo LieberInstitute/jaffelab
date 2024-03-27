@@ -49,8 +49,8 @@ expression cutoff returned is the average of the two suggested cutoffs.
 ## Simulate expression data. Based on the limma::lmFit() man page
 sd <- 0.3 * sqrt(4 / rchisq(100, df = 4))
 y <- matrix(rnorm(100 * 6, sd = sd), 100, 6)
-rownames(y) <- paste("Gene", 1:100)
-y[1:2, 4:6] <- y[1:2, 4:6] + 2
+rownames(y) <- paste("Gene", seq_len(100))
+y[seq_len(2), seq_len(3) + 3] <- y[seq_len(2), seq_len(3) + 3] + 2
 
 ## Make the expression data look like RPKM values
 y2 <- apply(y, 2, function(z) {

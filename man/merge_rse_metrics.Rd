@@ -36,18 +36,18 @@ counts <- matrix(runif(nrows * ncols, 1, 1e4), nrows)
 rowRanges <- GRanges(rep(c("chr1", "chr2"), c(50, 150)),
     IRanges(floor(runif(200, 1e5, 1e6)), width = 100),
     strand = sample(c("+", "-"), 200, TRUE),
-    feature_id = sprintf("ID\%03d", 1:200)
+    feature_id = sprintf("ID\%03d", seq_len(200))
 )
 
 ## Function for generating some data
 rand_gen <- function(mu = 1e6, sd = 1e3, digits = 0) {
-    IRanges::NumericList(lapply(1:6, function(x) {
+    IRanges::NumericList(lapply(seq_len(6), function(x) {
         round(rnorm(2, mu, sd), digits)
     }))
 }
 colData <- DataFrame(
     Treatment = rep(c("ChIP", "Input"), 3),
-    row.names = LETTERS[1:6],
+    row.names = LETTERS[seq_len(6)],
     concordMapRate = rand_gen(0.5, 0.05, 10),
     overallMapRate = rand_gen(0.7, 0.05, 10),
     mitoRate = rand_gen(0.2, 0.05, 10),

@@ -29,12 +29,12 @@
 #' }
 #'
 #' ## Generate the data for 20 'genes'
-#' p <- t(sapply(1:20, model_fun))
+#' p <- t(sapply(seq_len(20), model_fun))
 #'
 #' ## Define the phenotype data for these 30 'samples'
 #' pheno <- data.frame(
 #'     group = rep(c("A", "B"), each = 15),
-#'     batch = rep(1:3, each = 5)
+#'     batch = rep(seq_len(3), each = 5)
 #' )
 #'
 #' ## Define a full model

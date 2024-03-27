@@ -34,7 +34,7 @@ set.seed(20161005)
 sd <- 0.3 * sqrt(4 / rchisq(100, df = 4))
 y <- matrix(rnorm(100 * 6, sd = sd), 100, 6)
 rownames(y) <- paste("Gene", seq_len(100))
-y[1:2, 4:6] <- y[1:2, 4:6] + 4
+y[seq_len(2), seq_len(3) + 3] <- y[seq_len(2), seq_len(3) + 3] + 4
 
 ## Define the alternative and null models
 pheno <- data.frame(group = rep(c(0, 1), each = 3), RIN = runif(6) + 8)

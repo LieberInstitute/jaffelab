@@ -11,7 +11,7 @@
 #'
 #' @examples
 #'
-#' getOR(matrix(1:4, ncol = 2))
+#' getOR(matrix(seq_len(4), ncol = 2))
 getOR <- function(x) {
     stopifnot(nrow(x) == 2)
     stopifnot(ncol(x) == 2)
