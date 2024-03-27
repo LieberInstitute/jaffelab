@@ -19,12 +19,14 @@
 #' corner(lis)
 corner <- function(mat, n = 6) {
     types <-
-        c("list",
+        c(
+            "list",
             "DataFrame",
             "data.frame",
             "GRanges",
             "matrix",
-            "tbl_df")
+            "tbl_df"
+        )
     if (!(class(mat)[1] %in% types)) {
         stop(
             "The class of your object (",
@@ -35,8 +37,9 @@ corner <- function(mat, n = 6) {
     }
     if (class(mat)[1] == "list") {
         # return corners of first n items of list
-        return(lapply(mat[seq_len(min(length(mat), n))], function(x)
-            x[seq_len(min(nrow(x), n)), seq_len(min(ncol(x), n))]))
+        return(lapply(mat[seq_len(min(length(mat), n))], function(x) {
+            x[seq_len(min(nrow(x), n)), seq_len(min(ncol(x), n))]
+        }))
     } else {
         return(mat[seq_len(min(nrow(mat), n)), seq_len(min(ncol(mat), n))])
     }
