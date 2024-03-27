@@ -27,7 +27,7 @@ corner <- function(mat, n = 6) {
             "matrix",
             "tbl_df"
         )
-    if (!(class(mat)[1] %in% types)) {
+    if (!any(vapply(types, function(y, x) is(x, y), logical(1), mat))) {
         stop(
             "The class of your object (",
             class(mat),
@@ -35,7 +35,7 @@ corner <- function(mat, n = 6) {
             call. = FALSE
         )
     }
-    if (class(mat)[1] == "list") {
+    if (is(mat[1], "list")) {
         # return corners of first n items of list
         return(lapply(mat[seq_len(min(length(mat), n))], function(x) {
             x[seq_len(min(nrow(x), n)), seq_len(min(ncol(x), n))]
