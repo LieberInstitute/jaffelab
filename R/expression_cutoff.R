@@ -98,7 +98,7 @@ expression_cutoff <- function(
 
     seg <- segmented(f,
         seg.Z = ~cutl,
-        psi = round(seq(1, t.l, length.out = k + 2)[2:(k + 1)]),
+        psi = round(seq(1, t.l, length.out = k + 2)[seq_len(k) + 1]),
         control = seg.control(n.boot = n.boot, seed = seed)
     )
     # round(seg$psi[, 2])
