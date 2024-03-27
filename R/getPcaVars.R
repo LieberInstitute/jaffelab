@@ -18,6 +18,6 @@
 #' pca <- prcomp(USArrests)
 #' getPcaVars(pca)
 getPcaVars <- function(pca, digits = 3) {
-    stopifnot(is(pca) == "prcomp")
+    stopifnot(is(pca, "prcomp"))
     signif(pca$sdev^2 / sum(pca$sdev^2) * 100, digits = digits)
 }
