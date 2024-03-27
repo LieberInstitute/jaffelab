@@ -34,7 +34,7 @@ edge.pvalue <- function(stat, stat0, pool = TRUE) {
             stat0 <- as.vector(stat0)
         }
         m0 <- length(stat0)
-        v <- c(rep(T, m), rep(F, m0))
+        v <- c(rep(TRUE, m), rep(FALSE, m0))
         v <- v[order(c(stat, stat0), decreasing = TRUE)]
         u <- 1:length(v)
         w <- 1:m
