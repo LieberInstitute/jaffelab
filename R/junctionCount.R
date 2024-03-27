@@ -129,7 +129,7 @@ junctionCount <- function(junctionFiles, sampleNames = names(junctionFiles),
     ## fill in matrix
     message(paste(Sys.time(), "filling in the count matrix"))
     for (i in seq(along = grList)) {
-        if (i %% 25 == 0) cat(".")
+        if (i %% 25 == 0) message(".")
         cc <- rep(0, M)
         cc[mList[[i]]] <- theData[[i]]$count
         countList[[i]] <- Rle(cc)
