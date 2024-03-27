@@ -15,6 +15,7 @@
 #' that was uploaded.
 #' @export
 #' @importFrom googledrive drive_find drive_upload drive_update
+#' @importFrom utils write.csv
 #' @author Leonardo Collado-Torres
 #'
 #' @examples
