@@ -10,7 +10,7 @@ stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://
 [![Codecov test
 coverage](https://codecov.io/gh/LieberInstitute/jaffelab/branch/devel/graph/badge.svg)](https://codecov.io/gh/LieberInstitute/jaffelab?branch=devel)
 [![R build
-status](https://github.com/LieberInstitute/jaffelab/workflows/R-CMD-check-bioc/badge.svg)](https://github.com/LieberInstitute/jaffelab/actions)
+status](https://github.com/LieberInstitute/jaffelab/actions/workflows/check-bioc.yml/badge.svg)](https://github.com/LieberInstitute/jaffelab/actions/workflows/check-bioc.yml)
 [![GitHub
 issues](https://img.shields.io/github/issues/LieberInstitute/jaffelab)](https://github.com/LieberInstitute/jaffelab/issues)
 [![GitHub
