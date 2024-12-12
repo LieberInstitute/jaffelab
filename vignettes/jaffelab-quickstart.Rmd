@@ -29,22 +29,22 @@ cite_options(hyperlink = "to.doc", citation_format = "text", style = "html")
 
 ## Write bibliography information
 bib <- c(
-    BiocStyle = citation("BiocStyle"),
-    GenomicRanges = citation("GenomicRanges"),
-    googledrive = citation("googledrive"),
-    IRanges = citation("IRanges"),
-    jaffelab = citation("jaffelab"),
-    knitcitations = citation("knitcitations"),
+    BiocStyle = citation("BiocStyle")[1],
+    GenomicRanges = citation("GenomicRanges")[1],
+    googledrive = citation("googledrive")[1],
+    IRanges = citation("IRanges")[1],
+    jaffelab = citation("jaffelab")[1],
+    knitcitations = citation("knitcitations")[1],
     knitr = citation("knitr")[3],
-    limma = citation("limma"),
-    parallel = citation("parallel"),
+    limma = citation("limma")[1],
+    parallel = citation("parallel")[1],
     R = citation(),
-    rafalib = citation("rafalib"),
-    RColorBrewer = citation("RColorBrewer"),
-    remotes = citation("remotes"),
+    rafalib = citation("rafalib")[1],
+    RColorBrewer = citation("RColorBrewer")[1],
+    remotes = citation("remotes")[1],
     rmarkdown = citation("rmarkdown")[1],
-    sessioninfo = citation("sessioninfo"),
-    testthat = citation("testthat")
+    sessioninfo = citation("sessioninfo")[1],
+    testthat = citation("testthat")[1]
 )
 
 write.bibtex(bib, file = "quickstartRef.bib")
