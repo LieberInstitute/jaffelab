@@ -125,6 +125,13 @@ with merged columns for 'concordMapRate', 'overallMapRate', 'mitoRate',
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Loading required package: GenomicRanges</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Loading required package: stats4</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Loading required package: BiocGenerics</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Loading required package: generics</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Attaching package: ‘generics’</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> The following objects are masked from ‘package:base’:</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     as.difftime, as.factor, as.ordered, intersect, is.element, setdiff,</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     setequal, union</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Attaching package: ‘BiocGenerics’</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> The following object is masked from ‘package:limma’:</span>
@@ -137,10 +144,10 @@ with merged columns for 'concordMapRate', 'overallMapRate', 'mitoRate',
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>     Filter, Find, Map, Position, Reduce, anyDuplicated, aperm, append,</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>     as.data.frame, basename, cbind, colnames, dirname, do.call,</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>     duplicated, eval, evalq, get, grep, grepl, intersect, is.unsorted,</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>     lapply, mapply, match, mget, order, paste, pmax, pmax.int, pmin,</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>     pmin.int, rank, rbind, rownames, sapply, saveRDS, setdiff, table,</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>     tapply, union, unique, unsplit, which.max, which.min</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     duplicated, eval, evalq, get, grep, grepl, is.unsorted, lapply,</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     mapply, match, mget, order, paste, pmax, pmax.int, pmin, pmin.int,</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     rank, rbind, rownames, sapply, saveRDS, table, tapply, unique,</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     unsplit, which.max, which.min</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Loading required package: S4Vectors</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Attaching package: ‘S4Vectors’</span>
@@ -151,7 +158,7 @@ with merged columns for 'concordMapRate', 'overallMapRate', 'mitoRate',
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>     I, expand.grid, unname</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Loading required package: IRanges</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Loading required package: GenomeInfoDb</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Loading required package: Seqinfo</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Loading required package: Biobase</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Welcome to Bioconductor</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
@@ -228,7 +235,7 @@ with merged columns for 'concordMapRate', 'overallMapRate', 'mitoRate',
 <span class="r-out co"><span class="r-pr">#&gt;</span> E 499205,500651  98690,100203 1099373,1101728 -22.6664,-31.5804</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> F 500096,501025   99278,98614 1101246,1098881 -28.1533,-28.5806</span>
 <span class="r-in"><span><span class="va">rse_merged</span> <span class="op">&lt;-</span> <span class="fu">merge_rse_metrics</span><span class="op">(</span><span class="va">rse</span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> 2024-12-12 22:07:51.349541 attempting to approximate ERCCsumLogErr.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> 2026-03-31 17:51:32.212347 attempting to approximate ERCCsumLogErr.</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/pkg/SummarizedExperiment/man/SummarizedExperiment-class.html" class="external-link">colData</a></span><span class="op">(</span><span class="va">rse_merged</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> DataFrame with 6 rows and 12 columns</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     Treatment concordMapRate overallMapRate  mitoRate rRNA_rate</span>
@@ -269,7 +276,7 @@ with merged columns for 'concordMapRate', 'overallMapRate', 'mitoRate',
 <span class="r-in"><span><span class="co"># lobstr::obj_size(rse_gene)</span></span></span>
 <span class="r-in"><span><span class="co"># 872.12 MB</span></span></span>
 <span class="r-in"><span><span class="va">bsp2_rse_merged</span> <span class="op">&lt;-</span> <span class="fu">merge_rse_metrics</span><span class="op">(</span><span class="va">rse_gene</span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> 2024-12-12 22:08:04.881405 attempting to approximate ERCCsumLogErr.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> 2026-03-31 17:51:45.113346 attempting to approximate ERCCsumLogErr.</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/pkg/SummarizedExperiment/man/SummarizedExperiment-class.html" class="external-link">colData</a></span><span class="op">(</span><span class="va">bsp2_rse_merged</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> DataFrame with 900 rows and 54 columns</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                            SAMPLE_ID   FQCbasicStats</span>
@@ -475,8 +482,8 @@ with merged columns for 'concordMapRate', 'overallMapRate', 'mitoRate',
 <span class="r-in"><span>    <span class="fu"><a href="https://rdrr.io/pkg/SummarizedExperiment/man/SummarizedExperiment-class.html" class="external-link">colData</a></span><span class="op">(</span><span class="va">bsp2_rse_merged</span><span class="op">)</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/lengths.html" class="external-link">lengths</a></span><span class="op">(</span><span class="va">rse_gene</span><span class="op">$</span><span class="va">ERCCsumLogErr</span><span class="op">)</span> <span class="op">&gt;</span> <span class="fl">1</span>, <span class="op">]</span>,</span></span>
 <span class="r-in"><span>    <span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">mean_ERCCsumLogErr</span> <span class="op">-</span> <span class="va">ERCCsumLogErr</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      Min.   1st Qu.    Median      Mean   3rd Qu.      Max. </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> -46.91332  -0.47002  -0.25959  -1.02531  -0.12544  -0.00001 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       Min.    1st Qu.     Median       Mean    3rd Qu.       Max. </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -46.913324  -0.470020  -0.259586  -1.025309  -0.125439  -0.000006 </span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
@@ -492,7 +499,7 @@ with merged columns for 'concordMapRate', 'overallMapRate', 'mitoRate',
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.9000.</p>
 </div>
 
       </footer></div>
