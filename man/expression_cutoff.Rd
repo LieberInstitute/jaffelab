@@ -41,7 +41,7 @@ large drop, an intermediate section with moderate drop, and then a stable
 tail. The second curve is the mean number of expressed samples (non-zero
 expression) for all genes at each given cutoff. This curve increases rapidly
 then has a section with a moderate increase, and finally a long tail. Using
-\link{segmented} we find that second breakpoint. The suggested
+\link[segmented:segmented]{segmented::segmented} we find that second breakpoint. The suggested
 expression cutoff returned is the average of the two suggested cutoffs.
 }
 \examples{

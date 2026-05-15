@@ -19,6 +19,7 @@ agePlotter(
   pointColor = 2,
   lineColor = 1,
   alreadyFitted = NULL,
+  has_fetal = TRUE,
   ...
 )
 }
@@ -54,6 +55,9 @@ lines.}
 
 \item{alreadyFitted}{The output of \link[stats:fitted.values]{fitted} on a linear model
 if you already calculated it. If so, \code{y} will be ignored.}
+
+\item{has_fetal}{A \code{logical(1)} indicating whether there are any prenatal samples. If so, the first
+age window will be shown with the PCW (pre-conception weeks) label and in PCW units.}
 
 \item{...}{Additional parameters to pass to \link[graphics:plot.default]{plot}.}
 }
@@ -94,13 +98,22 @@ agePlotter(y, age,
     ageBreaks = c(-1, 0, 1, 10, 20, 50, 100)
 )
 
+## Example with no prenatal samples
+agePlotter(y[age >= 0], age[age >= 0],
+    mainText = "agePlotter example",
+    ylab = "Random Ys",
+    mod = model.matrix(~age[age >= 0]),
+    ageBreaks = c(0, 1, 10, 20, 50, 100),
+    has_fetal = FALSE
+)
+
 ## Define line and point colors
 p_cols <- rep(rep(c("skyblue3", "dark orange"), each = 10), 6)
 l_cols <- c("lightgoldenrod", "light blue")
 
 ## Make the plot with the above colors
 agePlotter(y, age,
-    mainText = "agePlotter example",
+    mainText = "agePlotter example: no prenatal",
     ylab = "Random Ys",
     mod = model.matrix(~age),
     ageBreaks = c(-1, 0, 1, 10, 20, 50, 100),

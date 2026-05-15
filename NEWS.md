@@ -1,3 +1,9 @@
+# jaffelab 0.99.35
+
+* Updated `agePlotter()` with the new `has_fetal` argument, such that this
+function can now be used to show data across development for situations
+where there are no prenatal samples in the dataset.
+
 # jaffelab 0.99.34
 
 * Updated internal code in the package to make it compliant with BiocCheck.
