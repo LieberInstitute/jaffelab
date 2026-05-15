@@ -244,7 +244,6 @@ agePlotter <- function(
             make_line(1)
         }
 
-        fetal_label_at <- age[fIndex[[1]]]
         fetal_rang <- round(range(age[fIndex[[1]]]) * 52 + 40, 0)
         fetal_ax <- seq(
             fetal_rang[1],
@@ -252,7 +251,7 @@ agePlotter <- function(
             round(diff(fetal_rang) / 4, 0)
         )
 
-        axis(1, at = fetal_label_at, labels = fetal_ax, 1, cex.axis = 1.5)
+        axis(1, at = (fetal_ax - 40) / 52, labels = fetal_ax, 1, cex.axis = 1.5)
 
         if (ageLabel == "bottom") {
             text(
