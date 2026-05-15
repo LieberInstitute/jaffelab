@@ -275,25 +275,40 @@ agePlotter <- function(
     for (j in ifelse(has_fetal, 2, 1):(nBreaks - 1)) {
         if (j == 1) {
             par(mar = c(4, 5, 3, 0.45))
+            plot(
+                y ~ age,
+                subset = fIndex[[j]],
+                main = "",
+                ylab = ylab,
+                xlab = "",
+                cex = 1.5,
+                xlim = range(age[fIndex[[j]]]) + c(-0.03, 0.03),
+                ylim = ylims,
+                cex.axis = 1.5,
+                cex.lab = 1.75,
+                pch = 21,
+                bg = pointColor,
+                ...
+            )
         } else {
             par(mar = c(4, 0.25, 3, 0.25))
+            plot(
+                y ~ age,
+                subset = fIndex[[j]],
+                main = "",
+                ylab = "",
+                yaxt = "n",
+                xlab = "",
+                cex = 1.4,
+                xlim = range(age[fIndex[[j]]]) + c(-0.03, 0.03),
+                ylim = ylims,
+                cex.axis = 1.5,
+                cex.lab = 1.75,
+                pch = 21,
+                bg = pointColor,
+                ...
+            )
         }
-        plot(
-            y ~ age,
-            subset = fIndex[[j]],
-            main = "",
-            ylab = ifelse(j == 1, ylab, ""),
-            xlab = "",
-            ylim = ylims,
-            yaxt = ifelse(j == 1, "s", "n"),
-            cex.axis = 1.5,
-            cex.lab = 1.75,
-            pch = 21,
-            cex = ifelse(j == 1, 1.5, 1.4),
-            bg = pointColor,
-            xlim = range(age[fIndex[[j]]]) + c(-0.03, 0.03),
-            ...
-        )
 
         if (smoothIt) {
             make_line(j, case0 = ageBreaks[j] == 0)
