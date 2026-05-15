@@ -269,46 +269,45 @@ agePlotter <- function(
                 cex = 1.5
             )
         }
+    } else {
+        plot(
+            y ~ age,
+            subset = fIndex[[1]],
+            main = "",
+            ylab = ylab,
+            xlab = "",
+            cex = 1.5,
+            xlim = range(age[fIndex[[1]]]) + c(-0.01, 0.01),
+            ylim = ylims,
+            cex.axis = 1.5,
+            cex.lab = 1.75,
+            pch = 21,
+            bg = pointColor,
+            ...
+        )
+        if (smoothIt) {
+            make_line(1, case0 = ageBreaks[1] == 0)
+        }
     }
 
     # infant + child
-    for (j in ifelse(has_fetal, 2, 1):(nBreaks - 1)) {
-        if (j == 1) {
-            par(mar = c(4, 5, 3, 0.45))
-            plot(
-                y ~ age,
-                subset = fIndex[[j]],
-                main = "",
-                ylab = ylab,
-                xlab = "",
-                cex = 1.5,
-                xlim = range(age[fIndex[[j]]]) + c(-0.03, 0.03),
-                ylim = ylims,
-                cex.axis = 1.5,
-                cex.lab = 1.75,
-                pch = 21,
-                bg = pointColor,
-                ...
-            )
-        } else {
-            par(mar = c(4, 0.25, 3, 0.25))
-            plot(
-                y ~ age,
-                subset = fIndex[[j]],
-                main = "",
-                ylab = "",
-                yaxt = "n",
-                xlab = "",
-                cex = 1.4,
-                xlim = range(age[fIndex[[j]]]) + c(-0.03, 0.03),
-                ylim = ylims,
-                cex.axis = 1.5,
-                cex.lab = 1.75,
-                pch = 21,
-                bg = pointColor,
-                ...
-            )
-        }
+    par(mar = c(4, 0.25, 3, 0.25))
+    for (j in 2:(nBreaks - 1)) {
+        plot(
+            y ~ age,
+            subset = fIndex[[j]],
+            main = "",
+            ylab = "",
+            xlab = "",
+            yaxt = "n",
+            cex = 1.4,
+            xlim = range(age[fIndex[[j]]]) + c(-0.03, 0.03),
+            ylim = ylims,
+            cex.axis = 1.5,
+            pch = 21,
+            bg = pointColor,
+            ...
+        )
 
         if (smoothIt) {
             make_line(j, case0 = ageBreaks[j] == 0)
