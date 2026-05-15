@@ -284,14 +284,14 @@ agePlotter <- function(
             main = "",
             ylab = ifelse(j == 1, ylab, ""),
             xlab = "",
-            yaxt = "n",
-            cex = ifelse(j == 1, 1.5, 1.4),
-            xlim = range(age[fIndex[[j]]]) + c(-0.03, 0.03),
             ylim = ylims,
+            yaxt = ifelse(j == 1, "s", "n"),
             cex.axis = 1.5,
             cex.lab = 1.75,
             pch = 21,
+            cex = ifelse(j == 1, 1.5, 1.4),
             bg = pointColor,
+            xlim = range(age[fIndex[[j]]]) + c(-0.03, 0.03),
             ...
         )
 
